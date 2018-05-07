@@ -28,7 +28,7 @@ export class DrillRunnerComponent implements OnInit {
               'duration': 20
           }
       ];
-      
+
       this.drillIndex = 0;
   }
 
@@ -58,6 +58,6 @@ export class DrillRunnerComponent implements OnInit {
   }
 
   ngOnInit() {
-
+      // good place to pull in data from a service
   }
 }
