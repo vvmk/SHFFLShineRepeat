@@ -6,7 +6,7 @@ export class RoutineService {
 
     constructor() { }
 
-    getRoutines(): Routine[] {
+    getUserRoutines(): Routine[] {
         const testRoutine: Routine =
         {
             'routineId': '1',
