@@ -5,12 +5,18 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { DrillRunnerComponent } from './drill-runner/drill-runner.component';
+import { RoutineListComponent } from './routine-list/routine-list.component';
+import { RoutineListItemComponent } from './routine-list-item/routine-list-item.component';
+import { RoutineViewComponent } from './routine-view/routine-view.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DrillRunnerComponent
+    DrillRunnerComponent,
+    RoutineListComponent,
+    RoutineListItemComponent,
+    RoutineViewComponent
   ],
   imports: [
     BrowserModule,
