@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Drill } from './drill';
+import { Drill } from '../interfaces/drill';
 
 @Component({
   selector: 'app-drill-runner',
