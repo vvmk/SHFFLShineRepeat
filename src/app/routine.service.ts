@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Routine } from './interfaces/routine';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class RoutineService {
@@ -12,6 +15,14 @@ export class RoutineService {
     }
 
     getUserRoutines(userId: string): Observable<Routine[]> {
-        return this._http.get<Routine[]>(this._e.getLibraryUrl(userId));
+        let url: string = this._e.getLibraryUrl(userId);
+        return this._http.get<Routine[]>(url)
+            .do(data => console.log('All: ' + JSON.stringify(data)))
+            .catch(this.handleError);
+    }
+
+    private handleError(err: HttpErrorResponse): Observable<Routine[]> {
+        console.log(err.message);
+        return Observable.throw(err.message);
     }
 }
