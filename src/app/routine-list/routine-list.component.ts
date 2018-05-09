@@ -14,6 +14,6 @@ export class RoutineListComponent implements OnInit {
     constructor(private _routineService: RoutineService) {}
 
     ngOnInit() {
-        this.routines = this._routineService.getRoutines();
+        this.routines = this._routineService.getUserRoutines();
     }
 }

@@ -1,40 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Routine } from './interfaces/routine';
+import { HttpClient } from '@angular/common/http';
+import { EndpointService } from './endpoint.service';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class RoutineService {
 
-    constructor() { }
+    constructor(private _http: HttpClient, private _e: EndpointService) {
+        // -_-
+    }
 
-    getUserRoutines(): Routine[] {
-        const testRoutine: Routine =
-        {
-            'routineId': '1',
-            'title': 'Falco - basic',
-            'duration': 45,
-            'character': 'Falco',
-            'creatorTag': 'vvmk',
-            'creatorId': '1',
-            'creationDate': '5/7/18',
-            'popularity': 14,
-            'commentsEnabled': true,
-            'drills': [
-            {
-                'title': 'Dash->Wavedash',
-                'duration': 10
-            },
-            {
-                'title': 'Short hop->Laser',
-                'duration': 15
-            },
-            {
-                'title': 'Wavedash (long)',
-                'duration': 20
-            }
-            ],
-            'comments': []
-        }
-
-        return [testRoutine];
+    getUserRoutines(userId: string): Observable<Routine[]> {
+        return this._http.get<Routine[]>(this._e.getLibraryUrl(userId));
     }
 }
