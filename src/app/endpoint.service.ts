@@ -24,6 +24,13 @@ export class EndpointService {
             );
     } 
 
+    public getUserMetaUrl(userId: string): string {
+        return this.joinUrls(
+            this.getUserServiceUrl(),
+            'users',
+            userId
+            );
+    }
     private joinUrls(...args: string[]): string {
         return args.join('/');
     }
