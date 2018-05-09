@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RoutineService } from '../routine.service';
+import { UserService } from '../user.service';
 import { Routine } from '../interfaces/routine';
 import { User } from '../interfaces/user';
 
@@ -10,12 +11,20 @@ import { User } from '../interfaces/user';
 })
 export class RoutineListComponent implements OnInit {
     routines: Routine[];
-    userId: string;
+    userId: string = '1';
     errorMessage: string;
 
-    constructor(private _routineService: RoutineService, private _user: User) {}
+    constructor(
+        private _routineService: RoutineService,
+        private _userService: UserService) {
+
+    }
 
     ngOnInit() {
+        this._userService.getUser()
+        .subscribe(
+            user => this.userId = user.userId);
+        
         this._routineService.getUserRoutines(this.userId)
         .subscribe(
             routines => this.routines = routines,

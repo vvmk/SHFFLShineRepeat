@@ -14,21 +14,6 @@ export class DrillRunnerComponent implements OnInit {
   drillTick: number;
 
   constructor() {
-      this.drills = [
-          {
-              'title': 'Dash->Wavedash',
-              'duration': 10
-          },
-          {
-              'title': 'Short hop->Laser',
-              'duration': 15
-          },
-          {
-              'title': 'Wavedash (long)',
-              'duration': 20
-          }
-      ];
-
       this.drillIndex = 0;
   }
 
@@ -58,6 +43,6 @@ export class DrillRunnerComponent implements OnInit {
   }
 
   ngOnInit() {
-      // good place to pull in data from a service
+    // get currently running routine here, pass in from where?
   }
 }
