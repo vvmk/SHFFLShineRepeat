@@ -10,6 +10,8 @@ import { RoutineListItemComponent } from './routine-list-item/routine-list-item.
 import { RoutineViewComponent } from './routine-view/routine-view.component';
 import { EndpointService } from './endpoint.service';
 import { RoutineService } from './routine.service';
+import { LibraryPageComponent } from './library-page/library-page.component';
+import { DevLandingComponent } from './dev-landing/dev-landing.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,20 @@ import { RoutineService } from './routine.service';
     DrillRunnerComponent,
     RoutineListComponent,
     RoutineListItemComponent,
-    RoutineViewComponent
+    RoutineViewComponent,
+    LibraryPageComponent,
+    DevLandingComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+        { path: '', redirectTo: 'dev', pathMatch: 'full' },
+        { path: 'dev', component: DevLandingComponent },
+        { path: 'routine/:id', component: RoutineViewComponent },
+        { path: 'library', component: LibraryPageComponent },
+        { path: '**', redirectTo: 'dev', pathMatch: 'full' }
   ],
   providers: [
       EndpointService,
