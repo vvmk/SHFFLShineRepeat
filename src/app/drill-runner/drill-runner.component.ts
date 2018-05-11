@@ -4,7 +4,6 @@ import { Routine } from '../interfaces/routine';
 import { RoutineService } from '../routine.service';
 
 @Component({
-  selector: 'app-drill-runner',
   templateUrl: './drill-runner.component.html',
   styleUrls: ['./drill-runner.component.css']
 })

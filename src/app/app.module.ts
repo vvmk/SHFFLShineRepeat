@@ -33,6 +33,7 @@ import { DevLandingComponent } from './dev-landing/dev-landing.component';
         { path: 'dev', component: DevLandingComponent },
         { path: 'routine/:id', component: RoutineViewComponent },
         { path: 'library', component: LibraryPageComponent },
+        { path: 'drill-runner', component: DrillRunnerComponent },
         { path: '**', redirectTo: 'dev', pathMatch: 'full' }
     ])
   ],

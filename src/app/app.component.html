@@ -1,2 +1,14 @@
-<h1>{{title}}</h1>
-<app-drill-runner></app-drill-runner>
+<div>
+    <nav class='navbar navbar-default'>
+        <a class='navbar-brand'>{{title}}</a>
+        <ul class='nav navbar-nav'>
+            <li><a [routerLink]="['/drill-runner']">DrillRunnerComponent</a></li>
+            <li><a [routerLink]="['/library']">Library</a></li>
+            <li><a [routerLink]="['/routineId/1']">View Routine 1</a></li>
+        </ul>
+    </nav>
+    <div class='container'>
+        <router-outlet></router-outlet>
+    </div>
+</div>
+
