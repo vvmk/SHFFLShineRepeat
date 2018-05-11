@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { DrillRunnerComponent } from './drill-runner/drill-runner.component';
@@ -33,6 +34,7 @@ import { DevLandingComponent } from './dev-landing/dev-landing.component';
         { path: 'routine/:id', component: RoutineViewComponent },
         { path: 'library', component: LibraryPageComponent },
         { path: '**', redirectTo: 'dev', pathMatch: 'full' }
+    ])
   ],
   providers: [
       EndpointService,
