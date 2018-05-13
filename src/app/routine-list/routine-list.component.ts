@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { RoutineService } from '../routine.service';
-import { UserService } from '../user.service';
+import { RoutineService } from '../services/routine.service';
+import { UserService } from '../services/user.service';
 import { Routine } from '../interfaces/routine';
 import { User } from '../interfaces/user';
 

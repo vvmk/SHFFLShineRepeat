@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RoutineService } from './routine.service';
+import { RoutineService } from './services/routine.service';
 
 @Component({
     selector: 'app-root',

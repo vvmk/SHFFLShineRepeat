@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Routine } from './interfaces/routine';
+import { Routine } from '../interfaces/routine';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { UserService } from './user.service';

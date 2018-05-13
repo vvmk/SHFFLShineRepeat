@@ -9,8 +9,8 @@ import { DrillRunnerComponent } from './drill-runner/drill-runner.component';
 import { RoutineListComponent } from './routine-list/routine-list.component';
 import { RoutineListItemComponent } from './routine-list-item/routine-list-item.component';
 import { RoutineViewComponent } from './routine-view/routine-view.component';
-import { EndpointService } from './endpoint.service';
-import { RoutineService } from './routine.service';
+import { EndpointService } from './services/endpoint.service';
+import { RoutineService } from './services/routine.service';
 import { LibraryPageComponent } from './library-page/library-page.component';
 import { DevLandingComponent } from './dev-landing/dev-landing.component';
 
