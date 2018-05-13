@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Routine } from '../interfaces/routine';
+import { Routine } from '../../interfaces/routine';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RoutineService } from '../services/routine.service';
+import { RoutineService } from '../../services/routine.service';
 
 @Component({
     selector: 'app-routine-view',

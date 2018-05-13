@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Drill } from '../interfaces/drill';
-import { Routine } from '../interfaces/routine';
-import { RoutineService } from '../services/routine.service';
+import { Drill } from '../../interfaces/drill';
+import { Routine } from '../../interfaces/routine';
+import { RoutineService } from '../../services/routine.service';
 
 @Component({
   templateUrl: './drill-runner.component.html',
