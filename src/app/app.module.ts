@@ -13,6 +13,7 @@ import { EndpointService } from './services/endpoint.service';
 import { RoutineService } from './services/routine.service';
 import { LibraryPageComponent } from './library-page/library-page.component';
 import { DevLandingComponent } from './dev-landing/dev-landing.component';
+import { RoutineViewGuardService } from './services/routine-view-guard.service';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DevLandingComponent } from './dev-landing/dev-landing.component';
   ],
   providers: [
       EndpointService,
-      RoutineService
+      RoutineService,
+      RoutineViewGuardService
   ],
   bootstrap: [AppComponent]
 })
