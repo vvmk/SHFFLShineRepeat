@@ -9,6 +9,7 @@ export class RoutineViewGuardService implements CanActivate {
     canActivate(route: ActivatedRouteSnapshot): boolean {
         let id = route.url[1].path;
         if (!this.isValidRoutineId(id)) {
+            //TODO: reroute to 404 page
             this._router.navigate(['/library']);
             return false;
         }
