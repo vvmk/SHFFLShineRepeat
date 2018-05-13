@@ -14,6 +14,10 @@ import { RoutineService } from './services/routine.service';
 import { LibraryPageComponent } from './library-page/library-page.component';
 import { DevLandingComponent } from './dev-landing/dev-landing.component';
 import { RoutineViewGuardService } from './services/routine-view-guard.service';
+import { RoutineModule } from './routine/routine.module';
+import { UserModule } from './user/user.module';
+import { RunnerModule } from './runner/runner.module';
+import { DiscoverModule } from './discover/discover.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,11 @@ import { RoutineViewGuardService } from './services/routine-view-guard.service';
         { path: 'library', component: LibraryPageComponent },
         { path: 'drill-runner', component: DrillRunnerComponent },
         { path: '**', redirectTo: 'dev', pathMatch: 'full' }
-    ])
+    ]),
+    RoutineModule,
+    UserModule,
+    RunnerModule,
+    DiscoverModule
   ],
   providers: [
       EndpointService,
