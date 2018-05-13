@@ -22,6 +22,6 @@ export class RoutineViewComponent implements OnInit {
     }
 
     runRoutine(): void {
-        this._router.navigate(['/drill-runner']);
+        this._router.navigate(['/drill-runner', this.routine.routineId]);
     }
 }
