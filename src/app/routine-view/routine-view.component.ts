@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Routine } from '../interfaces/routine';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RoutineService } from '../routine.service';
 
 @Component({
@@ -13,14 +13,15 @@ export class RoutineViewComponent implements OnInit {
     routine: Routine;
 
     constructor(private routineService: RoutineService,
-                private _route: ActivatedRoute) {}
+                private _route: ActivatedRoute,
+                private _router: Router) {}
 
     ngOnInit() {
         let id = this._route.snapshot.paramMap.get('id');
         this.routine = this.routineService.getRoutineById(id);
     }
 
-    runRoutine() {
-        // navigate to drill runner and pass drill list/routine meta
+    runRoutine(): void {
+        this._router.navigate(['/drill-runner']);
     }
 }
