@@ -7,6 +7,7 @@ import { RoutineListItemComponent } from './routine-list-item/routine-list-item.
 import { RoutineViewComponent } from './routine-view/routine-view.component';
 import { RoutineViewGuardService } from '../services/routine-view-guard.service';
 import { LibraryPageComponent } from './library-page/library-page.component';
+import { LibraryHeaderComponent } from './library-header/library-header.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { LibraryPageComponent } from './library-page/library-page.component';
       LibraryPageComponent,
       RoutineListComponent,
       RoutineListItemComponent,
-      RoutineViewComponent
+      RoutineViewComponent,
+      LibraryHeaderComponent
   ]
 })
 export class RoutineModule { }
