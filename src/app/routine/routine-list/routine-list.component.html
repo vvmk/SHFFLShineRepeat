@@ -1,3 +1,5 @@
-<p>
-  routine-list works!
-</p>
+<ul *ngIf='routines.length > 0'>
+    <routine-item *ngFor='let r of routines'
+    [routine]='r'>
+    </routine-item>
+</ul>

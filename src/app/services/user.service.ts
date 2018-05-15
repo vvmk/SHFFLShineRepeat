@@ -8,10 +8,19 @@ import { Observable } from 'rxjs/observable';
 export class UserService {
     //for testing until authentication added to service tier
     userId: string = '1';
+    user: User;
 
-    constructor(private _http: HttpClient, private _e: EndpointService) { }
+    constructor(private _http: HttpClient,
+                private _e: EndpointService) { 
 
-    getUser(): Observable<User> {
+        //TODO: check local storage for current user, else request it
+    }
+
+    requestUser(): Observable<User> {
         return this._http.get<User>(this._e.getUserMetaUrl(this.userId));
+    }
+
+    getUser(): User {
+        return this.user;
     }
 }

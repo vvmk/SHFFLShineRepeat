@@ -10,7 +10,7 @@ import 'rxjs/add/operator/do';
 
 @Injectable()
 export class RoutineService {
-    routineLIbrary: Routine[];
+    routineLibrary: Routine[];
 
     constructor(private _http: HttpClient, private _e: EndpointService) {
         //TODO: check local storage for user's library, set it if found
@@ -33,5 +33,9 @@ export class RoutineService {
 
     getRoutineById(routineId: string): Routine {
         return routineId[routineId];
+    }
+
+    getLibrary(): Routine[] {
+        return this.routineLibrary;
     }
 }

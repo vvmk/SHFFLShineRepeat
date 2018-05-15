@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../../interfaces/user';
 
 @Component({
-  selector: 'app-library-header',
-  templateUrl: './library-header.component.html',
-  styleUrls: ['./library-header.component.css']
+    selector: 'library-header',
+    templateUrl: './library-header.component.html',
+    styleUrls: ['./library-header.component.css']
 })
 export class LibraryHeaderComponent implements OnInit {
+    @Input() user: User;
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
 }
