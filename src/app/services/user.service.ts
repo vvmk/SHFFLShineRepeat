@@ -23,4 +23,8 @@ export class UserService {
     getUser(): User {
         return this.user;
     }
+
+    setUser(u: User): void {
+        this.user = u;
+    }
 }

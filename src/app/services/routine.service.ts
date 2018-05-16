@@ -8,9 +8,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { UserService } from './user.service';
 
-
-
-
 @Injectable()
 export class RoutineService {
     routineLibrary: Routine[];

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RoutineService } from './services/routine.service';
 import { UserService } from './services/user.service';
 import { User } from './interfaces/user';
+import { Routine } from './interfaces/routine';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,11 +19,17 @@ export class AppComponent implements OnInit {
                 private _routineService: RoutineService) {}
 
     ngOnInit() {
-        this._userService.requestUser().subscribe(user => this.user = user);
+        this._userService.requestUser().subscribe(data => this.setUser(data));
+        this._routineService.getUserRoutines('1').subscribe(data => this.setLibrary(data));
     }
 
     setUser(data: User): void {
         this.user = data;
+        this._userService.setUser(data);
         console.log(this.user);
+    }
+
+    setLibrary(data: Routine[]): void {
+
     }
 }
