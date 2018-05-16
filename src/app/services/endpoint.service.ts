@@ -21,7 +21,7 @@ export class EndpointService {
             this.getRoutineServiceUrl(),
             'library',
             userId
-            );
+        );
     } 
 
     public getUserMetaUrl(userId: string): string {
@@ -29,7 +29,7 @@ export class EndpointService {
             this.getUserServiceUrl(),
             'users',
             userId
-            );
+        );
     }
     private joinUrls(...args: string[]): string {
         return args.join('/');
