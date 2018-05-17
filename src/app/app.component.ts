@@ -30,6 +30,6 @@ export class AppComponent implements OnInit {
     }
 
     setLibrary(data: Routine[]): void {
-
+        this._routineService.setLibrary(data['routines']);
     }
 }

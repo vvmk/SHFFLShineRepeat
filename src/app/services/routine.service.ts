@@ -38,4 +38,8 @@ export class RoutineService {
     getLibrary(): Routine[] {
         return this.routineLibrary;
     }
+
+    setLibrary(library: Routine[]): void {
+        this.routineLibrary  = library;
+    }
 }
