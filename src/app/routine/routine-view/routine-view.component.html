@@ -1,3 +1,11 @@
-<h1>{{pageTitle}}</h1>
-<div>[RoutineDetailComponent placeholder]</div>
+<h1>{{routine.title}}</h1>
+<span>total runtime: {{routine.totalDuration}}</span>
+<span>character: {{routine.character}}</span>
+<span>creator: {{routine.creatorTag}}</span>
+<ul>
+    <li *ngFor="let drill of routine.drills">
+        <p>{{drill.drillTitle}}</p>
+        <p>{{drill.duration}}</p>
+    </li>
+</ul>
 <button (click)='runRoutine()'>Run Routine</button>

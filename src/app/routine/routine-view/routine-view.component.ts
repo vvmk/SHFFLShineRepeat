@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Routine } from '../../interfaces/routine';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoutineService } from '../../services/routine.service';
@@ -10,7 +10,7 @@ import { RoutineService } from '../../services/routine.service';
 })
 export class RoutineViewComponent implements OnInit {
     pageTitle: string = '[Routine title]';
-    routine: Routine;
+    @Input() routine: Routine;
 
     constructor(private routineService: RoutineService,
                 private _route: ActivatedRoute,
