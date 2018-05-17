@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./routine-list-item.component.css']
 })
 export class RoutineListItemComponent implements OnInit {
+    @Input() localRoutineId: number;
     @Input() routine: Routine;
 
     constructor(private _routineService: RoutineService,
@@ -18,6 +19,6 @@ export class RoutineListItemComponent implements OnInit {
     }
 
     viewRoutine(): void {
-        this._router.navigate(['/routine', this.routine.routineId]);
+        this._router.navigate(['/routine', this.localRoutineId]);
     }
 }

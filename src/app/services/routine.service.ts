@@ -32,7 +32,7 @@ export class RoutineService {
     }
 
     getRoutineById(routineId: string): Routine {
-        return routineId[routineId];
+        return this.routineLibrary[routineId];
     }
 
     getLibrary(): Routine[] {

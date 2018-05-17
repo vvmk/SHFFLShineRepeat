@@ -1,5 +1,7 @@
 <ul *ngIf='routines.length > 0'>
-    <routine-list-item *ngFor='let r of routines'
-    [routine]='r'>
+    <routine-list-item *ngFor='let r of routines; index as i;' 
+        [routine]='r'
+        [localRoutineId]='i'
+    >
     </routine-list-item>
 </ul>
