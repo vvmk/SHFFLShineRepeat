@@ -9,8 +9,9 @@ import { RoutineService } from '../../services/routine.service';
     styleUrls: ['./routine-view.component.css']
 })
 export class RoutineViewComponent implements OnInit {
-    pageTitle: string = '[Routine title]';
+    pageTitle: string = '';
     routine: Routine;
+    localRoutineId: number;
 
     constructor(private routineService: RoutineService,
                 private _route: ActivatedRoute,
@@ -18,11 +19,13 @@ export class RoutineViewComponent implements OnInit {
 
     ngOnInit() {
         let id = this._route.snapshot.paramMap.get('id');
+        this.localRoutineId = +id;
         this.routine = this.routineService.getRoutineById(id);
+        this.pageTitle = this.routine.title;
         console.log(this.routine);
     }
 
     runRoutine(): void {
-        this._router.navigate(['/drill-runner', this.routine.routineId]);
+        this._router.navigate(['/drill-runner', this.localRoutineId]);
     }
 }

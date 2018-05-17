@@ -4,8 +4,7 @@
 <p>creator: {{routine.creatorTag}}</p>
 <ul>
     <li *ngFor="let drill of routine.drills">
-        <p>{{drill.drillTitle}}</p>
-        <p>{{drill.duration}}</p>
+        <p>{{drill.drillTitle}} : {{drill.duration}}</p>
     </li>
 </ul>
 <button (click)='runRoutine()'>Run Routine</button>

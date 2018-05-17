@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Drill } from '../../interfaces/drill';
 import { Routine } from '../../interfaces/routine';
 import { RoutineService } from '../../services/routine.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './drill-runner.component.html',
@@ -14,7 +15,9 @@ export class DrillRunnerComponent implements OnInit {
   drillTitle: string;
   drillTick: number;
 
-  constructor(private _routineService: RoutineService) {
+  constructor(private _routineService: RoutineService,
+              private _route: ActivatedRoute,
+              private _router: Router) {
     this.drillIndex = 0;
   }
 
@@ -44,7 +47,8 @@ export class DrillRunnerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._routineService.getUserRoutines('1')
+    let id = this._route.snapshot.paramMap.get('id');
+    this._routineService.getUserRoutines(id)
     .subscribe(
       routines => this.drills = routines[0].drills
       );
