@@ -22,10 +22,9 @@ export class RoutineViewComponent implements OnInit {
         this.localRoutineId = +id;
         this.routine = this.routineService.getRoutineById(id);
         this.pageTitle = this.routine.title;
-        console.log(this.routine);
     }
 
     runRoutine(): void {
-        this._router.navigate(['/drill-runner', this.localRoutineId]);
+        this._router.navigate(['/runner', this.localRoutineId]);
     }
 }

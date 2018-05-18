@@ -26,7 +26,6 @@ export class AppComponent implements OnInit {
     setUser(data: User): void {
         this.user = data;
         this._userService.setUser(data);
-        console.log(this.user);
     }
 
     setLibrary(data: Routine[]): void {

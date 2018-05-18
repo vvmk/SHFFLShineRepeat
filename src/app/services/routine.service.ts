@@ -22,8 +22,8 @@ export class RoutineService {
         let url: string = this._e.getLibraryUrl(userId);
 
         return this._http.get<Routine[]>(url).pipe(
-            tap(data => console.log('All: ' + JSON.stringify(data))),
-            catchError(this.handleError),);
+            catchError(this.handleError)
+        );
     }
 
     private handleError(err: HttpErrorResponse): Observable<Routine[]> {

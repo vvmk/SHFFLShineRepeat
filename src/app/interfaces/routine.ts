@@ -4,7 +4,7 @@ import { Comment } from './comment';
 export interface Routine {
     routineId: string;
     title: string;
-    duration: number;
+    totalDuration: number;
     character: string;
     creatorTag: string;
     creatorId: string;
