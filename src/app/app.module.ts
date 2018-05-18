@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './shared/material.module';
 
 import { AppComponent } from './app.component';
 import { EndpointService } from './services/endpoint.service';
@@ -19,6 +21,7 @@ import { DiscoverModule } from './discover/discover.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
@@ -28,7 +31,8 @@ import { DiscoverModule } from './discover/discover.module';
     RoutineModule,
     UserModule,
     RunnerModule,
-    DiscoverModule
+    DiscoverModule,
+    MaterialModule
   ],
   providers: [
       EndpointService,
