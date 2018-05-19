@@ -10,7 +10,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { EndpointService } from './services/endpoint.service';
 import { RoutineService } from './services/routine.service';
+import { RosterService } from './services/roster.service';
 import { RoutineViewGuardService } from './services/routine-view-guard.service';
+
 import { RoutineModule } from './routine/routine.module';
 import { UserModule } from './user/user.module';
 import { RunnerModule } from './runner/runner.module';
@@ -41,7 +43,8 @@ import { CreatorModule } from './creator/creator.module';
   providers: [
       EndpointService,
       RoutineService,
-      RoutineViewGuardService
+      RoutineViewGuardService,
+      RosterService
   ],
   bootstrap: [AppComponent]
 })
