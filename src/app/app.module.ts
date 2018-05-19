@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { EndpointService } from './services/endpoint.service';
@@ -29,6 +30,7 @@ import { CreatorModule } from './creator/creator.module';
         { path: '', redirectTo: 'dev', pathMatch: 'full' },
         { path: '**', redirectTo: 'dev', pathMatch: 'full' }
     ]),
+    NgbModule,
     RoutineModule,
     UserModule,
     RunnerModule,
