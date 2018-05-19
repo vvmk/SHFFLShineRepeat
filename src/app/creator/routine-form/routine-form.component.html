@@ -1,14 +1,12 @@
-<div class='container'>
-    <form>
-        <mat-form-field>
-            <input matInput placeholder='Routine Name' />
-        </mat-form-field>
-        <mat-form-field>
-            <mat-select placeholder='Character'>
-                <mat-option *ngFor='let character of roster'>
-                    {{character}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-    </form>
+<div mat-primary class='routineFormContainer formContainer'>
+    <mat-form-field>
+        <input matInput placeholder='Routine Name' />
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder='Character'>
+            <mat-option *ngFor='let character of roster' value='character'>
+                {{character}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
 </div>

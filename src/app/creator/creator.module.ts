@@ -13,7 +13,8 @@ import { RoutineFormComponent } from './routine-form/routine-form.component';
     ReactiveFormsModule,
     RouterModule.forRoot([
         { path: 'create', component: CreatorPageComponent }
-    ])
+    ]),
+    MaterialModule
   ],
   declarations: [CreatorPageComponent, RoutineFormComponent]
 })
