@@ -1,5 +1,7 @@
-<li (click)='viewRoutine()'>
-    <p>{{routine.title}}</p>
-    <p>{{routine.character}}</p>
-    <p>{{routine.duration}}</p>
-</li>
+<mat-card (click)='viewRoutine()'>
+    <mat-card-header>
+        <img mat-card-avatar [src]='avatarUrl' />
+        <mat-card-title>{{routine.title}}</mat-card-title>
+        <mat-card-subtitle>{{routine.totalDuration}}</mat-card-subtitle>
+    </mat-card-header>
+</mat-card>

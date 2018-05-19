@@ -11,11 +11,14 @@ import { Router } from '@angular/router';
 export class RoutineListItemComponent implements OnInit {
     @Input() localRoutineId: number;
     @Input() routine: Routine;
+    avatarUrl: string;
 
     constructor(private _routineService: RoutineService,
                 private _router: Router) { }
 
     ngOnInit() {
+        this.avatarUrl = 'assets/images/avatar-' + 
+            this.routine.character.replace(' ', '') + '.png';
     }
 
     viewRoutine(): void {
