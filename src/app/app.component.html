@@ -1,12 +1,7 @@
-<div>
-    <nav class='navbar navbar-default'>
-        <a class='navbar-brand'>{{title}}</a>
-        <ul class='nav navbar-nav'>
-            <li><a [routerLink]="['/library']">Library</a></li>
-        </ul>
-    </nav>
-    <div class='container'>
-        <router-outlet></router-outlet>
-    </div>
+<mat-toolbar color='primary' class='navbar navbar-default'>
+    <button mat-button class='navbar-brand'>{{title}}</button>
+    <button mat-button [routerLink]="['/library']">Library</button>
+</mat-toolbar>
+<div class='container'>
+    <router-outlet></router-outlet>
 </div>
-
