@@ -14,6 +14,7 @@ import { RoutineModule } from './routine/routine.module';
 import { UserModule } from './user/user.module';
 import { RunnerModule } from './runner/runner.module';
 import { DiscoverModule } from './discover/discover.module';
+import { CreatorModule } from './creator/creator.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { DiscoverModule } from './discover/discover.module';
     UserModule,
     RunnerModule,
     DiscoverModule,
-    MaterialModule
+    MaterialModule,
+    CreatorModule
   ],
   providers: [
       EndpointService,
