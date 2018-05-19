@@ -3,8 +3,10 @@
 <p>character: {{routine.character}}</p>
 <p>creator: {{routine.creatorTag}}</p>
 <ul>
-    <li *ngFor="let drill of routine.drills">
+    <li *ngFor='let drill of routine.drills'>
         <p>{{drill.drillTitle}} : {{drill.duration}}</p>
     </li>
 </ul>
-<button (click)='runRoutine()'>Run Routine</button>
+<button mat-raised-button color='primary' (click)='runRoutine()'>
+    Run Routine
+</button>

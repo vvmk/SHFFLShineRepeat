@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from '../shared/material.module';
 
 import { RoutineListComponent } from './routine-list/routine-list.component';
 import { RoutineListItemComponent } from './routine-list-item/routine-list-item.component';
@@ -23,7 +24,8 @@ import { LibraryHeaderComponent } from './library-header/library-header.componen
             path: 'library',
             component: LibraryPageComponent
         }
-    ])
+    ]),
+    MaterialModule
   ],
   declarations: [
       LibraryPageComponent,
