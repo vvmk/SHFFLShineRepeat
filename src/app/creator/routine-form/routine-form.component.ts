@@ -27,6 +27,6 @@ export class RoutineFormComponent implements OnInit {
     }
 
     save() {
-        console.log(this.routineForm);
+        console.log('saving: ' + this.routineForm);
     }
 }
