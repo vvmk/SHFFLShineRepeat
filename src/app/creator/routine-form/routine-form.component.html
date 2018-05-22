@@ -1,14 +1,28 @@
 <div mat-primary class='routineFormContainer formContainer'>
-    <mat-form-field>
-        <input matInput 
-            placeholder='Routine Name' 
-            formControlName='routineTitle' />
-    </mat-form-field>
-    <mat-form-field>
-        <mat-select placeholder='Character'>
-            <mat-option *ngFor='let character of roster' value='character'>
-                {{character}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+    <form (ngSubmit)='save()' [formGroup]='routineForm'>
+        <mat-form-field>
+            <input matInput 
+                id='routineTitleId' type='text'
+                placeholder='Routine Name' 
+                required
+                minlength='4'
+                maxlength='30'
+                formControlName='routineTitle'
+            />
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select 
+                placeholder='Character'
+                formControlName='routineCharacter'
+                require>
+                <mat-option *ngFor='let character of roster' value='character'>
+                    {{character}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color='primary' type='submit'
+            [disabled]='!routineForm.valid'>
+            Save
+        </button>
+    </form>
 </div>

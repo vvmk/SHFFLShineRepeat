@@ -10,18 +10,20 @@ import { RosterService } from '../../services/roster.service';
     styleUrls: ['./routine-form.component.css']
 })
 export class RoutineFormComponent implements OnInit {
-    routineForm: FormGroup;
     routine: Routine;
     roster: string[];
+    routineForm: FormGroup;
+    routineTitle: FormControl = new FormControl();
+    routineCharacter: FormControl = new FormControl();
 
     constructor(private _userService: UserService,
-                private _rosterService: RosterService) { }
+        private _rosterService: RosterService) { }
 
     ngOnInit() {
         this.roster = this._rosterService.getRoster();
         this.routineForm = new FormGroup({
-            routineTitle: new FormControl(),
-            routineCharacter: new FormControl()
+            routineTitle: this.routineTitle,
+            routineCharacter: this.routineCharacter
         });
     }
 
