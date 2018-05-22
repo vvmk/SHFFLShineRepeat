@@ -43,11 +43,19 @@ export class RoutineFormComponent implements OnInit {
 
     buildDrill(): FormGroup {
         return this.fb.group({
-            drillTitle: '',
-            drillDuration: ''
+            drillTitle: ['', [
+                Validators.required,
+                Validators.minLength(1),
+                Validators.maxLength(50)
+            ]],
+            drillDuration: ['', [
+                Validators.required,
+                Validators.min(1),
+                Validators.max(5940)
+            ]]
         });
     }
-    
+
     save() {
         console.log('saving: ' + this.routineForm);
     }
