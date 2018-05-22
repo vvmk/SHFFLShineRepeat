@@ -16,6 +16,30 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <div class='drill-form-container'>
+            <div formArrayName='drills' 
+                *ngFor="let drill of drills.controls; let i=index">
+                <div [formGroupName]='i'>
+                    <mat-form-field >
+                        <input matInput
+                            type='text'
+                            placeholder="{{ 'Drill #' + (i + 1) }}" 
+                            formControlName='drillTitle' />
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput
+                            type='text'
+                            placeholder='Duration (seconds)'
+                            formControlName='drillDuration' />
+                    </mat-form-field>
+                </div>
+            </div>
+            <button mat-raised-button 
+                type='button'
+                (click)='addDrill()'>
+                Add More...
+            </button>
+        </div>
         <button mat-raised-button color='primary' type='submit'
             [disabled]='!routineForm.valid'>
             Save
