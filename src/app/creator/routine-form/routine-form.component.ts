@@ -20,9 +20,8 @@ export class RoutineFormComponent implements OnInit {
     ngOnInit() {
         this.roster = this._rosterService.getRoster();
         this.routineForm = new FormGroup({
-            title: new FormControl(),
-            character: new FormControl(),
-            drills: new FormControl()
+            routineTitle: new FormControl(),
+            routineCharacter: new FormControl()
         });
     }
 
