@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Routine } from '../../interfaces/routine';
 import { UserService } from '../../services/user.service';
 import { RosterService } from '../../services/roster.service';
+import { RoutineFormGuard } from '../../services/routine-guard.service';
 
 @Component({
     selector: 'creator-routine-form',
@@ -20,6 +21,7 @@ export class RoutineFormComponent implements OnInit {
 
     constructor(private _userService: UserService,
         private _rosterService: RosterService,
+        private _guard: RoutineFormGuard,
         private fb: FormBuilder) { }
 
     ngOnInit() {

@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { EndpointService } from './services/endpoint.service';
 import { RoutineService } from './services/routine.service';
 import { RosterService } from './services/roster.service';
-import { RoutineViewGuardService } from './services/routine-view-guard.service';
+import { RoutineViewGuard, RoutineFormGuard } from './services/routine-guard.service';
 
 import { RoutineModule } from './routine/routine.module';
 import { UserModule } from './user/user.module';
@@ -43,7 +43,8 @@ import { CreatorModule } from './creator/creator.module';
   providers: [
       EndpointService,
       RoutineService,
-      RoutineViewGuardService,
+      RoutineFormGuard,
+      RoutineViewGuard,
       RosterService
   ],
   bootstrap: [AppComponent]

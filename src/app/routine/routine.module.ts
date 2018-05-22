@@ -7,7 +7,7 @@ import { MaterialModule } from '../shared/material.module';
 import { RoutineListComponent } from './routine-list/routine-list.component';
 import { RoutineListItemComponent } from './routine-list-item/routine-list-item.component';
 import { RoutineViewComponent } from './routine-view/routine-view.component';
-import { RoutineViewGuardService } from '../services/routine-view-guard.service';
+import { RoutineViewGuard } from '../services/routine-guard.service';
 import { LibraryPageComponent } from './library-page/library-page.component';
 import { LibraryHeaderComponent } from './library-header/library-header.component';
 
@@ -17,7 +17,7 @@ import { LibraryHeaderComponent } from './library-header/library-header.componen
     RouterModule.forChild([
         { 
             path: 'routine/:id',
-            canActivate: [RoutineViewGuardService],
+            canActivate: [RoutineViewGuard],
             component: RoutineViewComponent
         },
         {

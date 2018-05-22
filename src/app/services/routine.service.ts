@@ -42,4 +42,8 @@ export class RoutineService {
     setLibrary(library: Routine[]): void {
         this.routineLibrary  = library;
     }
+
+    isValidRoutineId(id: number): boolean {
+        return id < this.routineLibrary.length;
+    }
 }
