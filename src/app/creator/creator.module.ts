@@ -9,14 +9,18 @@ import { CreatorPageComponent } from './creator-page/creator-page.component';
 import { RoutineFormComponent } from './routine-form/routine-form.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot([
-        { path: 'create', component: CreatorPageComponent }
-    ]),
-    MaterialModule
-  ],
-  declarations: [CreatorPageComponent, RoutineFormComponent]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        RouterModule.forRoot([
+            {
+                path: 'create',
+                canDeactivate: [ RoutineFormGuard ],
+                component: CreatorPageComponent
+            }
+            ]),
+        MaterialModule
+    ],
+    declarations: [CreatorPageComponent, RoutineFormComponent]
 })
 export class CreatorModule { }
