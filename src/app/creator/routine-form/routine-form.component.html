@@ -4,17 +4,13 @@
             <input matInput 
                 id='routineTitleId' type='text'
                 placeholder='Routine Name' 
-                required
-                minlength='4'
-                maxlength='30'
                 formControlName='routineTitle'
             />
         </mat-form-field>
         <mat-form-field>
             <mat-select 
                 placeholder='Character'
-                formControlName='routineCharacter'
-                required>
+                formControlName='routineCharacter'>
                 <mat-option *ngFor='let character of roster' value='character'>
                     {{character}}
                 </mat-option>

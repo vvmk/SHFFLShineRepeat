@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Routine } from '../../interfaces/routine';
 import { UserService } from '../../services/user.service';
 import { RosterService } from '../../services/roster.service';
@@ -13,8 +13,6 @@ export class RoutineFormComponent implements OnInit {
     routine: Routine;
     roster: string[];
     routineForm: FormGroup;
-    routineTitle: FormControl = new FormControl();
-    routineCharacter: FormControl = new FormControl();
 
     constructor(private _userService: UserService,
         private _rosterService: RosterService,
@@ -22,13 +20,15 @@ export class RoutineFormComponent implements OnInit {
 
     ngOnInit() {
         this.roster = this._rosterService.getRoster();
-        // this.routineForm = this.fb.group({
-        //     routineTitle: '',
-        //     routineCharacter: ''
-        // });
-        this.routineForm = new FormGroup({
-            routineTitle: this.routineTitle,
-            routineCharacter: this.routineCharacter
+        this.routineForm = this.fb.group({
+            routineTitle: ['', 
+                [
+                    Validators.required,
+                    Validators.minLength(1),
+                    Validators.maxLength(50)
+                ]
+            ],
+            routineCharacter: ['', Validators.required]
         });
     }
 
