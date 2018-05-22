@@ -11,6 +11,8 @@
 }
 
 .ssr-form {
+    display: flex;
+    flex-direction: column;
     min-width: 150px;
     max-width: 500px;
     width: 100%;
@@ -20,7 +22,7 @@
     width: 100%;
 }
 
-.body {
+body {
     margin: 0;
     font-family: Helvetica Neue Light, sans-serif;
 }
