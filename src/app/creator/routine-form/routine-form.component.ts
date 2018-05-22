@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { Routine } from '../../interfaces/routine';
 import { UserService } from '../../services/user.service';
 import { RosterService } from '../../services/roster.service';
@@ -17,10 +17,15 @@ export class RoutineFormComponent implements OnInit {
     routineCharacter: FormControl = new FormControl();
 
     constructor(private _userService: UserService,
-        private _rosterService: RosterService) { }
+        private _rosterService: RosterService,
+        private fb: FormBuilder) { }
 
     ngOnInit() {
         this.roster = this._rosterService.getRoster();
+        // this.routineForm = this.fb.group({
+        //     routineTitle: '',
+        //     routineCharacter: ''
+        // });
         this.routineForm = new FormGroup({
             routineTitle: this.routineTitle,
             routineCharacter: this.routineCharacter
