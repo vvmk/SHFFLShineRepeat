@@ -32,6 +32,12 @@
                             placeholder='Duration (seconds)'
                             formControlName='drillDuration' />
                     </mat-form-field>
+                    <button mat-icon-button
+                        color='warn'
+                        type='button'
+                        (click)='removeDrill(i)'>
+                        <mat-icon>remove_circle</mat-icon>
+                    </button>
                 </div>
             </div>
             <button mat-raised-button 

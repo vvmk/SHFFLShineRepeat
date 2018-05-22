@@ -56,6 +56,10 @@ export class RoutineFormComponent implements OnInit {
         });
     }
 
+    removeDrill(id: number): void {
+        this.drills.removeAt(id);
+    }
+
     save() {
         console.log('saving: ' + this.routineForm);
     }
