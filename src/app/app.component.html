@@ -1,8 +1,9 @@
-<mat-toolbar color='primary' class='navbar navbar-default ssr-toolbar'>
+<mat-toolbar color='primary' 
+    class='navbar navbar-default ssr-toolbar mat-elevation-z4'>
     <button mat-button class='navbar-brand'>{{title}}</button>
     <button mat-button routerLink="['/library']">Library</button>
     <button mat-button routerLink="['/create']">Create</button>
 </mat-toolbar>
-<div class='container content'>
+<div class='container content mat-app-background'>
     <router-outlet></router-outlet>
 </div>
