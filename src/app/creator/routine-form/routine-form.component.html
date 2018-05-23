@@ -37,7 +37,8 @@
                         tabindex='-1' 
                         color='warn'
                         type='button'
-                        (click)='removeDrill(i)'>
+                        (click)='removeDrill(i)'
+                        [disabled]='drills.length <= 1'>
                         <mat-icon>remove_circle</mat-icon>
                     </button>
                 </div>
