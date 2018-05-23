@@ -4,7 +4,7 @@ import { RoutineService } from '../../services/routine.service';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'routine-list-item',
+    selector: 'ssr-routine-list-item',
     templateUrl: './routine-list-item.component.html',
     styleUrls: ['./routine-list-item.component.css']
 })
@@ -17,7 +17,7 @@ export class RoutineListItemComponent implements OnInit {
                 private _router: Router) { }
 
     ngOnInit() {
-        this.avatarUrl = 'assets/images/avatar-' + 
+        this.avatarUrl = 'assets/images/avatar-' +
             this.routine.character.replace(' ', '') + '.png';
     }
 

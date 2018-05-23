@@ -15,7 +15,7 @@ import { LibraryHeaderComponent } from './library-header/library-header.componen
   imports: [
     CommonModule,
     RouterModule.forChild([
-        { 
+        {
             path: 'routine/:id',
             canActivate: [RoutineViewGuard],
             component: RoutineViewComponent

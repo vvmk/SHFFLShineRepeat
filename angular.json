@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-hello": {
+    "SHFFLShineRepeat": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -48,18 +48,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-hello:build"
+            "browserTarget": "SHFFLShineRepeat:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-hello:build:production"
+              "browserTarget": "SHFFLShineRepeat:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-hello:build"
+            "browserTarget": "SHFFLShineRepeat:build"
           }
         },
         "test": {
@@ -93,7 +93,7 @@
         }
       }
     },
-    "angular-hello-e2e": {
+    "SHFFLShineRepeat-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -102,7 +102,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "angular-hello:serve"
+            "devServerTarget": "SHFFLShineRepeat:serve"
           }
         },
         "lint": {
@@ -119,14 +119,14 @@
       }
     }
   },
-  "defaultProject": "angular-hello",
+  "defaultProject": "SHFFLShineRepeat",
   "schematics": {
     "@schematics/angular:component": {
-      "prefix": "app",
+      "prefix": "ssr",
       "styleext": "css"
     },
     "@schematics/angular:directive": {
-      "prefix": "app"
+      "prefix": "ssr"
     }
   }
 }

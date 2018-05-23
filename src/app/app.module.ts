@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './shared/material.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -13,6 +12,7 @@ import { RoutineService } from './services/routine.service';
 import { RosterService } from './services/roster.service';
 import { RoutineViewGuard, RoutineFormGuard } from './services/routine-guard.service';
 
+import { MaterialModule } from './shared/material.module';
 import { RoutineModule } from './routine/routine.module';
 import { UserModule } from './user/user.module';
 import { RunnerModule } from './runner/runner.module';
@@ -26,19 +26,19 @@ import { CreatorModule } from './creator/creator.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MaterialModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([
-        { path: '', redirectTo: 'dev', pathMatch: 'full' },
-        { path: '**', redirectTo: 'dev', pathMatch: 'full' }
-    ]),
     NgbModule,
     RoutineModule,
     UserModule,
     RunnerModule,
     DiscoverModule,
-    MaterialModule,
-    CreatorModule
+    CreatorModule,
+    RouterModule.forRoot([
+        { path: '', redirectTo: 'dev', pathMatch: 'full' },
+        { path: '**', redirectTo: 'dev', pathMatch: 'full' }
+    ]),
   ],
   providers: [
       EndpointService,

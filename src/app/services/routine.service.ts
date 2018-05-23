@@ -13,13 +13,13 @@ export class RoutineService {
     routineLibrary: Routine[];
 
     constructor(private _http: HttpClient, private _e: EndpointService) {
-        //TODO: check local storage for user's library, set it if found
+        // TODO: check local storage for user's library, set it if found
         // else: this.routineLibrary = this.getUserRoutines();
     }
 
-    //TODO: Get the users library and store it locally
+    // TODO: Get the users library and store it locally
     getUserRoutines(userId: string): Observable<Routine[]> {
-        let url: string = this._e.getLibraryUrl(userId);
+        const url: string = this._e.getLibraryUrl(userId);
 
         return this._http.get<Routine[]>(url).pipe(
             catchError(this.handleError)

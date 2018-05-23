@@ -4,12 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RoutineService } from '../../services/routine.service';
 
 @Component({
-    selector: 'app-routine-view',
+    selector: 'ssr-routine-view',
     templateUrl: './routine-view.component.html',
     styleUrls: ['./routine-view.component.css']
 })
 export class RoutineViewComponent implements OnInit {
-    pageTitle: string = '';
+    pageTitle = '';
     routine: Routine;
     localRoutineId: number;
 
@@ -18,7 +18,7 @@ export class RoutineViewComponent implements OnInit {
                 private _router: Router) {}
 
     ngOnInit() {
-        let id = this._route.snapshot.paramMap.get('id');
+        const id = this._route.snapshot.paramMap.get('id');
         this.localRoutineId = +id;
         this.routine = this.routineService.getRoutineById(id);
         this.pageTitle = this.routine.title;

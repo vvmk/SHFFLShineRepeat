@@ -3,7 +3,7 @@ import { RoutineService } from '../../services/routine.service';
 import { Routine } from '../../interfaces/routine';
 
 @Component({
-    selector: 'routine-list',
+    selector: 'ssr-routine-list',
     templateUrl: './routine-list.component.html',
     styleUrls: ['./routine-list.component.css']
 })

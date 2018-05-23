@@ -48,7 +48,7 @@ export class DrillRunnerComponent implements OnInit {
     }
 
     ngOnInit() {
-        let id = this._route.snapshot.paramMap.get('id');
+        const id = this._route.snapshot.paramMap.get('id');
         this.routine = this._routineService.getRoutineById(id);
         this.drills = this.routine.drills;
     }

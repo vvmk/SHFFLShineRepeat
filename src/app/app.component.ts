@@ -6,13 +6,13 @@ import { Routine } from './interfaces/routine';
 import { Observable } from 'rxjs';
 
 @Component({
-    selector: 'app-root',
+    selector: 'ssr-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.css'],
     providers: [ RoutineService, UserService ]
 })
 export class AppComponent implements OnInit {
-    title: string = 'SHFFL->Shine->Repeat';
+    title = 'SHFFL->Shine->Repeat';
     user: User;
 
     constructor(private _userService: UserService,

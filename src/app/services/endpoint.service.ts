@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class EndpointService {
-    private _baseUrl: string = 'http://localhost:8887';
-    private _routineServiceId: string = 'ssrroutine';
-    private _userServiceId : string = 'ssruser';
+    private _baseUrl = 'http://localhost:8887';
+    private _routineServiceId = 'ssrroutine';
+    private _userServiceId = 'ssruser';
 
     constructor() { }
 
@@ -22,7 +22,7 @@ export class EndpointService {
             'library',
             userId
         );
-    } 
+    }
 
     public getUserMetaUrl(userId: string): string {
         return this.joinUrls(

@@ -6,7 +6,7 @@ import { RosterService } from '../../services/roster.service';
 import { RoutineFormGuard } from '../../services/routine-guard.service';
 
 @Component({
-    selector: 'creator-routine-form',
+    selector: 'ssr-creator-routine-form',
     templateUrl: './routine-form.component.html',
     styleUrls: ['./routine-form.component.css']
 })
@@ -27,7 +27,7 @@ export class RoutineFormComponent implements OnInit {
     ngOnInit() {
         this.roster = this._rosterService.getRoster();
         this.routineForm = this.fb.group({
-            routineTitle: ['', 
+            routineTitle: ['',
                 [
                     Validators.required,
                     Validators.minLength(1),
