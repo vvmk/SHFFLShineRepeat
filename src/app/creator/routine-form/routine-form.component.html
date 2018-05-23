@@ -16,6 +16,7 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <mat-divider [inset]='true'></mat-divider>
         <div class='drill-form-container'>
             <div formArrayName='drills' 
                 *ngFor="let drill of drills.controls; let i=index">
@@ -47,9 +48,12 @@
                 Add More...
             </button>
         </div>
-        <button mat-raised-button color='primary' type='submit'
-            [disabled]='!routineForm.valid'>
-            Save
-        </button>
+        <mat-divider [inset]='true'></mat-divider>
+        <div class='submit-button'>
+            <button mat-raised-button color='primary' type='submit'
+                [disabled]='!routineForm.valid'>
+                Save
+            </button>
+        </div>
     </form>
 </div>

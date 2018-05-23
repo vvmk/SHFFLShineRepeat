@@ -1,8 +1,19 @@
 .formContainer {
     display: flex;
     flex-direction: column;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 
 .formContainer > * {
     width: 100%;
+}
+
+.submit-button {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.drill-form-container {
+    padding: 10px 5px 10px 5px;
 }
