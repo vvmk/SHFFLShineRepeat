@@ -14,10 +14,9 @@ import { LibraryHeaderComponent } from './library-header/library-header.componen
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild([
+    RouterModule.forRoot([
         {
             path: 'routine/:id',
-            canActivate: [RoutineViewGuard],
             component: RoutineViewComponent
         },
         {

@@ -2,15 +2,13 @@ import { Drill } from './drill';
 import { Comment } from './comment';
 
 export interface Routine {
-    routineId: string;
+    routine_id: string;
     title: string;
-    totalDuration: number;
+    total_duration: number;
     character: string;
-    creatorTag: string;
+    creator_tag: string;
     creatorId: string;
-    creationDate: string;
+    creation_date: string;
     popularity: number;
-    commentsEnabled: boolean;
     drills: Drill[];
-    comments: Comment[];
 }

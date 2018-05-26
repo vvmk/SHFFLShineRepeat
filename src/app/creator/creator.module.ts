@@ -18,7 +18,7 @@ import { RoutineFormComponent } from './routine-form/routine-form.component';
                 canDeactivate: [ RoutineFormGuard ],
                 component: CreatorPageComponent
             }
-            ]),
+        ]),
         MaterialModule
     ],
     declarations: [CreatorPageComponent, RoutineFormComponent]

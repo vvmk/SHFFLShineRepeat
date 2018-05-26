@@ -1,10 +1,10 @@
 <h1>{{routine.title}}</h1>
-<p>total runtime: {{routine.totalDuration}}</p>
+<p>total runtime: {{routine.total_duration}}</p>
 <p>character: {{routine.character}}</p>
-<p>creator: {{routine.creatorTag}}</p>
+<p>creator: {{routine.creator_tag}}</p>
 <ul>
     <li *ngFor='let drill of routine.drills'>
-        <p>{{drill.drillTitle}} : {{drill.duration}}</p>
+        <p>{{drill.drill_title}} : {{drill.duration}}</p>
     </li>
 </ul>
 <button mat-raised-button color='primary' (click)='runRoutine()'>

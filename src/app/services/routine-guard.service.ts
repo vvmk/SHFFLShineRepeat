@@ -3,9 +3,7 @@ import { CanActivate, CanDeactivate, ActivatedRouteSnapshot, Router } from '@ang
 import { RoutineFormComponent } from '../creator/routine-form/routine-form.component';
 import { RoutineService } from '../services/routine.service';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class RoutineViewGuard implements CanActivate {
 
     constructor(private _router: Router,
@@ -13,19 +11,18 @@ export class RoutineViewGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot): boolean {
         const id = route.url[1].path;
+
+        console.log(this._routineService.getLibrary().length)
         if (!this._routineService.isValidRoutineId(+id)) {
             // TODO: reroute to 404 page (when there is one)
-            this._router.navigate(['/library']);
+            this._router.navigate(['library']);
             return false;
         }
         return true;
     }
 }
 
-@Injectable({
-    providedIn: 'root'
-})
-
+@Injectable()
 export class RoutineFormGuard implements CanDeactivate<RoutineFormComponent> {
 
     canDeactivate(component: RoutineFormComponent): boolean {

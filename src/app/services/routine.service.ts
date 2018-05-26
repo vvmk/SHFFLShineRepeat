@@ -40,7 +40,7 @@ export class RoutineService {
     }
 
     setLibrary(library: Routine[]): void {
-        this.routineLibrary  = library;
+        this.routineLibrary = library;
     }
 
     isValidRoutineId(id: number): boolean {
