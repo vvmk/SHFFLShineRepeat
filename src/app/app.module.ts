@@ -18,10 +18,12 @@ import { UserModule } from './user/user.module';
 import { RunnerModule } from './runner/runner.module';
 import { DiscoverModule } from './discover/discover.module';
 import { CreatorModule } from './creator/creator.module';
+import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,
@@ -36,8 +38,8 @@ import { CreatorModule } from './creator/creator.module';
     DiscoverModule,
     CreatorModule,
     RouterModule.forRoot([
-        { path: '', redirectTo: 'dev', pathMatch: 'full' },
-        { path: '**', redirectTo: 'dev', pathMatch: 'full' }
+        { path: '', component: HomePageComponent },
+        { path: '**', redirectTo: '', pathMatch: 'full' }
     ]),
   ],
   providers: [

@@ -1,4 +1,4 @@
 export interface Drill {
-    drillTitle: string;
+    drill_title: string;
     duration: number;
 }

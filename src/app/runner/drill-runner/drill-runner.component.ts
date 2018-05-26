@@ -29,7 +29,7 @@ export class DrillRunnerComponent implements OnInit {
         }
 
         const d = this.drills[index];
-        this.drillTitle = d.drillTitle;
+        this.drillTitle = d.drill_title;
         this.countdown(d.duration);
     }
 
