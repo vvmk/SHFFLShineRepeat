@@ -12,12 +12,9 @@ import { UserService } from './user.service';
 export class RoutineService {
     routineLibrary: Routine[];
 
-    constructor(private _http: HttpClient, private _e: EndpointService) {
-        // TODO: check local storage for user's library, set it if found
-        // else: this.routineLibrary = this.getUserRoutines();
-    }
+    constructor(private _http: HttpClient, 
+                private _e: EndpointService) {}
 
-    // TODO: Get the users library and store it locally
     getUserRoutines(userId: string): Observable<Routine[]> {
         const url: string = this._e.getLibraryUrl(userId);
 
@@ -26,17 +23,15 @@ export class RoutineService {
         );
     }
 
-    private handleError(err: HttpErrorResponse): Observable<Routine[]> {
-        console.log(err.message);
-        return observableThrowError(err.message);
-    }
 
     getRoutineById(routineId: string): Routine {
         return this.routineLibrary[routineId];
     }
 
-    getLibrary(): Routine[] {
-        return this.routineLibrary;
+    getLibrary(): Observable<Routine[]> {
+        if (this.routineLibrary != null) {
+            return this.routineLibrary;
+        } else {
     }
 
     setLibrary(library: Routine[]): void {
@@ -45,5 +40,10 @@ export class RoutineService {
 
     isValidRoutineId(id: number): boolean {
         return id < this.routineLibrary.length;
+    }
+
+    private handleError(err: HttpErrorResponse): Observable<Routine[]> {
+        console.log(err.message);
+        return observableThrowError(err.message);
     }
 }
