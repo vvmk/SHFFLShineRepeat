@@ -3,12 +3,16 @@ import { CommonModule } from '@angular/common';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        RouterModule.forRoot([
+            { path: 'login', component: LoginPageComponent }
+        ])
     ],
-        declarations: [
+    declarations: [
         LoginPageComponent,
         RegisterFormComponent,
         LoginFormComponent

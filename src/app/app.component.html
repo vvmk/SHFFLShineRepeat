@@ -3,6 +3,8 @@
     <a mat-button [routerLink]="['/']" class='navbar-brand'>{{title}}</a>
     <a mat-button [routerLink]="['/library']">Library</a>
     <a mat-button [routerLink]="['/create']">Create</a>
+    <a mat-button [routerLink]="['/login']">Login</a>
+    <a mat-button (click)='logout()'>Logout</a>
 </mat-toolbar>
 <div class='container content mat-app-background'>
     <router-outlet></router-outlet>

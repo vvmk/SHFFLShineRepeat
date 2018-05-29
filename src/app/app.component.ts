@@ -32,4 +32,8 @@ export class AppComponent implements OnInit {
         const routines = data['routines'];
         this._routineService.setLibrary(routines);
     }
+
+    logout(): void {
+        //TODO
+    }
 }
