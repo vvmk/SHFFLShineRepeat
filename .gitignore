@@ -1,6 +1,9 @@
 
 # Created by https://www.gitignore.io/api/Vim,node,macos,angular,sublimetext,typings
 
+# vvmk
+*.error
+
 ### Angular ###
 ## Angular ##
 # compiled output
