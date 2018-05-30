@@ -7,45 +7,33 @@ import { Routine } from '../interfaces/routine';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { UserService } from './user.service';
+import { ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class RoutineService {
-    routineLibrary: Routine[];
+    routineSubscription: ReplaySubject<Routine[]> = new ReplaySubject(1);
+    routineLibrary: Routine[] = [];
 
     constructor(private _http: HttpClient, 
         private _e: EndpointService,
         private _userService: UserService) {}
 
-    getUserRoutines(userId: string): Observable<Routine[]> {
-        const url: string = this._e.getLibraryUrl(userId);
+    getUserRoutines(): ReplaySubject<Routine[]> {
+        const url: string = this._e.getLibraryUrl(this._userService.userId);
 
-        return this._http.get<Routine[]>(url).pipe(
-            catchError(this.handleError)
-        );
+        this._http.get<Routine[]>(url).subscribe(res => {
+                this.routineSubscription.next(res);
+                console.log('look here: ' + res['routines']);
+                this.routineLibrary = res['routines'];
+        });
+        return this.routineSubscription;
     }
 
     getRoutineById(routineId: string): Routine {
         return this.routineLibrary[routineId];
     }
 
-    getLibrary(): Observable<Routine[]> {
-        if (this.routineLibrary != null) {
-            return this.routineLibrary.asObservable();
-        } else {
-            return this.getUserRoutines(this._userService.userId);
-        }
-    }
-
-    setLibrary(library: Routine[]): void {
-        this.routineLibrary = library;
-    }
-
     isValidRoutineId(id: number): boolean {
         return id < this.routineLibrary.length;
-    }
-
-    private handleError(err: HttpErrorResponse): Observable<Routine[]> {
-        console.log(err.message);
-        return observableThrowError(err.message);
     }
 }

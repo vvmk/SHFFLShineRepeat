@@ -1,3 +1,5 @@
-<p>
-  login-form works!
-</p>
+<div class='login-form'>
+  <input [(ngModel)]='login.username' matInput type='text' placeholder='Username' />
+  <input [(ngModel)]='login.password' matInput type='password' uplaceholder='Password' />
+  <button mat-button type='submit' color='primary'>Submit</button>
+</div>

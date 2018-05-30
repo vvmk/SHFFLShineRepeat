@@ -19,29 +19,18 @@ export class AppComponent implements OnInit {
 
     constructor(private _userService: UserService,
         private _routineService: RoutineService,
-        private _router: Router) {}
+        private router: Router) {}
 
     ngOnInit() {
-        this._userService.requestUser().subscribe(data => this.setUser(data));
-        this._routineService.getUserRoutines('1').subscribe(data => this.setLibrary(data));
-    }
-
-    setUser(data: User): void {
-        this.user = data;
-        this._userService.setUser(data);
-    }
-
-    setLibrary(data: Routine[]): void {
-        const routines = data['routines'];
-        this._routineService.setLibrary(routines);
+        this._userService.getUser()
+            .subscribe(data => this.user = data);
     }
 
     logout(): void {
-        this.userLoggedIn = false;
-        this.router.navigate('/login');
+        this._userService.logout();
+        this.router.navigate(['/login']);
     }
 
     login(): void {
-        this.userLoggedIn = true;
     }
 }
