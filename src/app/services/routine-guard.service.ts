@@ -14,7 +14,7 @@ export class RoutineViewGuard implements CanActivate {
 
         if (!this._routineService.isValidRoutineId(+id)) {
             // TODO: reroute to 404 page (when there is one)
-            this._router.navigate(['library']);
+            this._router.navigate(['404']);
             return false;
         }
         return true;

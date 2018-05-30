@@ -40,16 +40,17 @@ import { FourOhFourComponent } from './four-oh-four.component';
     DiscoverModule,
     CreatorModule,
     RouterModule.forRoot([
-        { path: '', component: HomePageComponent },
-        { path: '**', redirectTo: '', pathMatch: 'full' }
+      { path: '', component: HomePageComponent },
+      { path: '**', redirectTo: '', pathMatch: 'full' },
+      { path: 'fourohfour', component: FourOhFourComponent },
     ]),
   ],
   providers: [
-      EndpointService,
-      RoutineService,
-      RoutineFormGuard,
-      RoutineViewGuard,
-      RosterService
+    EndpointService,
+    RoutineService,
+    RoutineFormGuard,
+    RoutineViewGuard,
+    RosterService
   ],
   bootstrap: [AppComponent]
 })
