@@ -3,6 +3,7 @@
 
 # vvmk
 *.error
+scratch.*
 
 ### Angular ###
 ## Angular ##
