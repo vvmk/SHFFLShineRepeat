@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+  userLoggedIn: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    this.userLoggedIn = true;
   }
 
 }

@@ -4,6 +4,7 @@ import { UserService } from './services/user.service';
 import { User } from './interfaces/user';
 import { Routine } from './interfaces/routine';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'ssr-root',
@@ -14,9 +15,11 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
     title = 'SHFFL->Shine->Repeat';
     user: User;
+    userLoggedIn: boolean;
 
     constructor(private _userService: UserService,
-                private _routineService: RoutineService) {}
+        private _routineService: RoutineService,
+        private _router: Router) {}
 
     ngOnInit() {
         this._userService.requestUser().subscribe(data => this.setUser(data));
@@ -34,6 +37,11 @@ export class AppComponent implements OnInit {
     }
 
     logout(): void {
-        //TODO
+        this.userLoggedIn = false;
+        this.router.navigate('/login');
+    }
+
+    login(): void {
+        this.userLoggedIn = true;
     }
 }
