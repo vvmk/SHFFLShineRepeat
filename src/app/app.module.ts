@@ -41,7 +41,7 @@ import { FourOhFourComponent } from './four-oh-four.component';
     CreatorModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent },
-      { path: '**', redirectTo: '', pathMatch: 'full' },
+      { path: '**', redirectTo: 'fourohfour', pathMatch: 'full' },
       { path: 'fourohfour', component: FourOhFourComponent },
     ]),
   ],
