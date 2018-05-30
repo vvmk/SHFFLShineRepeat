@@ -19,11 +19,13 @@ import { RunnerModule } from './runner/runner.module';
 import { DiscoverModule } from './discover/discover.module';
 import { CreatorModule } from './creator/creator.module';
 import { HomePageComponent } from './home-page/home-page.component';
+import { FourOhFourComponent } from './four-oh-four.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomePageComponent,
+    FourOhFourComponent
   ],
   imports: [
     BrowserModule,
