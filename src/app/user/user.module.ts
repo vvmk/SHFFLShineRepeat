@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forRoot([
+        RouterModule.forChild([
             { path: 'login', component: LoginPageComponent }
         ])
     ],

@@ -13,7 +13,8 @@ export class RoutineService {
     routineLibrary: Routine[];
 
     constructor(private _http: HttpClient, 
-                private _e: EndpointService) {}
+        private _e: EndpointService,
+        private _userService: UserService) {}
 
     getUserRoutines(userId: string): Observable<Routine[]> {
         const url: string = this._e.getLibraryUrl(userId);
@@ -23,15 +24,16 @@ export class RoutineService {
         );
     }
 
-
     getRoutineById(routineId: string): Routine {
         return this.routineLibrary[routineId];
     }
 
     getLibrary(): Observable<Routine[]> {
         if (this.routineLibrary != null) {
-            return this.routineLibrary;
+            return this.routineLibrary.asObservable();
         } else {
+            return this.getUserRoutines(this._userService.userId);
+        }
     }
 
     setLibrary(library: Routine[]): void {

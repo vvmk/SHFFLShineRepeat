@@ -14,7 +14,7 @@ import { LibraryHeaderComponent } from './library-header/library-header.componen
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot([
+    RouterModule.forChild([
         {
             path: 'routine/:id',
             component: RoutineViewComponent

@@ -12,7 +12,7 @@ import { RoutineFormComponent } from './routine-form/routine-form.component';
     imports: [
         CommonModule,
         ReactiveFormsModule,
-        RouterModule.forRoot([
+        RouterModule.forChild([
             {
                 path: 'create',
                 canDeactivate: [ RoutineFormGuard ],

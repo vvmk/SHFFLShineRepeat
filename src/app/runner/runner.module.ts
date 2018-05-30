@@ -8,7 +8,7 @@ import { DrillRunnerComponent } from './drill-runner/drill-runner.component';
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forRoot([
+        RouterModule.forChild([
             { path: 'runner/:id', component: DrillRunnerComponent }
         ]),
         MaterialModule

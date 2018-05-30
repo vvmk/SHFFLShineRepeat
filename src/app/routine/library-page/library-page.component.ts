@@ -18,7 +18,8 @@ export class LibraryPageComponent implements OnInit {
                 private _userService: UserService) {}
 
     ngOnInit() {
-        this.user = this._userService.getUser();
-        this.routines = this._routineService.getLibrary();
+        this._userService.getUser().subscribe(r => this.user = r);
+        this._routineService.getLibrary().subscribe(r => this.routines = r);
     }
+
 }

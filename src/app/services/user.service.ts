@@ -11,17 +11,18 @@ export class UserService {
     user: User;
 
     constructor(private _http: HttpClient,
-                private _e: EndpointService) {
-
-        // TODO: check local storage for current user, else request it
-    }
+                private _e: EndpointService) {}
 
     requestUser(): Observable<User> {
         return this._http.get<User>(this._e.getUserMetaUrl(this.userId));
     }
 
-    getUser(): User {
-        return this.user;
+    getUser(): Observable<User> {
+        if (this.user && this.user != null) {
+            return this.user.asObservable();
+        } else {
+            return this.requestUser();
+        }
     }
 
     setUser(u: User): void {
