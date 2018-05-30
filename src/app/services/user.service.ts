@@ -28,4 +28,9 @@ export class UserService {
     setUser(u: User): void {
         this.user = u;
     }
+
+    //TODO
+    isLoggedIn(): boolean {
+        return true;
+    }
 }
