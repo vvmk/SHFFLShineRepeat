@@ -10,6 +10,7 @@ import { RoutineViewComponent } from './routine-view/routine-view.component';
 import { RoutineViewGuard } from '../services/routine-guard.service';
 import { LibraryPageComponent } from './library-page/library-page.component';
 import { LibraryHeaderComponent } from './library-header/library-header.component';
+import { RoutineResolverService } from '../services/routine-resolver.service';
 
 @NgModule({
   imports: [
@@ -32,6 +33,9 @@ import { LibraryHeaderComponent } from './library-header/library-header.componen
       RoutineListItemComponent,
       RoutineViewComponent,
       LibraryHeaderComponent
+  ],
+  providers: [
+    RoutineResolverService
   ]
 })
 export class RoutineModule { }
