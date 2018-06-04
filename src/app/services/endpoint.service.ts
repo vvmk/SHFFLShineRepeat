@@ -16,6 +16,13 @@ export class EndpointService {
         return this.joinUrls(this._baseUrl, this._userServiceId);
     }
 
+    public getRoutineByIdUrl(id: string) {
+        return this.joinUrls(this.getRoutineServiceUrl(),
+            'routines',
+            id
+        );
+    }
+
     public getLibraryUrl(userId: string): string {
         return this.joinUrls(
             this.getRoutineServiceUrl(),
@@ -31,6 +38,7 @@ export class EndpointService {
             userId
         );
     }
+
     private joinUrls(...args: string[]): string {
         return args.join('/');
     }

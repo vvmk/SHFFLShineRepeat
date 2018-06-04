@@ -10,21 +10,22 @@ import { RoutineService } from '../../services/routine.service';
 })
 export class RoutineViewComponent implements OnInit {
     pageTitle = '';
-    routine: Routine;
+    routine: Routine = <Routine>{};
     localRoutineId: number;
 
     constructor(private routineService: RoutineService,
-                private _route: ActivatedRoute,
-                private _router: Router) {}
+                private route: ActivatedRoute,
+                private router: Router) {}
 
     ngOnInit() {
-        const id = this._route.snapshot.paramMap.get('id');
+        const id = this.route.snapshot.paramMap.get('id');
         this.localRoutineId = +id;
-        this.routine = this.routineService.getRoutineById(id);
+        this.routineService.getRoutineById(id)
+            .subscribe(r => this.routine = r);
         this.pageTitle = this.routine.title;
     }
 
     runRoutine(): void {
-        this._router.navigate(['/runner', this.localRoutineId]);
+        this.router.navigate(['/runner', this.localRoutineId]);
     }
 }

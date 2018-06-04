@@ -15,7 +15,6 @@ import { RoutineFormComponent } from './routine-form/routine-form.component';
         RouterModule.forChild([
             {
                 path: 'create',
-                canDeactivate: [ RoutineFormGuard ],
                 component: CreatorPageComponent
             }
         ]),

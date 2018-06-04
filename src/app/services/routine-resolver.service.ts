@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Routine } from '../interfaces/routine';
+import { RoutineService } from '../services/routine.service';
 
 @Injectable()
-export class RoutineResolverService /* implements Resolve<Routine> */ {
+export class RoutineResolverService implements Resolve<Routine> {
 
-  constructor() {}
+  constructor(private routineService: RoutineService) {}
 
-  resolve() {
+  resolve(route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<Routine> {
+      const id = route.params['id'];
 
-  }
+    }
 }

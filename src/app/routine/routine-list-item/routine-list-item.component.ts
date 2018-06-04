@@ -22,6 +22,6 @@ export class RoutineListItemComponent implements OnInit {
     }
 
     viewRoutine(): void {
-        this._router.navigate(['routine', this.localRoutineId]);
+        this._router.navigate(['/routine', this.localRoutineId]);
     }
 }

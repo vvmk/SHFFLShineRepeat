@@ -1,8 +1,8 @@
 <div>
 <mat-list *ngIf='routines.length > 0'>
-    <ssr-routine-list-item *ngFor='let r of routines; index as i;' 
+    <ssr-routine-list-item *ngFor='let r of routines' 
         [routine]='r'
-        [localRoutineId]='i'
+        [localRoutineId]='r.routine_id'
     >
     </ssr-routine-list-item>
 </mat-list>

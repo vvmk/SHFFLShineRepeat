@@ -1,34 +1,39 @@
-import { throwError as observableThrowError,  Observable } from 'rxjs';
+import {
+    throwError as observableThrowError, Observable, ReplaySubject 
+} from 'rxjs';
 
 import { catchError, tap } from 'rxjs/operators';
+
 import { Injectable } from '@angular/core';
 import { Routine } from '../interfaces/routine';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { UserService } from './user.service';
-import { ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class RoutineService {
     routineSubscription: ReplaySubject<Routine[]> = new ReplaySubject(1);
     routineLibrary: Routine[] = [];
 
-    constructor(private _http: HttpClient, 
+    constructor(private http: HttpClient, 
         private _e: EndpointService,
         private _userService: UserService) {}
 
     getUserRoutines(): ReplaySubject<Routine[]> {
-        const url: string = this._e.getLibraryUrl(this._userService.userId);
+        const url = this._e.getLibraryUrl(this._userService.userId);
 
-        this._http.get<Routine[]>(url).subscribe(res => {
-                this.routineSubscription.next(res);
-                this.routineLibrary = res['routines'];
+        this.http.get<Routine[]>(url).subscribe(res => {
+            this.routineSubscription.next(res);
+            res['routines'].map(r => {
+                this.routineLibrary[r.routine_id] = r;
+            }
         });
-        return this.routineSubscription;
-    }
+            return this.routineSubscription;
+        }
 
-    getRoutineById(routineId: string): Routine {
-        return this.routineLibrary[routineId];
+    getRoutineById(routineId: string): Observable<Routine> {
+        const url = this._e.getRoutineByIdUrl(routineId);
+        return this.http.get<Routine>(url);
     }
 
     isValidRoutineId(id: number): boolean {
