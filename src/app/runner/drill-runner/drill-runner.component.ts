@@ -11,7 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class DrillRunnerComponent implements OnInit {
     title = 'SHFFL->Shine->Repeat';
     routine: Routine;
-    drills: Drill[];
+    drills: Drill[] = [];
     drillIndex: number;
     drillTitle: string;
     drillTick: number;
