@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'ssr-login-form',
@@ -7,13 +8,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-form.component.css']
 })
 export class LoginFormComponent implements OnInit {
-  login = {
+  credentials = {
     username: '',
     password: ''
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private userService: UserService) { }
 
   ngOnInit() {
+  }
+
+  loggedIn(): boolean {
+    return this.userService.userLoggedIn;
   }
 }

@@ -11,15 +11,17 @@ import { Routine } from '../../interfaces/routine';
     styleUrls: ['./library-page.component.css']
 })
 export class LibraryPageComponent implements OnInit {
-    user: User;
-    routines: Routine[];
+    user: User = <User>{};
+    routines: Routine[] = [];
 
     constructor(private _routineService: RoutineService,
                 private _userService: UserService) {}
 
     ngOnInit() {
-        this._userService.getUser().subscribe(u => this.user = u);
-        this._routineService.getUserRoutines().subscribe(r => this.routines = r['routines']);
+        this._userService.getUser()
+            .subscribe(u => this.user = u);
+        this._routineService.getUserRoutines()
+            .subscribe(r => this.routines = r['routines']);
     }
 
 }

@@ -1,7 +1,6 @@
+import { throwError as observableThrowError,  Observable } from 'rxjs';
 
-import {throwError as observableThrowError,  Observable } from 'rxjs';
-
-import {catchError, tap} from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Routine } from '../interfaces/routine';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
@@ -23,7 +22,6 @@ export class RoutineService {
 
         this._http.get<Routine[]>(url).subscribe(res => {
                 this.routineSubscription.next(res);
-                console.log('look here: ' + res['routines']);
                 this.routineLibrary = res['routines'];
         });
         return this.routineSubscription;

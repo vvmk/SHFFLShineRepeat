@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { User } from '../interfaces/user';
 import { Observable } from 'rxjs';
@@ -27,5 +27,21 @@ export class UserService {
 
     logout(): void {
         this.userLoggedIn = false;
+    }
+
+    login(deets, callback): void {
+        const headers = new HttpHeaders(deets ? {
+            authorization: 'Basic ' + btoa(deets.tag + ':' + deets.pw)
+        } : {});
+
+        this._http.get<User>(this.es.getUserMetaUrl(this.userId),
+            {headers: headers}).subscribe(res => {
+                if (res['tag']) {
+                    this.userLoggedIn = true;
+                } else {
+                    this.userLoggedIn = false;
+                }
+            }
+        );
     }
 }

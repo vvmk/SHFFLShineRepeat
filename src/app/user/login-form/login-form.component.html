@@ -1,5 +1,19 @@
-<div class='login-form'>
-  <input [(ngModel)]='login.username' matInput type='text' placeholder='Username' />
-  <input [(ngModel)]='login.password' matInput type='password' uplaceholder='Password' />
-  <button mat-button type='submit' color='primary'>Submit</button>
-</div>
+<form role='form' role='form' (submit)='login()'>
+  <div class='form-group'>
+    <input 
+    [(ngModel)]='credentials.username'
+    matInput
+    type='text'
+    placeholder='Username'
+    />
+  </div>
+  <div class='form-group'>
+    <input
+    [(ngModel)]='credentials.password'
+    matInput
+    type='password'
+    uplaceholder='Password'
+    />
+  </div>
+</form>
+<button mat-button type='submit' color='primary'>Submit</button>

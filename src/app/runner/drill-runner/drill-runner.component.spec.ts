@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MaterialModule } from '../../shared/material.module';
 
 import { DrillRunnerComponent } from './drill-runner.component';
 
@@ -8,7 +10,8 @@ describe('DrillRunnerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DrillRunnerComponent ]
+      declarations: [ DrillRunnerComponent ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
