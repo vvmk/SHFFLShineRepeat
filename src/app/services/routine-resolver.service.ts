@@ -13,5 +13,6 @@ export class RoutineResolverService implements Resolve<Routine> {
     state: RouterStateSnapshot): Observable<Routine> {
       const id = route.params['id'];
 
+      return null;
     }
 }

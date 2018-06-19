@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./creator-page.component.css']
 })
 export class CreatorPageComponent implements OnInit {
-
   constructor() { }
 
   ngOnInit() {

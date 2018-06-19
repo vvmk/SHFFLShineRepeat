@@ -7,22 +7,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 var core_1 = require("@angular/core");
+var http_1 = require("@angular/common/http");
+var rxjs_1 = require("rxjs");
 var UserService = /** @class */ (function () {
-    function UserService(_http, _e) {
+    function UserService(_http, es) {
         this._http = _http;
-        this._e = _e;
+        this.es = es;
         // for testing until authentication added to service tier
         this.userId = '1';
-        // TODO: check local storage for current user, else request it
+        this.currentUser = new rxjs_1.ReplaySubject(1);
     }
-    UserService.prototype.requestUser = function () {
-        return this._http.get(this._e.getUserMetaUrl(this.userId));
-    };
     UserService.prototype.getUser = function () {
-        return this.user;
+        var _this = this;
+        this._http.get(this.es.getUserMetaUrl(this.userId))
+            .subscribe(function (res) { return _this.currentUser.next(res); });
+        return this.currentUser;
     };
-    UserService.prototype.setUser = function (u) {
-        this.user = u;
+    UserService.prototype.isLoggedIn = function () {
+        return this.userLoggedIn;
+    };
+    UserService.prototype.logout = function () {
+        this.userLoggedIn = false;
+    };
+    UserService.prototype.login = function (deets, callback) {
+        var _this = this;
+        var headers = new http_1.HttpHeaders(deets ? {
+            authorization: 'Basic ' + btoa(deets.tag + ':' + deets.pw)
+        } : {});
+        this._http.get(this.es.getUserMetaUrl(this.userId), { headers: headers }).subscribe(function (res) {
+            if (res['tag']) {
+                _this.userLoggedIn = true;
+            }
+            else {
+                _this.userLoggedIn = false;
+            }
+        });
     };
     UserService = __decorate([
         core_1.Injectable()

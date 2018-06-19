@@ -19,6 +19,9 @@ var EndpointService = /** @class */ (function () {
     EndpointService.prototype.getUserServiceUrl = function () {
         return this.joinUrls(this._baseUrl, this._userServiceId);
     };
+    EndpointService.prototype.getRoutineByIdUrl = function (id) {
+        return this.joinUrls(this.getRoutineServiceUrl(), 'routines', id);
+    };
     EndpointService.prototype.getLibraryUrl = function (userId) {
         return this.joinUrls(this.getRoutineServiceUrl(), 'library', userId);
     };

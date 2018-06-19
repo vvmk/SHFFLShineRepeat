@@ -7,32 +7,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 var rxjs_1 = require("rxjs");
-var operators_1 = require("rxjs/operators");
 var core_1 = require("@angular/core");
 var RoutineService = /** @class */ (function () {
-    function RoutineService(_http, _e) {
-        this._http = _http;
+    function RoutineService(http, _e, _userService) {
+        this.http = http;
         this._e = _e;
-        // TODO: check local storage for user's library, set it if found
-        // else: this.routineLibrary = this.getUserRoutines();
+        this._userService = _userService;
+        this.routineSubscription = new rxjs_1.ReplaySubject(1);
+        this.routineLibrary = [];
     }
-    // TODO: Get the users library and store it locally
-    RoutineService.prototype.getUserRoutines = function (userId) {
-        var url = this._e.getLibraryUrl(userId);
-        return this._http.get(url).pipe(operators_1.catchError(this.handleError));
-    };
-    RoutineService.prototype.handleError = function (err) {
-        console.log(err.message);
-        return rxjs_1.throwError(err.message);
+    RoutineService.prototype.getUserRoutines = function () {
+        var _this = this;
+        var url = this._e.getLibraryUrl(this._userService.userId);
+        this.http.get(url).subscribe(function (res) {
+            _this.routineSubscription.next(res);
+            res['routines'].map(function (r) {
+                _this.routineLibrary[r.routine_id] = r;
+            });
+        });
+        return this.routineSubscription;
     };
     RoutineService.prototype.getRoutineById = function (routineId) {
-        return this.routineLibrary[routineId];
-    };
-    RoutineService.prototype.getLibrary = function () {
-        return this.routineLibrary;
-    };
-    RoutineService.prototype.setLibrary = function (library) {
-        this.routineLibrary = library;
+        var url = this._e.getRoutineByIdUrl(routineId);
+        return this.http.get(url);
     };
     RoutineService.prototype.isValidRoutineId = function (id) {
         return id < this.routineLibrary.length;

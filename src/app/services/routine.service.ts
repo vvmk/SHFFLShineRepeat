@@ -26,7 +26,7 @@ export class RoutineService {
             this.routineSubscription.next(res);
             res['routines'].map(r => {
                 this.routineLibrary[r.routine_id] = r;
-            }
+            })
         });
             return this.routineSubscription;
         }
