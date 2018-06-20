@@ -11,6 +11,8 @@ import { EndpointService } from './services/endpoint.service';
 import { RoutineService } from './services/routine.service';
 import { RosterService } from './services/roster.service';
 import { RoutineViewGuard, RoutineFormGuard } from './services/routine-guard.service';
+import { RoutineResolverService } from './services/routine-resolver.service';
+import { UserService } from './services/user.service';
 
 import { MaterialModule } from './shared/material.module';
 import { RoutineModule } from './routine/routine.module';
@@ -50,7 +52,9 @@ import { FourOhFourComponent } from './four-oh-four.component';
     RoutineService,
     RoutineFormGuard,
     RoutineViewGuard,
-    RosterService
+    RoutineResolverService,
+    RosterService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

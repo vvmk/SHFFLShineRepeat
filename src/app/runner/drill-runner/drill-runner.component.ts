@@ -16,9 +16,9 @@ export class DrillRunnerComponent implements OnInit {
     drillTitle: string;
     drillTick: number;
 
-    constructor(private _routineService: RoutineService,
-        private _route: ActivatedRoute,
-        private _router: Router) {
+    constructor(private routineService: RoutineService,
+        private route: ActivatedRoute,
+        private router: Router) {
         this.drillIndex = 0;
     }
 
@@ -48,9 +48,11 @@ export class DrillRunnerComponent implements OnInit {
     }
 
     ngOnInit() {
-        const id = this._route.snapshot.paramMap.get('id');
-        this._routineService.getRoutineById(id)
-            .subscribe(r => this.routine = r);
+        this.route.data.subscribe(data => this.setProps(data));
+    }
+
+    setProps(data): void {
+        this.routine = data['routine'];
         this.drills = this.routine.drills;
     }
 }

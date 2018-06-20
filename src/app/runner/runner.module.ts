@@ -4,12 +4,17 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../shared/material.module';
 
 import { DrillRunnerComponent } from './drill-runner/drill-runner.component';
+import { RoutineResolverService } from '../services/routine-resolver.service';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule.forChild([
-            { path: 'runner/:id', component: DrillRunnerComponent }
+            { 
+                path: 'runner/:id',
+                component: DrillRunnerComponent,
+                resolve: { routine: RoutineResolverService }
+            }
         ]),
         MaterialModule
     ],
