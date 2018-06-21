@@ -7,3 +7,17 @@
     font-size: 100px;
     font-family: Helvetica Neue
 }
+
+.routine-title {
+    font-size: 2em;
+    margin: 10px;
+}
+
+.runner-top {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+.runner-timer {
+
+}

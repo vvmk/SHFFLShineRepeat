@@ -1,6 +1,11 @@
 <div>
-    
-    <button mat-raised-button color='primary' (click)='runDrills(0)'>Start</button>
-    <h1 class='drillTitle'>{{drillTitle}}</h1>
-    <h1 class='drillTick'>{{drillTick}}</h1>
+    <div class="runner-top">
+        <p class="routine-title">{{routine.title}}</p>
+        <p class="routine-duration">Duration: {{routine.total_duration}}</p>
+        <button mat-raised-button color='primary' (click)='runDrills(0)'>Start</button>
+    </div>
+    <div class="runner-timer">
+        <h1 class='drillTitle'>{{drillTitle}}</h1>
+        <h1 class='drillTick'>{{drillTick}}</h1>
+    </div>
 </div>
