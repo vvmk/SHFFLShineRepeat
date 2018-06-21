@@ -1,17 +1,40 @@
 import { Injectable } from '@angular/core';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Routine } from '../interfaces/routine';
 import { RoutineService } from '../services/routine.service';
+import { map, catchError } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class RoutineResolverService implements Resolve<Routine> {
 
-  constructor(private routineService: RoutineService) {}
+  constructor(
+    private routineService: RoutineService,
+    private router: Router
+  ) {}
 
   resolve(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<Routine> {
       const id = route.params['id'];
-      return this.routineService.getRoutineById(id);
+      if (isNaN(+id)) {
+        console.log(`routine id was not a number: %{id}`);
+        this.router.navigate(['/library']);
+        return of(null);
+      }
+      return this.routineService.getRoutineById(id).pipe(
+        map(routine => {
+          if (routine) {
+            return routine;
+          }
+          console.log(`Routine was not found: ${id}`);
+          this.router.navigate(['/library']);
+          return null;
+        }),
+        catchError(error => {
+          console.log(`Retrieval error: ${error}`);
+          this.router.navigate(['library']);
+          return of(null);
+        })
+      )
     }
 }

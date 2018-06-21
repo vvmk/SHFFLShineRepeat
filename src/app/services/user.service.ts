@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { User } from '../interfaces/user';
-import { Observable } from 'rxjs';
-import { ReplaySubject } from 'rxjs';
+import { Observable ,  ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class UserService {
