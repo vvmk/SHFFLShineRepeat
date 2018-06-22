@@ -7,6 +7,7 @@ import { RoutineFormGuard } from '../services/routine-guard.service';
 
 import { CreatorPageComponent } from './creator-page/creator-page.component';
 import { RoutineFormComponent } from './routine-form/routine-form.component';
+import { EditRoutineComponent } from './edit-routine/edit-routine.component';
 
 @NgModule({
     imports: [
@@ -16,10 +17,14 @@ import { RoutineFormComponent } from './routine-form/routine-form.component';
             {
                 path: 'create',
                 component: CreatorPageComponent
+            },
+            {
+                path: 'edit/:id',
+                component: EditRoutineComponent
             }
         ]),
         MaterialModule
     ],
-    declarations: [CreatorPageComponent, RoutineFormComponent]
+    declarations: [CreatorPageComponent, RoutineFormComponent, EditRoutineComponent]
 })
 export class CreatorModule { }

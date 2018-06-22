@@ -11,7 +11,6 @@ import { RoutineService } from '../../services/routine.service';
 export class RoutineViewComponent implements OnInit {
     pageTitle = '';
     routine: Routine = <Routine>{};
-    localRoutineId: number;
 
     constructor(private routineService: RoutineService,
                 private route: ActivatedRoute,
@@ -19,13 +18,27 @@ export class RoutineViewComponent implements OnInit {
 
     ngOnInit() {
         const id = this.route.snapshot.paramMap.get('id');
-        this.localRoutineId = +id;
+
         this.routineService.getRoutineById(id)
             .subscribe(r => this.routine = r);
+
         this.pageTitle = this.routine.title;
     }
 
     runRoutine(): void {
-        this.router.navigate(['/runner', this.localRoutineId]);
+        this.router.navigate(['/runner', this.routine.routine_id]);
+    }
+
+    editRoutine(): void {
+        this.router.navigate(['/edit', this.routine.routine_id]);
+    }
+
+    deleteRoutine(): void {
+        this.routineService.deleteRoutine(this.routine.routine_id)
+        .subscribe(response => {
+            console.log("deleted: " + response);
+            console.log("TODO: redirect to library/somewhere idk yet");
+        });
     }
 }
+
