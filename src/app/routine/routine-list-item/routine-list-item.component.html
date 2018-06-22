@@ -1,7 +1,13 @@
-<mat-card (click)='viewRoutine()'>
+<mat-card>
     <mat-card-header>
         <img mat-card-avatar [src]='avatarUrl' />
         <mat-card-title>{{routine.title}}</mat-card-title>
         <mat-card-subtitle>{{routine.total_duration}}</mat-card-subtitle>
     </mat-card-header>
+    <button class="view-routine-button" (click)="viewRoutine()">
+        details
+    </button>
+    <button class="run-routine-button" (click)="runRoutine()">
+        run it
+    </button>
 </mat-card>

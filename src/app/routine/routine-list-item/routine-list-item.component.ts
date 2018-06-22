@@ -9,12 +9,11 @@ import { Router } from '@angular/router';
     styleUrls: ['./routine-list-item.component.css']
 })
 export class RoutineListItemComponent implements OnInit {
-    @Input() localRoutineId: number;
     @Input() routine: Routine;
     avatarUrl: string;
 
     constructor(private _routineService: RoutineService,
-                private _router: Router) { }
+                private router: Router) { }
 
     ngOnInit() {
         this.avatarUrl = 'assets/images/avatar-' +
@@ -22,6 +21,10 @@ export class RoutineListItemComponent implements OnInit {
     }
 
     viewRoutine(): void {
-        this._router.navigate(['/routine', this.localRoutineId]);
+        this.router.navigate(['/routine', this.routine.routine_id]);
+    }
+
+    runRoutine(): void {
+        this.router.navigate(['/runner', this.routine.routine_id]);
     }
 }
