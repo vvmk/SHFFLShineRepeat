@@ -7,7 +7,7 @@ export interface Routine {
     total_duration: number;
     character: string;
     creator_tag: string;
-    creatorId: string;
+    creator_id: string;
     creation_date: string;
     popularity: number;
     drills: Drill[];
