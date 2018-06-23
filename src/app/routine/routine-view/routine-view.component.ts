@@ -34,11 +34,17 @@ export class RoutineViewComponent implements OnInit {
     }
 
     deleteRoutine(): void {
-        this.routineService.deleteRoutine(this.routine.routine_id)
-        .subscribe(response => {
-            console.log("deleted: " + response);
-            console.log("TODO: redirect to library/somewhere idk yet");
-        });
+        const msg = `Really delete this routine (${this.routine.title})?\nThere's no way to undo, it will really be gone forever...`;
+
+        if (confirm(msg)) {
+
+            this.routineService.deleteRoutine(this.routine.routine_id)
+            .subscribe(response => {
+                // TODO: navigate away and stuff
+                console.log("deleted: " + response);
+                console.log("TODO: redirect to library/somewhere idk yet");
+            });
+        }
     }
 }
 

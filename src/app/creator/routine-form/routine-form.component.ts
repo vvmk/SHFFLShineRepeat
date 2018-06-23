@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Routine } from '../../interfaces/routine';
+import { User } from '../../interfaces/user';
 import { UserService } from '../../services/user.service';
 import { RoutineService } from '../../services/routine.service';
 import { RosterService } from '../../services/roster.service';

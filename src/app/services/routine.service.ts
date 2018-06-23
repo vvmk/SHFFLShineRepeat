@@ -56,9 +56,13 @@ export class RoutineService {
         return this.updateRoutine(routine, options);
     }
 
-    // TODO: deleteRoutine
+    // TODO: verify deletion somehow, right now there's no going back
     public deleteRoutine(routineId: number): Observable<Response> {
-        return of(null);
+        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const options = { headers: headers };
+
+        const url = this.es.getRoutineByIdUrl(routineId);
+        return this.http.delete<Response>(url, options);
     }
 
     public isValidRoutineId(id: number): boolean {
