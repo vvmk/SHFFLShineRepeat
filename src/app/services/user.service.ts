@@ -7,7 +7,7 @@ import { Observable ,  ReplaySubject } from 'rxjs';
 @Injectable()
 export class UserService {
     // for testing until authentication added to service tier
-    userId = '1';
+    userId = 1;
     currentUser: ReplaySubject<User> = new ReplaySubject(1);
     userLoggedIn: boolean;
 

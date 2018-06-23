@@ -23,5 +23,4 @@ export class LibraryPageComponent implements OnInit {
         this._routineService.getUserRoutines()
             .subscribe(r => this.routines = r['routines']);
     }
-
 }

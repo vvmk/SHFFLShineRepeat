@@ -32,7 +32,7 @@ export class RoutineService {
         return this.routineSubscription;
     }
 
-    public getRoutineById(routineId: string): Observable<Routine> {
+    public getRoutineById(routineId: number): Observable<Routine> {
         // if id is 0, assume new routine
         if (+routineId === 0) {
             return of(this.initializeRoutine());
@@ -52,7 +52,7 @@ export class RoutineService {
         return of(null);
     }
 
-    public deleteRoutine(routineId: string): Observable<Response> {
+    public deleteRoutine(routineId: number): Observable<Response> {
         return of(null);
     }
 

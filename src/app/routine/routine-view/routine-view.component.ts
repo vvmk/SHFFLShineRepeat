@@ -17,11 +17,11 @@ export class RoutineViewComponent implements OnInit {
                 private router: Router) {}
 
     ngOnInit() {
-        const id = this.route.snapshot.paramMap.get('id');
+        this.route.data.subscribe(data => this.setProps(data));
+    }
 
-        this.routineService.getRoutineById(id)
-            .subscribe(r => this.routine = r);
-
+    setProps(data): void {
+        this.routine = data['routine'];
         this.pageTitle = this.routine.title;
     }
 

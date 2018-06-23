@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Routine } from '../../interfaces/routine';
 import { UserService } from '../../services/user.service';
@@ -11,7 +11,7 @@ import { RoutineFormGuard } from '../../services/routine-guard.service';
     styleUrls: ['./routine-form.component.css']
 })
 export class RoutineFormComponent implements OnInit {
-    routine: Routine;
+    @Input() routine: Routine;
     roster: string[];
     routineForm: FormGroup;
 
@@ -37,6 +37,19 @@ export class RoutineFormComponent implements OnInit {
             routineCharacter: ['', Validators.required],
             drills: this.fb.array([ this.buildDrill() ])
         });
+
+        // update the form data for editing routines
+        if (this.routine.routine_id === 0) {
+            if (this.routineForm) {
+                this.routineForm.reset();
+            }
+
+            this.routineForm.patchValue({
+                routineTitle: this.routine.title,
+                routineCharacter: this.routine.character
+            });
+            this.routineForm.setControl('drills', this.fb.array(this.routine.drills || []));
+        }
     }
 
     addDrill(): void {

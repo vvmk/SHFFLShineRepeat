@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
 import { RoutineFormGuard } from '../services/routine-guard.service';
+import { RoutineResolverService } from '../services/routine-resolver.service';
 
 import { CreatorPageComponent } from './creator-page/creator-page.component';
 import { RoutineFormComponent } from './routine-form/routine-form.component';
@@ -20,7 +21,8 @@ import { EditRoutineComponent } from './edit-routine/edit-routine.component';
             },
             {
                 path: 'edit/:id',
-                component: EditRoutineComponent
+                component: EditRoutineComponent,
+                resolve: { routine: RoutineResolverService }
             }
         ]),
         MaterialModule

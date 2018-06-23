@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { RoutineService } from '../../services/routine.service';
+import { Routine } from '../../interfaces/routine';
 
 @Component({
   selector: 'ssr-edit-routine',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-routine.component.css']
 })
 export class EditRoutineComponent implements OnInit {
+  private routine: Routine;
 
-  constructor() { }
+  constructor(
+    private routineService: RoutineService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.route.data.subscribe(data => this.routine = data['routine']);
   }
-
 }

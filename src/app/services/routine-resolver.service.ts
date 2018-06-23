@@ -16,8 +16,8 @@ export class RoutineResolverService implements Resolve<Routine> {
   resolve(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<Routine> {
       const id = route.params['id'];
-      if (isNaN(+id)) {
-        console.log(`routine id was not a number: %{id}`);
+      if (isNaN(+id) || +id === 0) {
+        console.log(`Invalid routineId: %{id}`);
         this.router.navigate(['/library']);
         return of(null);
       }

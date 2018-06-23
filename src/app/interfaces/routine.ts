@@ -2,7 +2,7 @@ import { Drill } from './drill';
 import { Comment } from './comment';
 
 export interface Routine {
-    routine_id: string;
+    routine_id: number;
     title: string;
     total_duration: number;
     character: string;

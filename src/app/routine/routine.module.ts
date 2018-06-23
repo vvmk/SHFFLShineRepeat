@@ -16,23 +16,24 @@ import { RoutineResolverService } from '../services/routine-resolver.service';
   imports: [
     CommonModule,
     RouterModule.forChild([
-        {
-            path: 'routine/:id',
-            component: RoutineViewComponent
-        },
-        {
-            path: 'library',
-            component: LibraryPageComponent
-        }
+      {
+        path: 'routine/:id',
+        component: RoutineViewComponent,
+        resolve: { routine: RoutineResolverService }
+      },
+      {
+        path: 'library',
+        component: LibraryPageComponent
+      }
     ]),
     MaterialModule
   ],
   declarations: [
-      LibraryPageComponent,
-      RoutineListComponent,
-      RoutineListItemComponent,
-      RoutineViewComponent,
-      LibraryHeaderComponent
+    LibraryPageComponent,
+    RoutineListComponent,
+    RoutineListItemComponent,
+    RoutineViewComponent,
+    LibraryHeaderComponent
   ],
   providers: [
     RoutineResolverService
