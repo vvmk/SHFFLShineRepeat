@@ -4,13 +4,13 @@
             <input matInput 
                 id='routineTitleId' type='text'
                 placeholder='Routine Name' 
-                formControlName='routineTitle'
+                formControlName='title'
             />
         </mat-form-field>
         <mat-form-field>
             <mat-select 
                 placeholder='Character'
-                formControlName='routineCharacter'>
+                formControlName='character'>
                 <mat-option *ngFor='let character of roster' [value]='character'>
                     {{character}}
                 </mat-option>
@@ -25,13 +25,13 @@
                         <input matInput
                             type='text'
                             placeholder="{{ 'Drill #' + (i + 1) }}" 
-                            formControlName='drillTitle' />
+                            formControlName='drill_title' />
                     </mat-form-field>
                     <mat-form-field>
                         <input matInput
-                            type='text'
+                            type='number'
                             placeholder='Duration (seconds)'
-                            formControlName='drillDuration' />
+                            formControlName='duration' />
                     </mat-form-field>
                     <button mat-icon-button
                         tabindex='-1' 
