@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Routine } from '../../interfaces/routine';
 import { UserService } from '../../services/user.service';
 import { RosterService } from '../../services/roster.service';

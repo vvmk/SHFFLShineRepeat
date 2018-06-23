@@ -11,7 +11,7 @@
             <mat-select 
                 placeholder='Character'
                 formControlName='routineCharacter'>
-                <mat-option *ngFor='let character of roster' value='character'>
+                <mat-option *ngFor='let character of roster' [value]='character'>
                     {{character}}
                 </mat-option>
             </mat-select>
