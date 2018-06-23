@@ -20,12 +20,12 @@ export class RoutineFormComponent implements OnInit {
     }
 
     constructor(private _userService: UserService,
-        private _rosterService: RosterService,
-        private _guard: RoutineFormGuard,
+        private rosterService: RosterService,
+        private guard: RoutineFormGuard,
         private fb: FormBuilder) { }
 
     ngOnInit() {
-        this.roster = this._rosterService.getRoster();
+        this.roster = this.rosterService.getRoster();
         this.routineForm = this.fb.group({
             routineTitle: ['',
                 [
@@ -39,16 +39,21 @@ export class RoutineFormComponent implements OnInit {
         });
 
         // update the form data for editing routines
-        if (this.routine.routine_id === 0) {
+        if (this.routine.routine_id > 0) {
             if (this.routineForm) {
                 this.routineForm.reset();
+                this.routineForm.setControl('drills', this.fb.array([]));
             }
 
+            // TODO: I suspect some fuckery populating the select box.
             this.routineForm.patchValue({
                 routineTitle: this.routine.title,
                 routineCharacter: this.routine.character
             });
-            this.routineForm.setControl('drills', this.fb.array(this.routine.drills || []));
+
+            this.routine.drills.forEach(d => {
+                this.drills.push(this.buildDrill(d.drill_title, ''+d.duration));
+            });
         }
     }
 
@@ -56,14 +61,15 @@ export class RoutineFormComponent implements OnInit {
         this.drills.push(this.buildDrill());
     }
 
-    buildDrill(): FormGroup {
+
+    buildDrill(title: string = '', duration: string = ''): FormGroup {
         return this.fb.group({
-            drillTitle: ['', [
+            drillTitle: [title, [
                 Validators.required,
                 Validators.minLength(1),
                 Validators.maxLength(50)
             ]],
-            drillDuration: ['', [
+            drillDuration: [duration, [
                 Validators.required,
                 Validators.min(1),
                 Validators.max(5940)
