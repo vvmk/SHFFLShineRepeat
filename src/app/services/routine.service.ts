@@ -6,6 +6,7 @@ import { map, catchError, tap } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 import { Routine } from '../interfaces/routine';
+import { User } from '../interfaces/user';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { UserService } from './user.service';
@@ -33,8 +34,8 @@ export class RoutineService {
     }
 
     public getRoutineById(routineId: number): Observable<Routine> {
-        // if id is 0, assume new routine
-        if (+routineId === 0) {
+        if (routineId === 0) {
+            console.log('edit routine with routine_id: 0. not cool');
             return of(this.initializeRoutine());
         }
 
@@ -42,28 +43,6 @@ export class RoutineService {
         return this.http.get<Routine>(url).pipe(
             catchError(this.handleError)
         );
-    }
-
-    private createRoutine(routine: Routine, options): Observable<Routine> {
-        return of(null);
-    }
-
-    private updateRoutine(routine: Routine, options): Observable<Routine> {
-        const url = this.es.getRoutineByIdUrl(routine.routine_id);
-
-        return this.http.put(url, routine, options).pipe(
-            map(() => routine),
-            catchError(this.handleError)
-        );
-    }
-
-    // TODO: deleteRoutine
-    public deleteRoutine(routineId: number): Observable<Response> {
-        return of(null);
-    }
-
-    public isValidRoutineId(id: number): boolean {
-        return id < this.routineLibrary.length;
     }
 
     public saveRoutine(routine: Routine): Observable<Routine> {
@@ -77,18 +56,47 @@ export class RoutineService {
         return this.updateRoutine(routine, options);
     }
 
-    private initializeRoutine(): Routine {
+    // TODO: deleteRoutine
+    public deleteRoutine(routineId: number): Observable<Response> {
+        return of(null);
+    }
+
+    public isValidRoutineId(id: number): boolean {
+        return id < this.routineLibrary.length;
+    }
+
+    public initializeRoutine(): Routine {
+        let user = <User>{};
+        this.userService.currentUser.subscribe(u => user = u);
         return {
-            routine_id: null,
+            routine_id: 0,
             title: null,
-            total_duration: null,
+            total_duration: 0,
             character: null,
-            creator_tag: null,
-            creator_id: null,
+            creator_tag: user.tag,
+            creator_id: user.user_id,
             creation_date: null,
             popularity: 0,
             drills: []
         };
+    }
+
+    private createRoutine(routine: Routine, options): Observable<Routine> {
+        routine.routine_id = undefined;
+
+        const url = this.es.getRoutineServiceUrl();
+        return this.http.post(url, routine, options).pipe(
+            catchError(this.handleError)
+        );
+    }
+
+    private updateRoutine(routine: Routine, options): Observable<Routine> {
+        const url = this.es.getRoutineByIdUrl(routine.routine_id);
+
+        return this.http.put(url, routine, options).pipe(
+            map(() => routine),
+            catchError(this.handleError)
+        );
     }
 
     // TODO: handleError

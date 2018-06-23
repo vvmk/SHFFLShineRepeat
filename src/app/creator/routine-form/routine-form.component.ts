@@ -16,6 +16,7 @@ export class RoutineFormComponent implements OnInit {
     @Input() routine: Routine;
     roster: string[];
     routineForm: FormGroup;
+    user: User;
 
     get drills(): FormArray {
         return <FormArray>this.routineForm.get('drills');
@@ -31,6 +32,8 @@ export class RoutineFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.userService.currentUser.subscribe(u => this.user = u);
+
         this.roster = this.rosterService.getRoster();
         this.routineForm = this.fb.group({
             title: ['',
