@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../shared/material.module';
 import { RoutineFormGuard } from '../services/routine-guard.service';
 import { RoutineResolverService } from '../services/routine-resolver.service';
+import { AuthGuardService } from '../services/auth-guard.service';
 
 import { CreatorPageComponent } from './creator-page/creator-page.component';
 import { RoutineFormComponent } from './routine-form/routine-form.component';
@@ -17,11 +18,13 @@ import { EditRoutineComponent } from './edit-routine/edit-routine.component';
         RouterModule.forChild([
             {
                 path: 'create',
-                component: CreatorPageComponent
+                component: CreatorPageComponent,
+                canActivate: [ AuthGuardService ]
             },
             {
                 path: 'edit/:id',
                 component: EditRoutineComponent,
+                canActivate: [ AuthGuardService ],
                 resolve: { routine: RoutineResolverService }
             }
         ]),

@@ -2,44 +2,31 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class EndpointService {
-    private _baseUrl = 'http://localhost:8080';
-    private _routineServiceId = 'ssrroutine';
-    private _userServiceId = 'ssruser';
+    public baseUrl = 'http://localhost:8080';
 
     constructor() { }
 
-    public getRoutineServiceUrl(): string {
-        return this.joinUrls(this._baseUrl, this._routineServiceId);
+    // NOTE: URLs consisting of the base url plus one word
+    // (i.e.  baseURL/confirm)
+    // are omitted from this service, just type 'em
+
+    public userURL(userId: number): string {
+        return `${ this.baseUrl }/users/${ userId }`;
     }
 
-    public getUserServiceUrl(): string {
-        return this.joinUrls(this._baseUrl, this._userServiceId);
+    public getRoutineURL(routineId: number) {
+        return `${ this.baseUrl }/routines/${ routineId }`;
     }
 
-    public getRoutineByIdUrl(id: number) {
-        return this.joinUrls(this.getRoutineServiceUrl(),
-            'routines',
-            id
-        );
+    public getLibraryURL(userId: number): string {
+        return `${ this.baseUrl }/users/${ userId }/library`;
     }
 
-    public getLibraryUrl(userId: number): string {
-        return this.joinUrls(
-            this.getRoutineServiceUrl(),
-            'library',
-            userId
-        );
+    public userRoutineURL(userId: number): string {
+        return `${ this.baseUrl }/users/${ userId }/routines`;
     }
 
-    public getUserMetaUrl(userId: number): string {
-        return this.joinUrls(
-            this.getUserServiceUrl(),
-            'users',
-            userId
-        );
-    }
-
-    private joinUrls(...args: any[]): string {
-        return args.join('/');
+    public forkRoutineURL(userId: number, routineId: number): string {
+        return `${ this.baseUrl }/users/${ userId }/fork/${ routineId }`;
     }
 }

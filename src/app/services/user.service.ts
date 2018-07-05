@@ -7,7 +7,7 @@ import { Observable ,  ReplaySubject } from 'rxjs';
 @Injectable()
 export class UserService {
     // for testing until authentication added to service tier
-    userId = 1;
+    userId = 8;
     currentUser: ReplaySubject<User> = new ReplaySubject(1);
     userLoggedIn: boolean;
 
@@ -15,7 +15,7 @@ export class UserService {
                 private es: EndpointService) {}
 
     getUser(): ReplaySubject<User> {
-        this._http.get<User>(this.es.getUserMetaUrl(this.userId))
+        this._http.get<User>(this.es.userURL(this.userId))
             .subscribe(res => this.currentUser.next(res));
         return this.currentUser;
     }
@@ -33,7 +33,7 @@ export class UserService {
             authorization: 'Basic ' + btoa(deets.tag + ':' + deets.pw)
         } : {});
 
-        this._http.get<User>(this.es.getUserMetaUrl(this.userId),
+        this._http.get<User>(this.es.userURL(this.userId),
             {headers: headers}).subscribe(res => {
                 if (res['tag']) {
                     this.userLoggedIn = true;

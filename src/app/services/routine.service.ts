@@ -21,7 +21,7 @@ export class RoutineService {
         private userService: UserService) {}
 
     public getUserRoutines(): ReplaySubject<Routine[]> {
-        const url = this.es.getLibraryUrl(this.userService.userId);
+        const url = this.es.getLibraryURL(this.userService.userId);
 
         this.http.get<Routine[]>(url).subscribe(res => {
             this.routineSubscription.next(res);
@@ -39,7 +39,7 @@ export class RoutineService {
             return of(this.initializeRoutine());
         }
 
-        const url = this.es.getRoutineByIdUrl(routineId);
+        const url = this.es.getRoutineURL(routineId);
         return this.http.get<Routine>(url).pipe(
             catchError(this.handleError)
         );
@@ -61,7 +61,7 @@ export class RoutineService {
         let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: headers };
 
-        const url = this.es.getRoutineByIdUrl(routineId);
+        const url = this.es.getRoutineURL(routineId);
         return this.http.delete<Response>(url, options);
     }
 
@@ -88,14 +88,14 @@ export class RoutineService {
     private createRoutine(routine: Routine, options): Observable<Routine> {
         routine.routine_id = undefined;
 
-        const url = this.es.getRoutineServiceUrl();
+        const url = this.es.userRoutineURL(this.userService.userId);
         return this.http.post(url, routine, options).pipe(
             catchError(this.handleError)
         );
     }
 
     private updateRoutine(routine: Routine, options): Observable<Routine> {
-        const url = this.es.getRoutineByIdUrl(routine.routine_id);
+        const url = this.es.getRoutineURL(routine.routine_id);
 
         return this.http.put(url, routine, options).pipe(
             map(() => routine),

@@ -9,31 +9,25 @@ exports.__esModule = true;
 var core_1 = require("@angular/core");
 var EndpointService = /** @class */ (function () {
     function EndpointService() {
-        this._baseUrl = 'http://localhost:8080';
-        this._routineServiceId = 'ssrroutine';
-        this._userServiceId = 'ssruser';
+        this.baseUrl = 'http://localhost:8080';
     }
-    EndpointService.prototype.getRoutineServiceUrl = function () {
-        return this.joinUrls(this._baseUrl, this._routineServiceId);
+    // NOTE: URLs consisting of the base url plus one word
+    // (i.e.  baseURL/confirm)
+    // are omitted from this service, just type 'em
+    EndpointService.prototype.userURL = function (userId) {
+        return this.baseUrl + "/users/" + userId;
     };
-    EndpointService.prototype.getUserServiceUrl = function () {
-        return this.joinUrls(this._baseUrl, this._userServiceId);
+    EndpointService.prototype.getRoutineUrl = function (routineId) {
+        return this.baseUrl + "/routines/" + routineId;
     };
-    EndpointService.prototype.getRoutineByIdUrl = function (id) {
-        return this.joinUrls(this.getRoutineServiceUrl(), 'routines', id);
+    EndpointService.prototype.getLibraryURL = function (userId) {
+        return this.baseUrl + "/users/" + userId + "/library";
     };
-    EndpointService.prototype.getLibraryUrl = function (userId) {
-        return this.joinUrls(this.getRoutineServiceUrl(), 'library', userId);
+    EndpointService.prototype.userRoutineURL = function (userId) {
+        return this.baseUrl + "/users/" + userId + "/routines";
     };
-    EndpointService.prototype.getUserMetaUrl = function (userId) {
-        return this.joinUrls(this.getUserServiceUrl(), 'users', userId);
-    };
-    EndpointService.prototype.joinUrls = function () {
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        return args.join('/');
+    EndpointService.prototype.forkRoutineURL = function (userId, routineId) {
+        return this.baseUrl + "/users/" + userId + "/fork/" + routineId;
     };
     EndpointService = __decorate([
         core_1.Injectable()

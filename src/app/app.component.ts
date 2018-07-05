@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
     title = 'SHFFL->Shine->Repeat';
     user: User;
-    userLoggedIn: boolean;
+    loggedIn: boolean;
 
     constructor(private _userService: UserService,
         private _routineService: RoutineService,
@@ -27,10 +27,11 @@ export class AppComponent implements OnInit {
     }
 
     logout(): void {
-        this._userService.logout();
+        this.loggedIn = false;
         this.router.navigate(['/login']);
     }
 
     login(): void {
+        this.loggedIn = true;
     }
 }
