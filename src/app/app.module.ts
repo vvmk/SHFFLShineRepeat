@@ -15,6 +15,7 @@ import { RoutineResolverService } from './services/routine-resolver.service';
 import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 import { MaterialModule } from './shared/material.module';
 import { RoutineModule } from './routine/routine.module';
@@ -58,7 +59,8 @@ import { FourOhFourComponent } from './four-oh-four.component';
     RosterService,
     UserService,
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    AuthInterceptorService
   ],
   bootstrap: [AppComponent]
 })
