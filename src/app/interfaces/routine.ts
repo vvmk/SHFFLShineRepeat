@@ -6,9 +6,9 @@ export interface Routine {
     title: string;
     total_duration: number;
     character: string;
-    creator_tag: string;
-    creator_id: string;
-    creation_date: string;
+    original_creator_id: number;
+    creator_id: number;
+    created: number;
     popularity: number;
     drills: Drill[];
 }

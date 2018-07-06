@@ -1,7 +1,7 @@
 export interface User {
-    user_id: string;
-    tag: string;
+    user_id: number;
     email: string;
-    bio: string;
+    tag: string;
     main: string;
+    bio: string;
 }
