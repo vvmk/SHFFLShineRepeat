@@ -26,6 +26,6 @@ export class LibraryPageComponent implements OnInit {
         this.userId = this.authService.currentUserId;
         this.userService.getUser().subscribe(u => this.user = u);
         this.routineService.getUserRoutines()
-            .subscribe(r => this.routines = r['routines']);
+            .subscribe(r => this.routines = r);
     }
 }

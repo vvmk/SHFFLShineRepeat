@@ -13,25 +13,17 @@ import { UserService } from './user.service';
 
 @Injectable()
 export class RoutineService {
-    routineSubscription: ReplaySubject<Routine[]> = new ReplaySubject(1);
     routineLibrary: Routine[] = [];
 
     constructor(private http: HttpClient, 
         private es: EndpointService,
         private userService: UserService) {}
 
-    public getUserRoutines(): ReplaySubject<Routine[]> {
+    public getUserRoutines(): Observable<Routine[]> {
         const userId = +localStorage.getItem('user_id')
         const url = this.es.getLibraryURL(userId);
 
-        this.http.get<Routine[]>(url).subscribe(res => {
-            this.routineSubscription.next(res);
-            res['routines'].map(r => {
-                this.routineLibrary[r.routine_id] = r;
-            })
-        });
-
-        return this.routineSubscription;
+        return this.http.get<Routine[]>(url);
     }
 
     public getRoutineById(routineId: number): Observable<Routine> {
