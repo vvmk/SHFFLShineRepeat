@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { AuthService } from './auth.service';
 import { User } from '../interfaces/user';
+import { NewUser } from '../interfaces/new-user';
 import { Observable, of } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
@@ -26,5 +27,10 @@ export class UserService {
         } else {
             return of(null);
         }
+    }
+
+    register(user: NewUser) {
+        const url = this.es.baseUrl + '/register';
+        return this.http.post(url, user)
     }
 }

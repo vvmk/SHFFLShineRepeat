@@ -1,3 +1,60 @@
-<p>
-  register-form works!
-</p>
+<h2>Create Your Account</h2>
+<p class="subtitle">Don't worry, it will only take a minute!</p>
+<div mat-primary class='formContainer'>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="ssr-form">
+        <mat-form-field>
+            <input matInput 
+                 placeholder="Email"
+                 type="email" 
+                 formControlName="email" 
+                 class="form-control" 
+                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">A valid email is required!</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput
+                 placeholder="Password (6 - 20 characters)"
+                 type="password"
+                 formControlName="password"
+                 class="form-control"
+                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+                <div *ngIf="f.password.errors.minlength">Password must be 6 - 20 characters</div>
+                <div *ngIf="f.password.errors.maxLength">Password must be 6 - 20 characters</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput
+                placeholder="Tag (Username)"
+                type="text"
+                formControlName="tag"
+                class="form-control"
+                [ngClass]="{ 'is-invalid': submitted && f.tag.errors }" />
+            <div *ngIf="submitted && f.tag.errors" class="invalid-feedback">
+                <div *ngIf="f.tag.errors.required">Enter a tag, it can be anything you want - Nickname, first name, whatever!</div>
+                <div *ngIf="f.tag.errors.maxLength">Your tag is a bit long...No more than 20 characters, please.</div>
+            </div>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-select 
+               placeholder="Main"
+               formControlName="main">
+                <mat-option *ngFor="let character of roster" [value]="character">
+                    {{character}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <div>
+            <button mat-raised-button 
+                color="primary"
+                [disabled]="loading"
+                class="btn btn-primary">Register</button>
+            <button mat-button
+                [routerLink]="['/login']"
+                class="btn btn-link">Cancel</button>
+        </div>
+    </form>
+</div>

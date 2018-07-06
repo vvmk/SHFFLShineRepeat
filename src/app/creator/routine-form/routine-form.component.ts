@@ -55,7 +55,6 @@ export class RoutineFormComponent implements OnInit {
                 this.routineForm.setControl('drills', this.fb.array([]));
             }
 
-            // TODO: I suspect some fuckery populating the select box.
             this.routineForm.patchValue({
                 title: this.routine.title,
                 character: this.routine.character
@@ -70,7 +69,6 @@ export class RoutineFormComponent implements OnInit {
     addDrill(): void {
         this.drills.push(this.buildDrill());
     }
-
 
     buildDrill(title: string = null, duration: number = null): FormGroup {
         return this.fb.group({

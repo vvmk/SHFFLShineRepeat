@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RouterModule } from '@angular/router';
@@ -10,13 +10,14 @@ import { RouterModule } from '@angular/router';
     imports: [
         CommonModule,
         RouterModule.forChild([
-            { path: 'login', component: LoginPageComponent }
+            { path: 'login', component: LoginFormComponent },
+            { path: 'register', component: RegisterFormComponent }
         ]),
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MaterialModule
     ],
     declarations: [
-        LoginPageComponent,
         RegisterFormComponent,
         LoginFormComponent
     ]
