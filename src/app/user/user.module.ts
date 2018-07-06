@@ -5,13 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RouterModule } from '@angular/router';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule.forChild([
             { path: 'login', component: LoginFormComponent },
-            { path: 'register', component: RegisterFormComponent }
+            { path: 'register', component: RegisterFormComponent },
+            { path: 'confirm', component: ConfirmComponent }
         ]),
         FormsModule,
         ReactiveFormsModule,
@@ -19,7 +21,8 @@ import { RouterModule } from '@angular/router';
     ],
     declarations: [
         RegisterFormComponent,
-        LoginFormComponent
+        LoginFormComponent,
+        ConfirmComponent
     ]
 })
 export class UserModule { }

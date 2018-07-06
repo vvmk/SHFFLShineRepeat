@@ -58,4 +58,18 @@ export class AuthService {
   verifyCurrentUser(): void {
     this.currentUserId = +localStorage.getItem('user_id');
   }
+
+  confirm(uid: number, token: string) {
+    let body = {
+      uid: uid,
+      token: token
+    }
+
+    let url = this.es.baseUrl + '/confirm';
+
+    return this.http.post(url, body).pipe(
+      tap(res => this.setSession(res)),
+      shareReplay()
+    );
+  }
 }
