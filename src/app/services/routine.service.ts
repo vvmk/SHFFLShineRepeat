@@ -10,6 +10,7 @@ import { User } from '../interfaces/user';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { UserService } from './user.service';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class RoutineService {
@@ -17,6 +18,7 @@ export class RoutineService {
 
     constructor(private http: HttpClient, 
         private es: EndpointService,
+        private authService: AuthService,
         private userService: UserService) {}
 
     public getUserRoutines(): Observable<Routine[]> {
@@ -63,7 +65,7 @@ export class RoutineService {
     }
 
     public initializeRoutine(): Routine {
-        const userId = +localStorage.getItem('user_id');
+        const userId = this.authService.currentUserId;
         return {
             routine_id: 0,
             title: null,
@@ -79,7 +81,7 @@ export class RoutineService {
 
     private createRoutine(routine: Routine, options): Observable<Routine> {
 
-        const userId = +localStorage.getItem('user_id');
+        const userId = this.authService.currentUserId;
         const url = this.es.userRoutineURL(userId);
 
         console.log(routine);
@@ -98,7 +100,8 @@ export class RoutineService {
     }
 
     private updateRoutine(routine: Routine, options): Observable<Routine> {
-        const url = this.es.getRoutineURL(routine.routine_id);
+        const userId = this.authService.currentUserId;
+        const url = this.es.userRoutineURL(userId, routine.routine_id);
 
         console.log(routine);
 
@@ -110,6 +113,6 @@ export class RoutineService {
 
     // TODO: handleError
     private handleError(error: Response): Observable<any> {
-        return null;
+        return of(null);
     }
 }

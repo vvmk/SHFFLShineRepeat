@@ -22,8 +22,12 @@ export class EndpointService {
         return `${ this.baseUrl }/users/${ userId }/library`;
     }
 
-    public userRoutineURL(userId: number): string {
-        return `${ this.baseUrl }/users/${ userId }/routines`;
+    public userRoutineURL(userId: number, routineId: number = -1): string {
+        let r = '';
+        if (routineId > 0) {
+            r = `/${ routineId }`;
+        }
+        return `${ this.baseUrl }/users/${ userId }/routines${ r }`;
     }
 
     public forkRoutineURL(userId: number, routineId: number): string {
