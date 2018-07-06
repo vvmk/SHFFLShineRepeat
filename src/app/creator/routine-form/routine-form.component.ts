@@ -33,7 +33,7 @@ export class RoutineFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.userService.currentUser.subscribe(u => this.user = u);
+        this.userService.getUser().subscribe(u => this.user = u);
 
         this.roster = this.rosterService.getRoster();
         this.routineForm = this.fb.group({

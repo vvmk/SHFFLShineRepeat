@@ -1,46 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
+import { AuthService } from './auth.service';
 import { User } from '../interfaces/user';
-import { Observable ,  ReplaySubject } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
-    // for testing until authentication added to service tier
-    userId = 8;
-    currentUser: ReplaySubject<User> = new ReplaySubject(1);
-    userLoggedIn: boolean;
+    currentUser: User;
 
-    constructor(private _http: HttpClient,
-                private es: EndpointService) {}
+    constructor(
+        private http: HttpClient,
+        private es: EndpointService,
+        private authService: AuthService
+    ) { }
 
-    getUser(): ReplaySubject<User> {
-        this._http.get<User>(this.es.userURL(this.userId))
-            .subscribe(res => this.currentUser.next(res));
-        return this.currentUser;
-    }
+    getUser(): Observable<User> {
+        if (this.authService.isLoggedIn()) {
+            let userId = localStorage.getItem('user_id');
 
-    isLoggedIn(): boolean {
-        return this.userLoggedIn;
-    }
-
-    logout(): void {
-        this.userLoggedIn = false;
-    }
-
-    login(deets, callback): void {
-        const headers = new HttpHeaders(deets ? {
-            authorization: 'Basic ' + btoa(deets.tag + ':' + deets.pw)
-        } : {});
-
-        this._http.get<User>(this.es.userURL(this.userId),
-            {headers: headers}).subscribe(res => {
-                if (res['tag']) {
-                    this.userLoggedIn = true;
-                } else {
-                    this.userLoggedIn = false;
-                }
-            }
-        );
+            return this.http.get<User>(this.es.userURL(+userId))
+        } else {
+            return of(null);
+        }
     }
 }

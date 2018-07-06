@@ -21,7 +21,8 @@ export class RoutineService {
         private userService: UserService) {}
 
     public getUserRoutines(): ReplaySubject<Routine[]> {
-        const url = this.es.getLibraryURL(this.userService.userId);
+        const userId = +localStorage.getItem('user_id')
+        const url = this.es.getLibraryURL(userId);
 
         this.http.get<Routine[]>(url).subscribe(res => {
             this.routineSubscription.next(res);
@@ -70,25 +71,26 @@ export class RoutineService {
     }
 
     public initializeRoutine(): Routine {
-        let user = <User>{};
-        this.userService.currentUser.subscribe(u => user = u);
+        const userId = +localStorage.getItem('user_id');
         return {
             routine_id: 0,
             title: null,
             total_duration: 0,
             character: null,
-            creator_tag: user.tag,
-            creator_id: user.user_id,
-            creation_date: null,
+            original_creator_id: userId,
+            creator_id: userId,
+            created: Date.now(),
             popularity: 0,
             drills: []
         };
     }
 
     private createRoutine(routine: Routine, options): Observable<Routine> {
+        // TODO: why is this here?
         routine.routine_id = undefined;
 
-        const url = this.es.userRoutineURL(this.userService.userId);
+        const userId = +localStorage.getItem('user_id');
+        const url = this.es.userRoutineURL(userId);
         return this.http.post(url, routine, options).pipe(
             catchError(this.handleError)
         );

@@ -27,6 +27,8 @@ export class AuthService {
     let basicAuthString = 'Basic ' + btoa(email + ':' + password);
     let headers = new HttpHeaders({authorization: basicAuthString});
 
+    console.log(basicAuthString);
+
     return this.http.post(url, {}, { headers: headers }).pipe(
       tap(res => this.setSession(res)),
       shareReplay()
@@ -38,11 +40,15 @@ export class AuthService {
 
     localStorage.setItem('access_token', data['access_token']);
     localStorage.setItem('expires_at', JSON.stringify(expiresAt));
+    localStorage.setItem('user_id', data['user']['user_id']);
   }
 
   logout() {
+    this.currentUser = null;
+
     localStorage.removeItem('access_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('user_id');
   }
 
   getExpiration() {

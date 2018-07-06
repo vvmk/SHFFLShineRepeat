@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -48,8 +48,8 @@ import { FourOhFourComponent } from './four-oh-four.component';
     RouterModule.forRoot([
       { path: '', component: HomePageComponent },
       { path: '**', redirectTo: 'fourohfour', pathMatch: 'full' },
-      { path: 'fourohfour', component: FourOhFourComponent },
-    ]),
+      { path: 'fourohfour', component: FourOhFourComponent }
+    ], { enableTracing: true})
   ],
   providers: [
     EndpointService,
@@ -61,7 +61,11 @@ import { FourOhFourComponent } from './four-oh-four.component';
     UserService,
     AuthService,
     AuthGuardService,
-    AuthInterceptorService
+    { 
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

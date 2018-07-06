@@ -11,11 +11,10 @@ export class RoutineListComponent implements OnInit {
     @Input() routines: Routine[];
     errorMessage: string;
 
-    constructor(private _routineService: RoutineService) {
+    constructor(private routineService: RoutineService) {
         //
     }
 
     ngOnInit() {
-
     }
 }
