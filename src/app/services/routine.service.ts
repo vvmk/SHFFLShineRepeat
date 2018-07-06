@@ -79,25 +79,36 @@ export class RoutineService {
             character: null,
             original_creator_id: userId,
             creator_id: userId,
-            created: Date.now(),
+            drills: [],
             popularity: 0,
-            drills: []
+            created: 0
         };
     }
 
     private createRoutine(routine: Routine, options): Observable<Routine> {
-        // TODO: why is this here?
-        routine.routine_id = undefined;
 
         const userId = +localStorage.getItem('user_id');
         const url = this.es.userRoutineURL(userId);
-        return this.http.post(url, routine, options).pipe(
+
+        console.log(routine);
+        let newRoutine = {
+            title: routine.title,
+            total_duration: routine.total_duration,
+            character: routine.character,
+            original_creator_id: routine.original_creator_id,
+            creator_id: routine.creator_id,
+            drills: routine.drills
+        }
+
+        return this.http.post(url, newRoutine, options).pipe(
             catchError(this.handleError)
         );
     }
 
     private updateRoutine(routine: Routine, options): Observable<Routine> {
         const url = this.es.getRoutineURL(routine.routine_id);
+
+        console.log(routine);
 
         return this.http.put(url, routine, options).pipe(
             map(() => routine),
