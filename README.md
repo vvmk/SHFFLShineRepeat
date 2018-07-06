@@ -1,4 +1,4 @@
-# SHFFL->Shine->Repeat (Web Client)
+# SHFFL->Shine->Repeat 
 
   Super Smash Bros Melee is hard. In a game this technically demanding,
   staying sharp is crucial to staying competative, but the more 
@@ -10,9 +10,10 @@
   smash community, which can then be run, hands-free, on any device you
   want. 
 
+  The backend is [here](https://github.com/vvmk/ShineServer) for those interested.
 ### Disclaimer: 
 
-This is still under heavy development, and I'm developing the service
+This is pre-alpha software still under heavy development, and I'm developing the service
 layer in parallel, so things change unexpectedly and drastically. If you
 like the idea and want to contribute, drop me an email and we'll talk. I welcome
 any and all criticism, advice, ideas, etc...I just wouldn't want you to
