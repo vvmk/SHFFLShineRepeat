@@ -1,7 +1,7 @@
 <h1>{{routine.title}}</h1>
 <p>total runtime: {{routine.total_duration}}</p>
 <p>character: {{routine.character}}</p>
-<p>creator: {{routine.creator_tag}}</p>
+<p>creator: {{creator_tag}}</p>
 <ul>
     <li *ngFor='let drill of routine.drills'>
         <p>{{drill.drill_title}} : {{drill.duration}}</p>

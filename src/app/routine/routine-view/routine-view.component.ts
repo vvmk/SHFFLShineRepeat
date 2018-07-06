@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Routine } from '../../interfaces/routine';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoutineService } from '../../services/routine.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
     selector: 'ssr-routine-view',
@@ -11,10 +12,14 @@ import { RoutineService } from '../../services/routine.service';
 export class RoutineViewComponent implements OnInit {
     pageTitle = '';
     routine: Routine = <Routine>{};
+    creator_tag: string;
 
-    constructor(private routineService: RoutineService,
-                private route: ActivatedRoute,
-                private router: Router) {}
+    constructor(
+        private routineService: RoutineService,
+        private userService: UserService,
+        private route: ActivatedRoute,
+        private router: Router
+    ) {}
 
     ngOnInit() {
         this.route.data.subscribe(data => this.setProps(data));
@@ -23,6 +28,9 @@ export class RoutineViewComponent implements OnInit {
     setProps(data): void {
         this.routine = data['routine'];
         this.pageTitle = this.routine.title;
+
+        this.userService.getUser(this.routine.creator_id)
+            .subscribe(u => this.creator_tag = u.tag);
     }
 
     runRoutine(): void {

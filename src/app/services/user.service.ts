@@ -17,11 +17,10 @@ export class UserService {
         private authService: AuthService
     ) { }
 
-    getUser(): Observable<User> {
+    getUser(userId: number = this.authService.currentUserId): Observable<User> {
         if (this.authService.isLoggedIn()) {
-            let userId = localStorage.getItem('user_id');
 
-            return this.http.get<User>(this.es.userURL(+userId)).pipe(
+            return this.http.get<User>(this.es.userURL(userId)).pipe(
                 shareReplay()
             );
         } else {
