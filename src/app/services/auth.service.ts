@@ -10,7 +10,8 @@ import { User } from '../interfaces/user';
   providedIn: 'root'
 })
 export class AuthService {
-  currentUser: User;
+  currentUserId: number;
+  redirectUrl: string;
 
   constructor(
     private http: HttpClient,
@@ -18,7 +19,7 @@ export class AuthService {
   ) { }
 
   isLoggedIn(): boolean {
-    return !!this.currentUser;
+    return !!this.currentUserId;
   }
 
   login(email: string, password: string) {
@@ -26,8 +27,6 @@ export class AuthService {
 
     let basicAuthString = 'Basic ' + btoa(email + ':' + password);
     let headers = new HttpHeaders({authorization: basicAuthString});
-
-    console.log(basicAuthString);
 
     return this.http.post(url, {}, { headers: headers }).pipe(
       tap(res => this.setSession(res)),
@@ -44,7 +43,7 @@ export class AuthService {
   }
 
   logout() {
-    this.currentUser = null;
+    this.currentUserId = null;
 
     localStorage.removeItem('access_token');
     localStorage.removeItem('expires_at');
@@ -54,5 +53,9 @@ export class AuthService {
   getExpiration() {
     const expiration = localStorage.getItem('expires_at');
     return JSON.parse(expiration);
+  }
+
+  verifyCurrentUser(): void {
+    this.currentUserId = +localStorage.getItem('user_id');
   }
 }

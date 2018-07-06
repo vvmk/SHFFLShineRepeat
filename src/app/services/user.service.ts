@@ -20,7 +20,9 @@ export class UserService {
         if (this.authService.isLoggedIn()) {
             let userId = localStorage.getItem('user_id');
 
-            return this.http.get<User>(this.es.userURL(+userId))
+            return this.http.get<User>(this.es.userURL(+userId)).pipe(
+                shareReplay()
+            );
         } else {
             return of(null);
         }

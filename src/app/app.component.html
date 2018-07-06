@@ -1,10 +1,10 @@
 <mat-toolbar color='primary' 
     class='navbar navbar-default ssr-toolbar mat-elevation-z4'>
     <a mat-button [routerLink]="['/']" class='navbar-brand'>{{title}}</a>
-    <a mat-button *ngIf='loggedIn' [routerLink]="['/library']">Library</a>
-    <a mat-button *ngIf='loggedIn' [routerLink]="['/create']">Create</a>
-    <a mat-button *ngIf='!loggedIn' [routerLink]="['/login']">Login</a>
-    <a mat-button *ngIf='loggedIn' (click)='logout()'>Logout</a>
+    <a *ngIf='authService.isLoggedIn()'mat-button [routerLink]="['/library']">Library</a>
+    <a *ngIf='authService.isLoggedIn()'mat-button [routerLink]="['/create']">Create</a>
+    <a *ngIf='!authService.isLoggedIn()' mat-button [routerLink]="['/login']">Login</a>
+    <a *ngIf='authService.isLoggedIn()' mat-button (click)='logout()'>Logout</a>
 </mat-toolbar>
 <div class='container content mat-app-background'>
     <router-outlet></router-outlet>

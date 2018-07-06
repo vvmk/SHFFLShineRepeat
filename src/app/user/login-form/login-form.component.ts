@@ -35,7 +35,11 @@ export class LoginFormComponent implements OnInit {
 
     if (val.email && val.password) {
       this.authService.login(val.email, val.password).subscribe(() => {
-        this.router.navigateByUrl('/library');
+        if (this.authService.redirectUrl) {
+          this.router.navigateByUrl(this.authService.redirectUrl);
+        } else {
+          this.router.navigate(['/library']);
+        }
       });
     }
   }

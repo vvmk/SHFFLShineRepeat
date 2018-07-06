@@ -18,15 +18,12 @@ export class AppComponent implements OnInit {
     constructor(
         private authService: AuthService,
         private router: Router
-    ) {
-
-        router.events.subscribe((routerEvent: Event) => {
-            this.checkRouterEvent(routerEvent);
-        });
-    }
+    ) { }
 
     ngOnInit() {
-        this.loggedIn = this.authService.isLoggedIn();
+        this.router.events.subscribe((routerEvent: Event) => {
+            this.checkRouterEvent(routerEvent);
+        });
     }
 
     logout(): void {
@@ -40,6 +37,7 @@ export class AppComponent implements OnInit {
 
     checkRouterEvent(routerEvent: Event): void {
         if (routerEvent instanceof NavigationStart) {
+            this.authService.verifyCurrentUser();
             this.loggedIn = this.authService.isLoggedIn();
         }
     }
