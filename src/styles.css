@@ -25,16 +25,23 @@
 }
 
 .content {
-    padding: 20px;
     height: 100%;
-    width: 100%;
+    width: auto;
     background-color: rgb(215, 215, 215);
+    margin: 0px;
+    padding: 20px 20px 0px 20px;
+}
+
+ssr-root {
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
     margin: 0;
     font-family: Helvetica Neue Light, sans-serif;
     height: 100%;
+    width: 100%;
 }
 
 mat-card {
@@ -61,3 +68,9 @@ mat-toolbar-row {
 h1 {
     margin: 0px;
 }
+
+h2 {
+    margin: 0px;
+    padding: 10px;
+}
+
