@@ -12,4 +12,8 @@ describe('RosterService', () => {
   it('should be created', inject([RosterService], (service: RosterService) => {
     expect(service).toBeTruthy();
   }));
+
+  it('should return the full roster + \'Any\' (27)', inject([RosterService], (service: RosterService) => {
+    expect(service.getRoster().length).toEqual(27);
+  }));
 });
