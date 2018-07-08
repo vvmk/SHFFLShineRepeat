@@ -12,7 +12,10 @@ class MockRoutine implements Routine {
     public creator_id: number = 1,
     public created: number = Date.now(),
     public popularity: number = 1,
-    public drills: Drill[] = [ new Drill(), new Drill() ]
+    public drills: MockDrill[] = [
+      new MockDrill("drill 1", 30),
+      new MockDrill("drill 2", 30)
+    ]
   ) {}
 }
 
@@ -28,8 +31,8 @@ class MockUser {
 
 class MockDrill implements Drill {
   constructor(
-    public drill_title: string = "drill 1",
-    public duration: number = "drill 2"
+    public drill_title: string = "some drill",
+    public duration: number = 30
   ) {}
 }
 export {

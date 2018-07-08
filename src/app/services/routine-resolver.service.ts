@@ -5,7 +5,9 @@ import { RoutineService } from '../services/routine.service';
 import { map, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class RoutineResolverService implements Resolve<Routine> {
 
   constructor(
@@ -16,6 +18,7 @@ export class RoutineResolverService implements Resolve<Routine> {
   resolve(route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<Routine> {
       const id = route.params['id'];
+      // TODO: This was a hack, is it still doing what it originally did?
       if (isNaN(+id) || +id === 0) {
         this.router.navigate(['/create']);
         return of(null);
@@ -26,12 +29,13 @@ export class RoutineResolverService implements Resolve<Routine> {
             return routine;
           }
           console.log(`Routine was not found: ${id}`);
-          this.router.navigate(['/library']);
+          this.router.navigate(['/fourohfour']);
           return null;
         }),
         catchError(error => {
+          // TODO: maybe a 500 page or retry or just 404
           console.log(`Retrieval error: ${error}`);
-          this.router.navigate(['library']);
+          this.router.navigate(['/library']);
           return of(null);
         })
       )
