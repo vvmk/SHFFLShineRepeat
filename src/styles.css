@@ -3,7 +3,7 @@
     --secondary-color: #7FDBFF;
     --warning-color: #FF4136;
     --success-color: #2ECC40;
-    --light-color: #DDDDDD;
+    --light-color: #EEEEEE;
     --dark-color: #001f3f;
     --bg-color: #111111;
     --navbar-height: 50px;
@@ -14,15 +14,14 @@ html, body {
     font-family: Helvetica Neue Light, sans-serif;
     height: 100%;
     width: 100%;
-    background-color: var(--bg-color);
+    background-color: var(--light-color);
     color: var(--light-color);
 }
 
 .ssr-toolbar {
-    display: grid;
-    grid-template-columns: 2fr repeat(8, 1fr);
-    grid-template-rows: 100%;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     z-index: 0;
     background-color: var(--dark-color);
     color: var(--secondary-color);
@@ -32,7 +31,8 @@ html, body {
 }
 
 .content {
-    margin: 25px;
+    margin: 0;
+    margin-top: var(--navbar-height);
 }
 
 .ssr-form {
@@ -42,4 +42,15 @@ html, body {
 }
 
 ssr-root {
+}
+
+.ssr-card {
+    background-color: var(--light-color);
+    color: #111111;
+    padding: 5px;
+    margin: 0;
+    box-shadow:
+    0px 10px 5px rgba(0,0,0,0.1),
+    5px 5px 5px rgba(0,0,0,0.1),
+    -10px 10px 5px rgba(0,0,0,0.05);
 }

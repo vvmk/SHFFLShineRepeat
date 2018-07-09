@@ -1,30 +1,50 @@
 .home-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 2fr repeat(4, 1fr);
     grid-gap: 25px;
     grid-template-areas:
-        "todo announcements announcements"
-        "todo recent recent";
+    "header header header header header header"
+    "welcome welcome welcome welcome welcome welcome"
+    "firstquote firstquote firstabout firstabout firstabout firstabout"
+    "secondabout secondabout secondabout secondabout secondquote secondquote"
+    "start start start start start start";
 }
 
 .home-container div {
-    background-color: var(--light-color);
+    /* background-color: var(--light-color); */
     color: #111111;
     padding: 5px;
     margin: 0;
 }
 
-.todo {
-    grid-area: todo;
+.header {
+    grid-area: header;
+    background-color: var(--secondary-color);
 }
 
-.announcements {
-    grid-area: announcements
+.welcome {
+    grid-area: welcome;
 }
 
-.recent {
-    grid-area: recent
+.firstquote {
+    grid-area: firstquote;
+}
+
+.firstabout {
+    grid-area: firstabout;
+}
+
+.secondquote {
+    grid-area: secondquote;
+}
+
+.secondabout {
+    grid-area: secondabout;
+}
+
+.start {
+    grid-area: start;
 }
 
 .section-title {
