@@ -1,57 +1,57 @@
-<div mat-primary class='routineFormContainer formContainer'>
+<div class='routineFormContainer formContainer'>
     <form (ngSubmit)='save()' [formGroup]='routineForm' class='ssr-form'>
-        <mat-form-field>
-            <input matInput 
+        <div class="form-field">
+            <input
                 id='routineTitleId' type='text'
                 placeholder='Routine Name' 
                 formControlName='title'
             />
-        </mat-form-field>
-        <mat-form-field>
-            <mat-select 
+        </div>
+        <div class="form-field">
+            <select 
                 placeholder='Character'
                 formControlName='character'>
-                <mat-option *ngFor='let character of roster' [value]='character'>
+                <option *ngFor='let character of roster' [value]='character'>
                     {{character}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-divider [inset]='true'></mat-divider>
+                </option>
+            </select>
+        </div>
+        <div class="divider"></div>
         <div class='drill-form-container'>
             <div formArrayName='drills' 
                 *ngFor="let drill of drills.controls; let i=index">
                 <div [formGroupName]='i'>
-                    <mat-form-field >
-                        <input matInput
+                    <div class="form-field">
+                        <input 
                             type='text'
                             placeholder="{{ 'Drill #' + (i + 1) }}" 
                             formControlName='drill_title' />
-                    </mat-form-field>
-                    <mat-form-field>
-                        <input matInput
+                    </div>
+                    <div class="form-field">
+                        <input 
                             type='number'
                             placeholder='Duration (seconds)'
                             formControlName='duration' />
-                    </mat-form-field>
-                    <button mat-icon-button
+                    </div>
+                    <button 
                         tabindex='-1' 
                         color='warn'
                         type='button'
                         (click)='removeDrill(i)'
                         [disabled]='drills.length <= 1'>
-                        <mat-icon>remove_circle</mat-icon>
+                        +
                     </button>
                 </div>
             </div>
-            <button mat-raised-button 
+            <button 
                 type='button'
                 (click)='addDrill()'>
                 Add More...
             </button>
         </div>
-        <mat-divider [inset]='true'></mat-divider>
+        <div class="divider"></div>
         <div class='submit-button'>
-            <button mat-raised-button color='primary' type='submit'
+            <button color='primary' type='submit'
                 [disabled]='!routineForm.valid'>
                 Save
             </button>
