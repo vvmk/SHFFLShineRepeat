@@ -23,8 +23,13 @@ var EndpointService = /** @class */ (function () {
     EndpointService.prototype.getLibraryURL = function (userId) {
         return this.baseUrl + "/users/" + userId + "/library";
     };
-    EndpointService.prototype.userRoutineURL = function (userId) {
-        return this.baseUrl + "/users/" + userId + "/routines";
+    EndpointService.prototype.userRoutineURL = function (userId, routineId) {
+        if (routineId === void 0) { routineId = -1; }
+        var r = '';
+        if (routineId > 0) {
+            r = "/" + routineId;
+        }
+        return this.baseUrl + "/users/" + userId + "/routines" + r;
     };
     EndpointService.prototype.forkRoutineURL = function (userId, routineId) {
         return this.baseUrl + "/users/" + userId + "/fork/" + routineId;

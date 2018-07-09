@@ -7,41 +7,20 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 exports.__esModule = true;
 var core_1 = require("@angular/core");
-var http_1 = require("@angular/common/http");
-var rxjs_1 = require("rxjs");
+var operators_1 = require("rxjs/operators");
 var UserService = /** @class */ (function () {
-    function UserService(_http, es) {
-        this._http = _http;
+    function UserService(http, es, authService) {
+        this.http = http;
         this.es = es;
-        // for testing until authentication added to service tier
-        this.userId = '1';
-        this.currentUser = new rxjs_1.ReplaySubject(1);
+        this.authService = authService;
     }
-    UserService.prototype.getUser = function () {
-        var _this = this;
-        this._http.get(this.es.getUserMetaUrl(this.userId))
-            .subscribe(function (res) { return _this.currentUser.next(res); });
-        return this.currentUser;
+    UserService.prototype.getUser = function (userId) {
+        if (userId === void 0) { userId = this.authService.currentUserId; }
+        return this.http.get(this.es.userURL(userId)).pipe(operators_1.shareReplay());
     };
-    UserService.prototype.isLoggedIn = function () {
-        return this.userLoggedIn;
-    };
-    UserService.prototype.logout = function () {
-        this.userLoggedIn = false;
-    };
-    UserService.prototype.login = function (deets, callback) {
-        var _this = this;
-        var headers = new http_1.HttpHeaders(deets ? {
-            authorization: 'Basic ' + btoa(deets.tag + ':' + deets.pw)
-        } : {});
-        this._http.get(this.es.getUserMetaUrl(this.userId), { headers: headers }).subscribe(function (res) {
-            if (res['tag']) {
-                _this.userLoggedIn = true;
-            }
-            else {
-                _this.userLoggedIn = false;
-            }
-        });
+    UserService.prototype.register = function (user) {
+        var url = this.es.baseUrl + '/register';
+        return this.http.post(url, user);
     };
     UserService = __decorate([
         core_1.Injectable()

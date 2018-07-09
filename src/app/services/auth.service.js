@@ -14,6 +14,13 @@ var AuthService = /** @class */ (function () {
         this.http = http;
         this.es = es;
     }
+    Object.defineProperty(AuthService.prototype, "currentUserId", {
+        get: function () {
+            return this.currentUserId;
+        },
+        enumerable: true,
+        configurable: true
+    });
     AuthService.prototype.isLoggedIn = function () {
         return !!this.currentUserId;
     };
@@ -42,6 +49,15 @@ var AuthService = /** @class */ (function () {
     };
     AuthService.prototype.verifyCurrentUser = function () {
         this.currentUserId = +localStorage.getItem('user_id');
+    };
+    AuthService.prototype.confirm = function (uid, token) {
+        var _this = this;
+        var body = {
+            uid: uid,
+            token: token
+        };
+        var url = this.es.baseUrl + '/confirm';
+        return this.http.post(url, body).pipe(operators_1.tap(function (res) { return _this.setSession(res); }), operators_1.shareReplay());
     };
     AuthService = __decorate([
         core_1.Injectable({
