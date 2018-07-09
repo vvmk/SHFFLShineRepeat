@@ -17,7 +17,6 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 
-import { MaterialModule } from './shared/material.module';
 import { RoutineModule } from './routine/routine.module';
 import { UserModule } from './user/user.module';
 import { RunnerModule } from './runner/runner.module';
@@ -35,7 +34,6 @@ import { FourOhFourComponent } from './four-oh-four.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

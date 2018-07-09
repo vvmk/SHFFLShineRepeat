@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MaterialModule } from '../shared/material.module';
 
 import { RoutineListComponent } from './routine-list/routine-list.component';
 import { RoutineListItemComponent } from './routine-list-item/routine-list-item.component';
@@ -24,8 +23,7 @@ import { RoutineResolverService } from '../services/routine-resolver.service';
         path: 'library',
         component: LibraryPageComponent
       }
-    ]),
-    MaterialModule
+    ])
   ],
   declarations: [
     LibraryPageComponent,
