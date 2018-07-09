@@ -18,6 +18,10 @@ export class AuthService {
     private es: EndpointService
   ) { }
 
+  get currentUserId(): number {
+    return this.currentUserId;
+  }
+
   isLoggedIn(): boolean {
     return !!this.currentUserId;
   }
