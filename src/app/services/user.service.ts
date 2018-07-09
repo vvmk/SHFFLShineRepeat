@@ -18,14 +18,9 @@ export class UserService {
     ) { }
 
     getUser(userId: number = this.authService.currentUserId): Observable<User> {
-        if (this.authService.isLoggedIn()) {
-
-            return this.http.get<User>(this.es.userURL(userId)).pipe(
-                shareReplay()
-            );
-        } else {
-            return of(null);
-        }
+        return this.http.get<User>(this.es.userURL(userId)).pipe(
+            shareReplay()
+        );
     }
 
     register(user: NewUser) {
