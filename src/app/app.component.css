@@ -1,4 +1,3 @@
-
 .ssr-toolbar {
     position: fixed;
     top: 0;
@@ -35,29 +34,4 @@
 .right {
     float: right;
     margin: 5px 10px 5px 10px;
-}
-
-footer {
-    height: 50px;
-    color:#31353a;
-    font-size:14px;
-
-    padding: 20px 10px 10px 10px;
-
-    position:relative;
-    z-index:-2;
-
-    background-color: var(--light-color);
-
-    background-image:-webkit-linear-gradient(top, #31353a, #2f3337);
-    background-image:-moz-linear-gradient(top, #31353a, #2f3337);
-    background-image:linear-gradient(to bottom, #31353a, #2f3337);
-
-    -webkit-box-shadow: inset 3px 13px 13px 4px rgba(0,0,0,0.56);
-    -moz-box-shadow: inset 3px 13px 13px 4px rgba(0,0,0,0.56);
-    box-shadow: inset 3px 13px 13px 4px rgba(0,0,0,0.56);
-}
-
-footer * {
-    color: var(--secondary-color);
 }

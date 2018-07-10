@@ -11,6 +11,7 @@
     "secondabout secondabout secondabout secondquote"
     "start start start start"
     ". . . . ";
+    z-index: 2;
 }
 
 .home-container div {
@@ -31,6 +32,15 @@
     color: var(--light-color) !important;
     height: 235px;
     margin: 0;
+
+    background-image: url(../../assets/images/bf_banner.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    -webkit-box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.3);
+    -moz-box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.3);
+    box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.3);
 }
 
 .firstquote {
@@ -104,3 +114,27 @@
     color: var(--dark-color);
 }
 
+footer {
+    height: 50px;
+    color:#31353a;
+    font-size:14px;
+
+    padding: 20px 10px 10px 10px;
+
+    position:relative;
+    /* z-index:-2; */
+
+    background-color: var(--light-color);
+
+    background-image:-webkit-linear-gradient(top, #31353a, #2f3337);
+    background-image:-moz-linear-gradient(top, #31353a, #2f3337);
+    background-image:linear-gradient(to bottom, #31353a, #2f3337);
+
+    -webkit-box-shadow: inset 3px 13px 13px 4px rgba(0,0,0,0.56);
+    -moz-box-shadow: inset 3px 13px 13px 4px rgba(0,0,0,0.56);
+    box-shadow: inset 3px 13px 13px 4px rgba(0,0,0,0.56);
+}
+
+footer * {
+    color: var(--secondary-color);
+}
