@@ -10,10 +10,6 @@
     display: flex;
 }
 
-.ssr-toolbar img {
-    height: 50px;
-}
-
 .ssr-toolbar * {
     display: inline;
 }

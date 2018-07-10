@@ -1,6 +1,6 @@
 <nav class='navbar navbar-default ssr-toolbar'>
     <ul>
-        <li><a [routerLink]="['/']" class='navbar-brand'>{{title}}</a></li>
+        <li><a [routerLink]="['/']" class='navbar-brand'>[SSR ICON]</a></li>
         <li><a *ngIf='authService.isLoggedIn()' [routerLink]="['/library']">Library</a></li>
         <li><a *ngIf='authService.isLoggedIn()' [routerLink]="['/create']">Create</a></li>
         <li class="spacer"></li>
