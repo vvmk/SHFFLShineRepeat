@@ -61,6 +61,12 @@
 
 .start {
     grid-area: start;
+    background-color: var(--primary-color) !important;
+    color: var(--light-color) !important;
+}
+
+.start * {
+    color: var(--light-color) !important;
 }
 
 .quote {
@@ -75,6 +81,16 @@
     width: 90%;
 }
 
+.register-button {
+    background-color: var(--success-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.3em;
+    margin: 30px;
+    padding: 10px;
+    width: 300px;
+    box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.2);
+}
 
 .section-title {
     margin: 5px 0px 5px 0px;

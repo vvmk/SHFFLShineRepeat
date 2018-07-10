@@ -3,8 +3,9 @@
         <li><a [routerLink]="['/']" class='navbar-brand'>{{title}}</a></li>
         <li><a *ngIf='authService.isLoggedIn()' [routerLink]="['/library']">Library</a></li>
         <li><a *ngIf='authService.isLoggedIn()' [routerLink]="['/create']">Create</a></li>
+        <li class="spacer"></li>
         <li class="right"><a *ngIf='!authService.isLoggedIn()' [routerLink]="['/login']">Login</a></li>
-        <li class="right"><a *ngIf='authService.isLoggedIn()' (click)='logout()'>Logout</a></li>
+        <li class="right"><a *ngIf='authService.isLoggedIn()' (click)='logout()' [routerLink]="['/login']">Logout</a></li>
     </ul>
 </nav>
 <div class='container content'>
