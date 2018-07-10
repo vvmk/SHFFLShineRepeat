@@ -1,11 +1,11 @@
 <nav class='navbar navbar-default ssr-toolbar'>
     <ul>
         <li><a [routerLink]="['/']" class='navbar-brand'>[SSR ICON]</a></li>
-        <li><a *ngIf='authService.isLoggedIn()' [routerLink]="['/library']">Library</a></li>
-        <li><a *ngIf='authService.isLoggedIn()' [routerLink]="['/create']">Create</a></li>
-        <li class="spacer"></li>
-        <li class="right"><a *ngIf='!authService.isLoggedIn()' [routerLink]="['/login']">Login</a></li>
-        <li class="right"><a *ngIf='authService.isLoggedIn()' (click)='logout()' [routerLink]="['/login']">Logout</a></li>
+        <li *ngIf='authService.isLoggedIn()'><a [routerLink]="['/library']">Library</a></li>
+        <li *ngIf='authService.isLoggedIn()'><a [routerLink]="['/create']">Create</a></li>
+        <li *ngIf='!authService.isLoggedIn()' class="right"><a [routerLink]="['/login']">Login</a></li>
+        <li *ngIf='!authService.isLoggedIn()' class="right"><a [routerLink]="['/register']">Sign Up</a></li>
+        <li *ngIf='authService.isLoggedIn()' class="right"><a (click)='logout()' [routerLink]="['/login']">Logout</a></li>
     </ul>
 </nav>
 <div class='container content'>

@@ -16,10 +16,12 @@
 
 .ssr-toolbar ul {
     width: 100%;
+    margin-right: 40px;
 }
 
 .ssr-toolbar li {
-    margin: 5px 10px 5px 10px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .ssr-toolbar li a {
@@ -29,5 +31,4 @@
 
 .right {
     float: right;
-    margin: 5px 10px 5px 10px;
 }
