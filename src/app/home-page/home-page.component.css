@@ -1,8 +1,9 @@
 .home-container {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: 2fr repeat(4, 1fr);
-    grid-gap: 25px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 235px repeat(4, 250px);
+    grid-column-gap: 25px;
+    grid-row-gap: 50px;
     grid-template-areas:
     "header header header header header header"
     "welcome welcome welcome welcome welcome welcome"
@@ -12,15 +13,22 @@
 }
 
 .home-container div {
-    /* background-color: var(--light-color); */
+    background-color: var(--bg-light);
     color: #111111;
     padding: 5px;
     margin: 0;
 }
 
+.home-container div * {
+    text-align: center;
+    margin: auto;
+}
+
 .header {
     grid-area: header;
     background-color: var(--secondary-color);
+    height: 235px;
+    margin: 0;
 }
 
 .welcome {
@@ -29,6 +37,10 @@
 
 .firstquote {
     grid-area: firstquote;
+    background-image: url(../../assets/images/punk-brush-blue.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .firstabout {
@@ -37,6 +49,10 @@
 
 .secondquote {
     grid-area: secondquote;
+    background-image: url(../../assets/images/punk-brush-blue-mirror.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .secondabout {
@@ -47,6 +63,12 @@
     grid-area: start;
 }
 
+.quote {
+    position: relative;
+    top: 35%;
+    text-align: center;
+}
+
 .section-title {
     margin: 5px 0px 5px 0px;
     left: 0;
@@ -55,3 +77,4 @@
     font-size: 1.5em;
     color: var(--dark-color);
 }
+

@@ -6,6 +6,7 @@
     --light-color: #EEEEEE;
     --dark-color: #001f3f;
     --bg-color: #111111;
+    --bg-light: white;
     --navbar-height: 50px;
 }
 
@@ -14,8 +15,8 @@ html, body {
     font-family: Helvetica Neue Light, sans-serif;
     height: 100%;
     width: 100%;
-    background-color: var(--light-color);
-    color: var(--light-color);
+    background-color: var(--bg-light);
+    color: var(--dark-color);
 }
 
 .content {
