@@ -5,7 +5,7 @@
     --success-color: #2ECC40;
     --light-color: #EEEEEE;
     --dark-color: #001f3f;
-    --bg-color: #111111;
+    --bg-color: #222222;
     --bg-light: white;
     --navbar-height: 50px;
 }
@@ -19,9 +19,15 @@ html, body {
     color: var(--dark-color);
 }
 
+body {
+    z-index: 1;
+    position: relative;
+}
+
 .content {
     margin: 0;
     margin-top: var(--navbar-height);
+    background-color: var(--bg-light);
 }
 
 .ssr-card {
