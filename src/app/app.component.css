@@ -3,8 +3,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 0;
-    background-color: var(--bg-color);
+    z-index: 2;
+    background-color: #222222;
     margin: 0px;
     height: var(--navbar-height);
     width: 100%;
@@ -28,11 +28,36 @@
 }
 
 .ssr-toolbar li a {
-    color: var(--primary-color);
+    color: var(--light-color);
     text-decoration: none;
 }
 
 .right {
     float: right;
     margin: 5px 10px 5px 10px;
+}
+
+footer {
+    height: 50px;
+    color:#31353a;
+    font-size:14px;
+
+    padding: 20px 10px 10px 10px;
+
+    position:relative;
+    z-index:-2;
+
+    background-color: var(--light-color);
+
+    background-image:-webkit-linear-gradient(top, #31353a, #2f3337);
+    background-image:-moz-linear-gradient(top, #31353a, #2f3337);
+    background-image:linear-gradient(to bottom, #31353a, #2f3337);
+
+    -webkit-box-shadow: inset 3px 13px 13px 4px rgba(0,0,0,0.56);
+    -moz-box-shadow: inset 3px 13px 13px 4px rgba(0,0,0,0.56);
+    box-shadow: inset 3px 13px 13px 4px rgba(0,0,0,0.56);
+}
+
+footer * {
+    color: var(--secondary-color);
 }

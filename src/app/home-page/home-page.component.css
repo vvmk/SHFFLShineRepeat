@@ -1,14 +1,14 @@
 .home-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 235px repeat(4, 250px);
+    grid-template-rows: 250px repeat(4, 300px);
     grid-column-gap: 25px;
-    grid-row-gap: 50px;
+    grid-row-gap: 25px;
     grid-template-areas:
     "header header header header header header"
-    "welcome welcome welcome welcome welcome welcome"
     "firstquote firstquote firstabout firstabout firstabout firstabout"
     "secondabout secondabout secondabout secondabout secondquote secondquote"
+    "start start start start start start"
     "start start start start start start";
 }
 
@@ -26,13 +26,10 @@
 
 .header {
     grid-area: header;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color) !important;
+    color: var(--light-color) !important;
     height: 235px;
     margin: 0;
-}
-
-.welcome {
-    grid-area: welcome;
 }
 
 .firstquote {
@@ -61,12 +58,8 @@
 
 .start {
     grid-area: start;
-    background-color: var(--primary-color) !important;
-    color: var(--light-color) !important;
-}
-
-.start * {
-    color: var(--light-color) !important;
+    background-color: var(--secondary-color) !important;
+    color: var(--dark-color) !important;
 }
 
 .quote {
