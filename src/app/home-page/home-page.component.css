@@ -1,7 +1,7 @@
 .home-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 250px repeat(4, 300px);
+    grid-template-rows: 250px repeat(2, 300px) 500px 100px;
     grid-column-gap: 25px;
     grid-row-gap: 25px;
     grid-template-areas:
@@ -9,7 +9,7 @@
     "firstquote firstquote firstabout firstabout firstabout firstabout"
     "secondabout secondabout secondabout secondabout secondquote secondquote"
     "start start start start start start"
-    "start start start start start start";
+    ". . . . . .";
 }
 
 .home-container div {
@@ -70,7 +70,10 @@
 
 .about {
     position: relative;
-    top: 25%;
+    display: block;
+    font-size: 1.2rem; 
+    line-height: 1.7em;
+    top: 10%;
     width: 90%;
 }
 
@@ -78,7 +81,7 @@
     background-color: var(--success-color);
     border: none;
     border-radius: 5px;
-    font-size: 1.3em;
+    font-size: 14px;
     margin: 30px;
     padding: 10px;
     width: 300px;
