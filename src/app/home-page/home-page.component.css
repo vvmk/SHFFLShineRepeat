@@ -1,15 +1,16 @@
 .home-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 320px 1fr 1fr 320px;
+    /* grid-template-columns: repeat(auto-fit, minmax(110, 1fr); */
     grid-template-rows: 250px repeat(2, 300px) 500px 100px;
     grid-column-gap: 25px;
     grid-row-gap: 25px;
     grid-template-areas:
-    "header header header header header header"
-    "firstquote firstquote firstabout firstabout firstabout firstabout"
-    "secondabout secondabout secondabout secondabout secondquote secondquote"
-    "start start start start start start"
-    ". . . . . .";
+    "header header header header"
+    "firstquote firstabout firstabout firstabout"
+    "secondabout secondabout secondabout secondquote"
+    "start start start start"
+    ". . . . ";
 }
 
 .home-container div {
@@ -65,7 +66,13 @@
 .quote {
     position: relative;
     top: 35%;
+    font-size: 1.3rem;
+    line-height: 1.7em;
     text-align: center;
+}
+
+.quoteauthor {
+    font-size: 0.9rem;
 }
 
 .about {
