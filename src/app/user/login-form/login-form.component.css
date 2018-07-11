@@ -87,7 +87,7 @@ input::placeholder {
   border-bottom: 1px solid var(--primary-color);
   padding: 6px 20px 6px 0;
   font-size: 1rem;
-  color: gray;
+  color: var(--primary-color);
   letter-spacing: 0.1rem;
   transition: border-color 0.2s ease-in-out;
 }
@@ -115,25 +115,25 @@ input::placeholder {
 }
 
 .user_options-forms .forms_buttons-action {
-  /* TODO: gradient */
   background-color: var(--primary-color);
+  background: linear-gradient(to left, var(--secondary-color), var(--primary-color));
+  background-size: 200% 100%;
   border-radius: 3px;
   padding: 10px 35px;
   font-size: 1rem;
   color: #fff;
   letter-spacing: 0.1rem;
-  transition: background-color 0.2s ease-in-out;
+  transition: background-position 0.2s ease-out;
 }
 
 .user_options-forms .forms_buttons-action:hover {
-  /* TODO: gradient hover */
-  background-color: var(--secondary-color);
+  background-position: 100%;
 }
 
 .user_options-forms .user_forms-login {
   position: absolute;
   top: 70px;
-  left: 40px;
+  left: 30px;
   width: calc(100% - 80px);
   opacity: 0;
   visibility: hidden;
@@ -142,18 +142,11 @@ input::placeholder {
   transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out, transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
 }
 
-.user_options-forms .user_forms-signup {
-  -webkit-transform: translate3d(120px, 0, 0);
-          transform: translate3d(120px, 0, 0);
-}
-
 .user_options-forms .user_forms-signup .forms_buttons {
   justify-content: flex-end;
 }
 
 .user_options-forms .user_forms-login {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
   opacity: 1;
   visibility: visible;
 }
