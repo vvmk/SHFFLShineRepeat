@@ -1,42 +1,35 @@
-<form [formGroup]="loginForm">
-    <fieldset>
-        <legend class="user_registered-title">Login</legend>
-        <div class="form-field">
-            <label>Email:</label>
-            <input name="email" formControlName="email">
-        </div>
-        <div class="form-field">
-            <label>Password:</label>
-            <input name="password" formControlName="password"
-                   type="password">
-        </div>
-    </fieldset>
-    <div class="form-buttons">
-        <button class="button button-primary"
-                (click)="login()">Login</button>
-    </div>
-    <div class="forgot"></div>
-    <div class="login-register">
-        <a [routerLink]="['/register']">Sign Up</a>
-    </div>
-</form>
-<!-- gcc -->
 <div class="user_options-forms" id="user_options-forms">
-      <div class="user_forms-login">
+    <div class="user_forms-login">
         <h2 class="forms_title">Login</h2>
-        <form class="forms_form">
-          <fieldset class="forms_fieldset">
-            <div class="forms_field">
-              <input type="email" placeholder="Email" class="forms_field-input" required autofocus />
+        <form [formGroup]="loginForm">
+            <fieldset class="forms_fieldset">
+                <div class="forms_field">
+                    <label>Email:</label>
+                    <input name="email"
+                           formControlName="email"
+                           class="forms_field-input"
+                           required
+                           autofocus
+                           />
+                </div>
+                <div class="forms_field">
+                    <label>Password:</label>
+                    <input name="password"
+                           formControlName="password"
+                           type="password"
+                           class="forms_field-input"
+                           required
+                           />
+                </div>
+            </fieldset>
+            <div class="forms_buttons">
+                <button class="forms_buttons-action"
+                        (click)="login()">Login</button>
             </div>
-            <div class="forms_field">
-              <input type="password" placeholder="Password" class="forms_field-input" required />
-            </div>
-          </fieldset>
-          <div class="forms_buttons">
             <button type="button" class="forms_buttons-forgot">Forgot password?</button>
-            <input type="submit" value="Log In" class="forms_buttons-action">
-          </div>
+            <div class="login-register">
+                <a [routerLink]="['/register']">Sign Up</a>
+            </div>
         </form>
-      </div>
+    </div>
 </div>
