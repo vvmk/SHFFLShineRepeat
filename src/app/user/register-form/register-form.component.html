@@ -1,60 +1,67 @@
-<h2>Create Your Account</h2>
-<p class="subtitle">Don't worry, it will only take a minute!</p>
-<div class='formContainer'>
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="ssr-form">
-        <div class="form-field">
-            <input 
-                 placeholder="Email"
-                 type="email" 
-                 formControlName="email" 
-                 class="form-control" 
-                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                <div *ngIf="f.email.errors.required">A valid email is required!</div>
+<div class="user_options-forms">
+    <div class="user_forms-signup">
+        <h2 class="forms_title">Sign Up</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <fieldset class="forms_fieldset">
+                <div class="forms_field">
+                    <label>Email:</label>
+                    <input
+                     placeholder="Email"
+                     type="email" 
+                     formControlName="email" 
+                     class="forms_field-input" 
+                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">A valid email is required!</div>
+                    </div>
+                </div>
+                <div class="forms_field">
+                    <label>Password:</label>
+                    <input 
+                     placeholder="Password (6 - 20 characters)"
+                     type="password"
+                     formControlName="password"
+                     class="forms_field-input"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be 6 - 20 characters</div>
+                        <div *ngIf="f.password.errors.maxLength">Password must be 6 - 20 characters</div>
+                    </div>
+                </div>
+                <div class="forms_field">
+                    <label>Tag (Display Name):</label>
+                    <input 
+                     placeholder="Tag (Display Name)"
+                     type="text"
+                     formControlName="tag"
+                     class="forms_field-input"
+                     [ngClass]="{ 'is-invalid': submitted && f.tag.errors }" />
+                    <div *ngIf="submitted && f.tag.errors" class="invalid-feedback">
+                        <div *ngIf="f.tag.errors.required">Enter a tag, it can be anything you want - Nickname, first name, whatever!</div>
+                        <div *ngIf="f.tag.errors.maxLength">Your tag is a bit long...No more than 20 characters, please.</div>
+                    </div>
+                </div>
+                <div class="forms_field">
+                    <label>Main (or Favorite):</label>
+                    <select 
+                     placeholder="Main"
+                     formControlName="main">
+                        <option *ngFor="let character of roster" [value]="character">
+                        {{character}}
+                        </option>
+                    </select>
+                </div>
+            </fieldset>
+            <div class="forms_buttons">
+                <button
+                 color="primary"
+                 [disabled]="loading"
+                 class="forms_buttons-action">Submit</button>
+                <button
+                 [routerLink]="['/signup']"
+                 class="signup-register">I Already Have An Account</button>
             </div>
-        </div>
-        <div class="form-field">
-            <input 
-                 placeholder="Password (6 - 20 characters)"
-                 type="password"
-                 formControlName="password"
-                 class="form-control"
-                 [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                <div *ngIf="f.password.errors.required">Password is required</div>
-                <div *ngIf="f.password.errors.minlength">Password must be 6 - 20 characters</div>
-                <div *ngIf="f.password.errors.maxLength">Password must be 6 - 20 characters</div>
-            </div>
-        </div>
-        <div class="form-field">
-            <input 
-                placeholder="Tag (Username)"
-                type="text"
-                formControlName="tag"
-                class="form-control"
-                [ngClass]="{ 'is-invalid': submitted && f.tag.errors }" />
-            <div *ngIf="submitted && f.tag.errors" class="invalid-feedback">
-                <div *ngIf="f.tag.errors.required">Enter a tag, it can be anything you want - Nickname, first name, whatever!</div>
-                <div *ngIf="f.tag.errors.maxLength">Your tag is a bit long...No more than 20 characters, please.</div>
-            </div>
-        </div>
-        <div class="form-field">
-            <select 
-               placeholder="Main"
-               formControlName="main">
-                <option *ngFor="let character of roster" [value]="character">
-                    {{character}}
-                </option>
-            </select>
-        </div>
-        <div>
-            <button
-                color="primary"
-                [disabled]="loading"
-                class="btn btn-primary">Register</button>
-            <button
-                [routerLink]="['/login']"
-                class="btn btn-link">Cancel</button>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

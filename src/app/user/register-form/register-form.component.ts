@@ -7,7 +7,11 @@ import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { RosterService } from '../../services/roster.service';
 
-@Component({templateUrl: 'register-form.component.html'})
+@Component({
+    selector: 'ssr-register-form',
+    templateUrl: 'register-form.component.html',
+    styleUrls: ['./register-form.component.css']
+})
 export class RegisterFormComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
