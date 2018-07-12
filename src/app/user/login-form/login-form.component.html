@@ -1,3 +1,4 @@
+<span style="position: absolute;top:0px;left:5px;;font-size: .8rem;">*UI and UX are also under heavy development 🙈 </span>
 <div class="user_options-forms" id="user_options-forms">
     <div class="user_forms-login">
         <h2 class="forms_title">Login</h2>
@@ -26,8 +27,8 @@
                 <button class="forms_buttons-action"
                         (click)="login()">Login</button>
             </div>
-            <button type="button" class="forms_buttons-forgot">Forgot password?</button>
             <div class="login-register">
+                <button (click)='forgot()'>I forgot my password</button><br>
                 <a [routerLink]="['/register']">Sign Up</a>
             </div>
         </form>
