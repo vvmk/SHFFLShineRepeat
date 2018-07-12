@@ -1,6 +1,10 @@
-<div class='profile-card'>
-    <div class="card-header">
-        <h1>{{user.tag}}'s Library</h1>
+<div class='library-header-container'>
+    <img class="user-picture" src="" alt="profile picture" />
+    <div class="user-title">
+        <span class="user-tag"><img class="user-main-token" src="" alt="{{user.main}}" />{{user.tag}}</span>
     </div>
-    <div class="card-subtitle">{{user.main}}</div>
+    <div class="user-bio">
+        {{user.bio}}
+    </div>
+    <button class="follow-edit" type="button">{{followOrEdit}}</button>
 </div>

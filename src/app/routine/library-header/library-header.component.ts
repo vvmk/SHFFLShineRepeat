@@ -8,10 +8,14 @@ import { User } from '../../interfaces/user';
 })
 export class LibraryHeaderComponent implements OnInit {
     @Input() user: User;
+    followOrEdit = "Edit";
 
     constructor() { }
 
     ngOnInit() {
     }
 
+    followOrEdit(): void {
+        console.log("follow/edit not yet implemented"
+    }
 }

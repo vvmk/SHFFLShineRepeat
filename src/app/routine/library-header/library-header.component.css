@@ -1,0 +1,7 @@
+.library-header-container {
+    padding: 5px;
+    display: grid;
+    width: 215px;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+}
