@@ -1,60 +1,65 @@
-<div class='routineFormContainer formContainer'>
-    <form (ngSubmit)='save()' [formGroup]='routineForm' class='ssr-form'>
-        <div class="form-field">
-            <input
-                id='routineTitleId' type='text'
-                placeholder='Routine Name' 
-                formControlName='title'
-            />
-        </div>
-        <div class="form-field">
-            <select 
-                placeholder='Character'
-                formControlName='character'>
-                <option *ngFor='let character of roster' [value]='character'>
-                    {{character}}
-                </option>
-            </select>
-        </div>
-        <div class="divider"></div>
-        <div class='drill-form-container'>
-            <div formArrayName='drills' 
-                *ngFor="let drill of drills.controls; let i=index">
-                <div [formGroupName]='i'>
-                    <div class="form-field">
-                        <input 
-                            type='text'
-                            placeholder="{{ 'Drill #' + (i + 1) }}" 
-                            formControlName='drill_title' />
-                    </div>
-                    <div class="form-field">
-                        <input 
-                            type='number'
-                            placeholder='Duration (seconds)'
-                            formControlName='duration' />
-                    </div>
-                    <button 
-                        tabindex='-1' 
-                        color='warn'
-                        type='button'
-                        (click)='removeDrill(i)'
-                        [disabled]='drills.length <= 1'>
-                        [X]
-                    </button>
+<span style="position: absolute;top:0px;left:5px;;font-size: .8rem;">*UI and UX are also under heavy development 🙈 </span>
+<div class='user_options-forms' id="routine-form-container">
+    <div class="user_forms-create">
+        <h2 class="forms_title">{{title}}</h2>
+        <form (ngSubmit)='save()' [formGroup]='routineForm'>
+            <fieldset class="forms_fieldset">
+                <div class="forms_field">
+                    <label>Routine Title:</label>
+                    <input
+                     id='routineTitleId' type='text'
+                     class="forms_field-input"
+                     formControlName='title'
+                     />
                 </div>
+                <div class="forms_field">
+                    <label>Character:</label>
+                    <select 
+                     class="forms_field-input"
+                     formControlName='character'>
+                        <option *ngFor='let character of roster' [value]='character'>
+                        {{character}}
+                        </option>
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset class="forms_fieldset">
+                <div class='drill-form-container'>
+                    <div formArrayName='drills' *ngFor="let drill of drills.controls; let i=index">
+                        <div [formGroupName]='i'>
+                            <div class="forms_field">
+                                <label>{{ 'Drill ' + (i + 1) + ' Title:'}}</label>
+                                <input 
+                                 type='text'
+                                 class="forms_field-input"
+                                 formControlName='drill_title' />
+                            </div>
+                            <div class="forms_field">
+                                <label>{{ 'Drill ' + (i + 1) + ' Duration:'}}</label>
+                                <input 
+                                 type='number'
+                                 class="forms_field-input"
+                                 formControlName='duration' />
+                            </div>
+                            <button 
+                                 tabindex='-1' 
+                                 color='warn'
+                                 type='button'
+                                 (click)='removeDrill(i)'
+                                 [disabled]='drills.length <= 1'>
+                                [X]
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+            <button type="button" (click)='addDrill()'>Add More...</button>
+            <div class="forms_buttons">
+                <button class="forms_buttons-action"
+                 color='primary'
+                 type='submit'
+                 [disabled]='!routineForm.valid'>Save</button>
             </div>
-            <button 
-                type='button'
-                (click)='addDrill()'>
-                Add More...
-            </button>
-        </div>
-        <div class="divider"></div>
-        <div class='submit-button'>
-            <button color='primary' type='submit'
-                [disabled]='!routineForm.valid'>
-                Save
-            </button>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>

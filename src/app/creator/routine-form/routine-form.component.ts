@@ -15,9 +15,11 @@ import { RoutineFormGuard } from '../../services/routine-guard.service';
 })
 export class RoutineFormComponent implements OnInit {
     @Input() routine: Routine;
+    @Input() title: string;
     roster: string[];
     routineForm: FormGroup;
     user: User;
+    initialHeight = 600;
 
     get drills(): FormArray {
         return <FormArray>this.routineForm.get('drills');
@@ -68,6 +70,11 @@ export class RoutineFormComponent implements OnInit {
 
     addDrill(): void {
         this.drills.push(this.buildDrill());
+        // get the drill container and add extra pixels for it
+        let e = document.getElementById('routine-form-container');
+        let newLength =  this.initialHeight + (this.drills.length * 142.4);
+        console.log('new height: ' + newLength);
+        e.style.height = newLength + 'px';
     }
 
     buildDrill(title: string = null, duration: number = null): FormGroup {
@@ -87,6 +94,7 @@ export class RoutineFormComponent implements OnInit {
 
     removeDrill(id: number): void {
         this.drills.removeAt(id);
+        // remove pixels from it
     }
 
     save(): void {
