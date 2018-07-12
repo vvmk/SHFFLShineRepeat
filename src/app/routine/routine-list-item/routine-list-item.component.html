@@ -1,7 +1,7 @@
-<div class="card-container">
-    <div class="card-header">
-        <img [src]='avatarUrl' />
-        <div class="card-title">{{routine.title}}</div>
+<div class="list-item-container">
+    <div class="list-item-top">
+        <img class="list-item-avatar" [src]='avatarUrl' />
+        <div class="list-item-title">{{routine.title}}</div>
         <div class="card-subtitle">{{routine.total_duration}}</div>
     </div>
     <button class="view-routine-button" (click)="viewRoutine()">

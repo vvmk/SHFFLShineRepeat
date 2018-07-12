@@ -9,6 +9,10 @@ import { User } from '../../interfaces/user';
 export class LibraryHeaderComponent implements OnInit {
     @Input() user: User;
     followOrEdit = "Edit";
+    // character-portraits-default-spritesheet-01.png
+    avatar = '../../../assets/images/avatar-Default.png';
+    token = '../../../assets/images/avatar-Default.png';
+    // background: url(../../../assets/images/avatar-Default.png);
 
     constructor() { }
 

@@ -2,4 +2,5 @@
     display: grid;
     grid-template-columns: 225px 2fr;
     grid-gap: 25px;
+    margin-top: var(--navbar-height);
 }

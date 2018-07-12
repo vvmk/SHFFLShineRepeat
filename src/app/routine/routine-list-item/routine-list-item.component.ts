@@ -16,8 +16,9 @@ export class RoutineListItemComponent implements OnInit {
                 private router: Router) { }
 
     ngOnInit() {
-        this.avatarUrl = 'assets/images/avatar-' +
-            this.routine.character.replace(' ', '') + '.png';
+        const strippedName = this.routine.character.replace(/(\s*|\.)/,'').toLowerCase();
+        const imageName = `list_avatar_${ strippedName }.png`;
+        this.avatarUrl = `assets/images/routine-list-avatars/${ imageName }`;
     }
 
     viewRoutine(): void {
