@@ -1,8 +1,29 @@
-.list-item-avatar {
-    height: 50px;
+.list-item-container {
+    display: grid;
+    grid-template-columns: 1fr 75px 150px;
+    height: 75px;
+    border: 1px solid #eee;
+    border-radius: 5px;
 }
 
-.small-clock {
-    width: 1em;
-    height: 1em;
+.list-item-avatar {
+    height: 75px;
+}
+
+.small-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.list-item-small {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.list-item-title {
+    font-size: 1.6em;
+}
+
+.list-item-duration {
+    font-size: 1.3rem;
 }

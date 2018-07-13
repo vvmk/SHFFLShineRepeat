@@ -15,9 +15,6 @@
     padding-right: 5px;
 }
 
-/* TODO: set background-image and background-position to x,y of falco */
-/* in the sprite sheet. this doesn't have to be perfect, its just a personal */
-/* homework assignment. */
 .user-picture {
     width: 100%;
     height: 100%;

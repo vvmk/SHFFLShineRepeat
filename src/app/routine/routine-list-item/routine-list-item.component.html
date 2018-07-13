@@ -1,16 +1,22 @@
 <div class="list-item-container">
-    <div class="list-item-top">
-        <img class="list-item-avatar" [src]='avatarUrl' />
+    <div class="list-item-meta">
         <div class="list-item-title">{{routine.title}}</div>
-        <span class="card-subtitle">
-            <img class="small-clock" src="assets/images/clock.png" />
+        <span class="list-item-duration">
+            <img class="small-icon" src="assets/images/clock.png" />
             {{routine.total_duration}}
         </span>
+        <span *ngIf="routine.popularity > 0" class="list-item-popularity">
+            <img class="small-icon" src="assets/images/star.png" />
+            {{routine.popularity}}
+        </span>
     </div>
-    <button class="view-routine-button" (click)="viewRoutine()">
-        details
-    </button>
-    <button class="run-routine-button" (click)="runRoutine()">
-        run it
-    </button>
+    <div class="list-item-buttons">
+        <button class="view-routine-button" (click)="viewRoutine()">
+            details
+        </button>
+        <button class="run-routine-button" (click)="runRoutine()">
+            run it
+        </button>
+    </div>
+    <img class="list-item-avatar" [src]='avatarUrl' />
 </div>
