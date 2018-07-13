@@ -2,7 +2,10 @@
     <div class="list-item-top">
         <img class="list-item-avatar" [src]='avatarUrl' />
         <div class="list-item-title">{{routine.title}}</div>
-        <div class="card-subtitle">{{routine.total_duration}}</div>
+        <span class="card-subtitle">
+            <img class="small-clock" src="assets/images/clock.png" />
+            {{routine.total_duration}}
+        </span>
     </div>
     <button class="view-routine-button" (click)="viewRoutine()">
         details
