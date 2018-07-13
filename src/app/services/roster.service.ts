@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class RosterService {
     roster: string[];
-    stockIconBaseUrl = 'assets/images/stock_icons/stock_icon_';
+    stockIconBaseUrl = 'assets/images/stock-icons/stock_icon_';
     listPortraitBaseUrl = 'assets/images/routine-list-avatars/list_avatar_';
 
     constructor() {
@@ -51,10 +51,10 @@ export class RosterService {
 
     getListPortraitUrl(characterName: string): string {
         return this.listPortraitBaseUrl +
-            this.normalizeName(characterName);
+            this.normalizeName(characterName) + '.png';
     }
 
-    normalizeName(name: string): string {
-        return name.replace(/(\s*|\.)/,'').toLowerCase();
+    normalizeName(name: string = 'default'): string {
+        return name.replace(/\W/g,"").toLowerCase();
     }
 }

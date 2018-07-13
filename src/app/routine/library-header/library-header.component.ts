@@ -9,16 +9,18 @@ import { RosterService } from '../../services/roster.service';
 })
 export class LibraryHeaderComponent implements OnInit {
     @Input() user: User;
-    followOrEdit = "Edit";
+    followOrEdit = 'Edit';
+    avatar = 'assets/images/avatar-Default.png';
+    mainTokenUrl: string;
 
     constructor(
         private rosterService: RosterService
-    ) { }
+    ) {}
 
     ngOnInit() {
     }
 
     followEdit(): void {
-        console.log("follow/edit not yet implemented");
+        console.log('follow/edit not yet implemented');
     }
 }
