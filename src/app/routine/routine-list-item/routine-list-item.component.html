@@ -1,21 +1,21 @@
 <div class="list-item-container">
     <div class="list-item-meta">
         <div class="list-item-title">{{routine.title}}</div>
-        <span class="list-item-duration">
+        <span class="list-item-stats">
             <img class="small-icon" src="assets/images/clock.png" />
             {{routine.total_duration}}
         </span>
-        <span *ngIf="routine.popularity > 0" class="list-item-popularity">
+        <span *ngIf="routine.popularity > 0" class="list-item-stats">
             <img class="small-icon" src="assets/images/star.png" />
             {{routine.popularity}}
         </span>
     </div>
     <div class="list-item-buttons">
-        <button class="view-routine-button" (click)="viewRoutine()">
-            details
+        <button class="view-routine-button" (click)="viewRoutine()" type="button">
+            Details
         </button>
-        <button class="run-routine-button" (click)="runRoutine()">
-            run it
+        <button class="run-routine-button" (click)="runRoutine()" type="button">
+            Run
         </button>
     </div>
     <img class="list-item-avatar" [src]='avatarUrl' />

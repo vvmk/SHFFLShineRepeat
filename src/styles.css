@@ -44,3 +44,16 @@ body {
     5px 5px 5px rgba(0,0,0,0.1),
     -10px 10px 5px rgba(0,0,0,0.05);
 }
+
+button {
+    font-weight: 500;
+    border-radius: 3px;
+    background-color: var(--light-color);
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+button:hover {
+    border: 1px solid #aaa;
+    cursor: pointer;
+}
