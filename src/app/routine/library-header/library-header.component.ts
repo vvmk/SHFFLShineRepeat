@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../interfaces/user';
+import { RosterService } from '../../services/roster.service';
 
 @Component({
     selector: 'ssr-library-header',
@@ -9,17 +10,15 @@ import { User } from '../../interfaces/user';
 export class LibraryHeaderComponent implements OnInit {
     @Input() user: User;
     followOrEdit = "Edit";
-    // character-portraits-default-spritesheet-01.png
-    avatar = '../../../assets/images/avatar-Default.png';
-    token = '../../../assets/images/avatar-Default.png';
-    // background: url(../../../assets/images/avatar-Default.png);
 
-    constructor() { }
+    constructor(
+        private rosterService: RosterService
+    ) { }
 
     ngOnInit() {
     }
 
-    followOrEdit(): void {
-        console.log("follow/edit not yet implemented"
+    followEdit(): void {
+        console.log("follow/edit not yet implemented");
     }
 }

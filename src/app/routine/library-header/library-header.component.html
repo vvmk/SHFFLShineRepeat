@@ -1,10 +1,13 @@
 <div class='library-header-container'>
     <img class="user-picture" src="{{avatar}}" alt="profile picture" />
     <div class="user-title">
-        <span class="user-tag">{{user.tag}}</span><img class="user-main-token" src="{{token}}" alt="{{user.main}}" />
+        <span class="user-tag">{{user.tag}}</span>
+        <img class="user-main-token"
+             alt="{{user.main}}"
+             [src]="rosterService.getStockIconUrl(user.main)"/>
     </div>
     <div class="user-bio">
         {{user.bio}}
     </div>
-    <button class="follow-edit" type="button">{{followOrEdit}}</button>
+    <button (click)="followEdit()" class="follow-edit" type="button">{{followOrEdit}}</button>
 </div>

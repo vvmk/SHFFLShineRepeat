@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Routine } from '../../interfaces/routine';
 import { RoutineService } from '../../services/routine.service';
+import { RosterService } from '../../services/roster.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,15 +11,14 @@ import { Router } from '@angular/router';
 })
 export class RoutineListItemComponent implements OnInit {
     @Input() routine: Routine;
-    avatarUrl: string;
 
-    constructor(private _routineService: RoutineService,
-                private router: Router) { }
+    constructor(
+        private routineService: RoutineService,
+        private router: Router,
+        private rosterService: RosterService
+    ) {}
 
     ngOnInit() {
-        const strippedName = this.routine.character.replace(/(\s*|\.)/,'').toLowerCase();
-        const imageName = `list_avatar_${ strippedName }.png`;
-        this.avatarUrl = `assets/images/routine-list-avatars/${ imageName }`;
     }
 
     viewRoutine(): void {

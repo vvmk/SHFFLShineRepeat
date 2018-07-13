@@ -4,6 +4,7 @@
 # vvmk
 *.error
 scratch.*
+*.sql
 
 ### Angular ###
 ## Angular ##
