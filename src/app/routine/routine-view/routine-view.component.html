@@ -1,18 +1,26 @@
-<h1>{{routine.title}}</h1>
-<p>total runtime: {{routine.total_duration}}</p>
-<p>character: {{routine.character}}</p>
-<p>creator: {{creator_tag}}</p>
-<ul>
-    <li *ngFor='let drill of routine.drills'>
-        <p>{{drill.drill_title}} : {{drill.duration}}</p>
-    </li>
-</ul>
-<button color='primary' (click)='runRoutine()'>
-    Run
-</button>
-<button color='warning' (click)='editRoutine()'>
-    Edit
-</button>
-<button color='danger' (click)='deleteRoutine()'>
-    Delete
-</button>
+<div class="routine-view-container">
+    <div class="routine-view-top">
+        <h1>{{routine.title}}</h1>
+        <p>total runtime: {{routine.total_duration}}</p>
+        <p>character: {{routine.character}}</p>
+        <p>creator: {{creator_tag}}</p>
+    </div>
+    <div class="routine-view-controls">
+        <button color='primary' (click)='runRoutine()'>
+            Run
+        </button>
+        <button color='warning' (click)='editRoutine()'>
+            Edit
+        </button>
+        <button color='danger' (click)='deleteRoutine()'>
+            Delete
+        </button>
+    </div>
+    <div class="routine-view-drills">
+        <ul>
+            <li *ngFor='let drill of routine.drills'>
+                <p>{{drill.drill_title}} : {{drill.duration}}</p>
+            </li>
+        </ul>
+    </div>
+</div>

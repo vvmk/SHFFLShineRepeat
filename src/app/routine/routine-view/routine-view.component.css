@@ -1,0 +1,22 @@
+
+.routine-view-container {
+    display: grid;
+    grid-template-columns: 300px 2fr;
+    grid-gap: 25px;
+    padding-right: 50px;
+}
+
+.routine-view-top {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.routine-view-drills {
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+}
+
+.routine-view-controls {
+    grid-column: 1 / span 1;
+    grid-row: 2 / span 1;
+}
