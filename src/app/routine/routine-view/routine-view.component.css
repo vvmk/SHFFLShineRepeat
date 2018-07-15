@@ -2,21 +2,25 @@
 .routine-view-container {
     display: grid;
     grid-template-columns: 300px 2fr;
+    grid-template-rows: 200px 1fr;
     grid-gap: 25px;
     padding-right: 50px;
 }
 
 .routine-view-top {
     grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
+    grid-row: 1 / span 2;
 }
 
 .routine-view-drills {
     grid-column: 2 / span 1;
-    grid-row: 1 / span 1;
+    grid-row: 2 / span 1;
 }
 
 .routine-view-controls {
-    grid-column: 1 / span 1;
-    grid-row: 2 / span 1;
+    padding: 250px auto 5px auto;
+    border-bottom: 1px solid #eee;
+
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
 }
