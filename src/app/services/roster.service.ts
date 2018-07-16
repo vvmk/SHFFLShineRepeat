@@ -8,6 +8,7 @@ export class RosterService {
     stockIconBaseUrl = 'assets/images/stock-icons/stock_icon_';
     listPortraitBaseUrl = 'assets/images/routine-list-avatars/list_avatar_';
     cssPortraitBaseUrl = 'assets/images/css-portraits/css_portrait_';
+    stageBaseUrl = 'assets/images/stages/stage_';
 
     constructor() {
         this.roster = [
@@ -58,6 +59,11 @@ export class RosterService {
     getCssPortraitUrl(characterName: string): string {
         return this.cssPortraitBaseUrl +
             this.normalizeName(characterName)  + '.png';
+    }
+
+    getStageUrl(stageName: string): string {
+        return this.stageBaseUrl +
+            this.normalizeName(stageName) + '.png';
     }
 
     normalizeName(name: string = 'default'): string {

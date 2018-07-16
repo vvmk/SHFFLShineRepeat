@@ -1,9 +1,28 @@
 <div class="routine-view-container">
     <div class="routine-view-top">
-        <span class="routine-title">{{routine.title}}</span>
-        <p>total runtime: {{routine.total_duration}}</p>
-        <p>character: {{routine.character}}</p>
-        <p>creator: {{creator_tag}}</p>
+        <div class="routine-meta">
+        <div class="routine-title">{{routine.title}}</div>
+            <span class="routine-stats">
+                <img class="small-icon" src="assets/images/clock.png" />
+                {{routine.total_duration}}
+            </span>
+            <span *ngIf="routine.popularity > 0" class="routine-stats">
+                <img class="small-icon" src="assets/images/star.png" />
+                {{routine.popularity}}
+            </span>
+        </div>
+        <div class="stage">
+            <span>stage</span>
+            <img class="routine-side-image"
+                 [src]="rosterService.getStageUrl('Yoshis Story')"
+                 alt="Yoshi's Story" />
+        </div>
+        <div class="training-dummy">
+            <span>training dummy</span>
+            <img class="routine-side-image"
+                 [src]="rosterService.getListPortraitUrl('Fox')"
+                 alt="Fox" />
+        </div>
     </div>
     <div class="routine-view-controls">
         <button color='primary' (click)='runRoutine()'>
