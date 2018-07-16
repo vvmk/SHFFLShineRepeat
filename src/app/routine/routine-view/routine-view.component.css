@@ -13,6 +13,10 @@
     margin: 5px;
     position: fixed;
     top: var(--navbar-height);
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-rows-auto: max-content;
+    grid-gap: 25px;
 }
 
 .routine-view-drills {
@@ -34,13 +38,44 @@
 }
 
 .routine-title {
-    width: 100%;
-    margin-top: 25;
+    font-size: 1.5rem;
+    padding: 10px 10px 5px 10px;
+}
+
+.list-item-stats {
+    font-size: 1.2rem;
+    padding-right: 15px;
+    padding-left: 10px;
 }
 
 .character-portrait {
     float: right;
     border-right: 1px solid #eee;
     height: 100%;
+}
+
+.small-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+.routine-stats {
+    font-size: 1.2rem;
+    padding-right: 15px;
+    padding-left: 10px;
+}
+
+.routine-side-image {
+    display: block;
+    width: 150px;
+}
+
+.small-underline {
+    display: block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 

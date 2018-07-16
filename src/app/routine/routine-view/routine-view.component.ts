@@ -13,7 +13,7 @@ import { RosterService } from '../../services/roster.service';
 export class RoutineViewComponent implements OnInit {
     pageTitle = '';
     routine: Routine = <Routine>{};
-    creator_tag: string;
+    creatorTag: string;
 
     constructor(
         private routineService: RoutineService,
@@ -32,7 +32,7 @@ export class RoutineViewComponent implements OnInit {
         this.pageTitle = this.routine.title;
 
         this.userService.getUser(this.routine.creator_id)
-            .subscribe(u => this.creator_tag = u.tag);
+            .subscribe(u => this.creatorTag = u.tag);
     }
 
     runRoutine(): void {

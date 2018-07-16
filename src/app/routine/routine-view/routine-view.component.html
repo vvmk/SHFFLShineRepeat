@@ -1,7 +1,7 @@
 <div class="routine-view-container">
     <div class="routine-view-top">
         <div class="routine-meta">
-        <div class="routine-title">{{routine.title}}</div>
+            <div class="routine-title">{{routine.title}}</div>
             <span class="routine-stats">
                 <img class="small-icon" src="assets/images/clock.png" />
                 {{routine.total_duration}}
@@ -12,16 +12,22 @@
             </span>
         </div>
         <div class="stage">
-            <span>stage</span>
+            <span class="small-underline">Stage</span>
             <img class="routine-side-image"
                  [src]="rosterService.getStageUrl('Yoshis Story')"
                  alt="Yoshi's Story" />
         </div>
         <div class="training-dummy">
-            <span>training dummy</span>
+            <span class="small-underline">CPU Character</span>
             <img class="routine-side-image"
                  [src]="rosterService.getListPortraitUrl('Fox')"
                  alt="Fox" />
+        </div>
+        <div class="original-creator">
+            <span class="small-underline">Created By</span>
+            <a [routerLink]="['/user/', routine.originalCreatorId]">
+                {{creatorTag}}
+            </a>
         </div>
     </div>
     <div class="routine-view-controls">
@@ -35,8 +41,8 @@
             Delete
         </button>
         <img class="character-portrait"
-        [src]="rosterService.getCssPortraitUrl(routine.character)"
-        alt="{{routine.character}}" />
+             [src]="rosterService.getCssPortraitUrl(routine.character)"
+             alt="{{routine.character}}" />
     </div>
     <div class="routine-view-drills">
         <ul>
