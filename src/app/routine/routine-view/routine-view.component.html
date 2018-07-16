@@ -45,10 +45,16 @@
              alt="{{routine.character}}" />
     </div>
     <div class="routine-view-drills">
-        <ul>
-            <li *ngFor='let drill of routine.drills'>
-                <p>{{drill.drill_title}} : {{drill.duration}}</p>
+        <ol>
+            <li class="drill-item" *ngFor='let drill of routine.drills'>
+                <div class="drill-title">
+                    {{drill.drill_title}}
+                </div>
+            <span class="drill-duration">
+                <img class="small-icon" src="assets/images/clock.png" />
+                {{drill.duration}}
+            </span>
             </li>
-        </ul>
+        </ol>
     </div>
 </div>
