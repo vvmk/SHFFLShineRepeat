@@ -24,11 +24,23 @@
     border-bottom: 1px solid #eee;
     grid-column: 2 / span 1;
     grid-row: 1 / span 1;
-    padding-top: 150px;
 }
 
 .routine-view-controls button {
     margin: 15px;
     height: 25px;
     border-radius: 4px;
+    margin-top: 156px;
 }
+
+.routine-title {
+    width: 100%;
+    margin-top: 25;
+}
+
+.character-portrait {
+    float: right;
+    border-right: 1px solid #eee;
+    height: 100%;
+}
+

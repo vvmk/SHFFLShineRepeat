@@ -3,6 +3,7 @@ import { Routine } from '../../interfaces/routine';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoutineService } from '../../services/routine.service';
 import { UserService } from '../../services/user.service';
+import { RosterService } from '../../services/roster.service';
 
 @Component({
     selector: 'ssr-routine-view',
@@ -18,7 +19,8 @@ export class RoutineViewComponent implements OnInit {
         private routineService: RoutineService,
         private userService: UserService,
         private route: ActivatedRoute,
-        private router: Router
+        private router: Router,
+        private rosterService: RosterService
     ) {}
 
     ngOnInit() {

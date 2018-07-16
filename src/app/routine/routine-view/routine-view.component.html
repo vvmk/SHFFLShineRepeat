@@ -1,6 +1,6 @@
 <div class="routine-view-container">
     <div class="routine-view-top">
-        <h1>{{routine.title}}</h1>
+        <span class="routine-title">{{routine.title}}</span>
         <p>total runtime: {{routine.total_duration}}</p>
         <p>character: {{routine.character}}</p>
         <p>creator: {{creator_tag}}</p>
@@ -15,6 +15,9 @@
         <button color='danger' (click)='deleteRoutine()'>
             Delete
         </button>
+        <img class="character-portrait"
+        [src]="rosterService.getCssPortraitUrl(routine.character)"
+        alt="{{routine.character}}" />
     </div>
     <div class="routine-view-drills">
         <ul>
