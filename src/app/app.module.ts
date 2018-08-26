@@ -47,7 +47,7 @@ import { FourOhFourComponent } from './four-oh-four.component';
       { path: '', component: HomePageComponent },
       { path: '**', redirectTo: 'fourohfour', pathMatch: 'full' },
       { path: 'fourohfour', component: FourOhFourComponent }
-    ], { enableTracing: true})
+    ], { enableTracing: false})
   ],
   providers: [
     EndpointService,

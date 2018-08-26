@@ -25,6 +25,6 @@ export class UserService {
 
     register(user: NewUser) {
         const url = this.es.baseUrl + '/register';
-        return this.http.post(url, user)
+        return this.http.post(url, user);
     }
 }
