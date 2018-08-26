@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { EndpointService } from './services/endpoint.service';
@@ -32,7 +32,6 @@ import { FourOhFourComponent } from './four-oh-four.component';
     FourOhFourComponent
   ],
   imports: [
-    NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -43,6 +42,8 @@ import { FourOhFourComponent } from './four-oh-four.component';
     RunnerModule,
     DiscoverModule,
     CreatorModule,
+    NgbModule,
+    NgbDropdownModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent },
       { path: '**', redirectTo: 'fourohfour', pathMatch: 'full' },

@@ -1,12 +1,20 @@
 @import "bs";
 
 :root {
-  --navbar-height: 50px;
+    --navbar-height: 50px;
 }
 
 html,
 body {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-    Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
+        Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    position: absolute;
+    top: 61px;
+    left: 0px;
 }

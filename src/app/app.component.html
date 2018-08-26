@@ -5,12 +5,12 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" *ngIf='!authService.isLoggedIn()'><a class="nav-link" [routerLink]="['/login']">Log in</a></li>
             <li class="nav-item" *ngIf='!authService.isLoggedIn()'><a class="nav-link" [routerLink]="['/register']">Sign Up</a></li>
-            <li *ngIf='authService.isLoggedIn()' class="nav-item dropdown">
-                <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <li ngbDropdown *ngIf='authService.isLoggedIn()' class="nav-item dropdown">
+                <button ngbDropdownToggle class="dropdown-toggle text-info btn btn-link" id="dropdownMenuButton">
                     <!-- {{userService.currentUser.tag}} -->
                     user
                 </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <button class="dropdown-item" [routerLink]="['/library']">Library</button>
                     <button class="dropdown-item" [routerLink]="['/create']">Create</button>
                     <div class="dropdown-divider"></div>
@@ -20,9 +20,6 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
 </nav>
-<div class='app-container'>
-    <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>
