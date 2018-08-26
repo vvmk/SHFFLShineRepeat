@@ -2,23 +2,19 @@
     <a class="navbar-brand" [routerLink]="['/']" >
         <img src="../assets/images/nav_brand.svg" width="30" height="30" alt="" />
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item" *ngIf='!authService.isLoggedIn()'><a class="nav-link" [routerLink]="['/login']">Log in</a></li>
             <li class="nav-item" *ngIf='!authService.isLoggedIn()'><a class="nav-link" [routerLink]="['/register']">Sign Up</a></li>
             <li *ngIf='authService.isLoggedIn()' class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <!-- {{userService.currentUser.tag}} -->
                     user
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" [routerLink]="['/library']">Library</a>
-                    <a class="dropdown-item" [routerLink]="['/create']">Create</a>
+                </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <button class="dropdown-item" [routerLink]="['/library']">Library</button>
+                    <button class="dropdown-item" [routerLink]="['/create']">Create</button>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" (click)='logout()' [routerLink]="['/login']">Logout</a>
+                    <button class="dropdown-item" (click)='logout()' [routerLink]="['/login']">Logout</button>
                 </div>
             </li>
         </ul>
@@ -26,7 +22,6 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-    </div>
 </nav>
 <div class='app-container'>
     <router-outlet></router-outlet>

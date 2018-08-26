@@ -25,8 +25,8 @@ export class AuthService {
   login(email: string, password: string) {
     const url = this.es.baseUrl + '/login';
 
-    let basicAuthString = 'Basic ' + btoa(email + ':' + password);
-    let headers = new HttpHeaders({authorization: basicAuthString});
+    const basicAuthString = 'Basic ' + btoa(email + ':' + password);
+    const headers = new HttpHeaders({authorization: basicAuthString});
 
     return this.http.post(url, {}, { headers: headers }).pipe(
       tap(res => this.setSession(res)),
@@ -60,12 +60,12 @@ export class AuthService {
   }
 
   confirm(uid: number, token: string) {
-    let body = {
+    const body = {
       uid: uid,
       token: token
-    }
+    };
 
-    let url = this.es.baseUrl + '/confirm';
+    const url = this.es.baseUrl + '/confirm';
 
     return this.http.post(url, body).pipe(
       tap(res => this.setSession(res)),

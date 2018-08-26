@@ -5,6 +5,7 @@ import { User } from './interfaces/user';
 import { Routine } from './interfaces/routine';
 import { Observable } from 'rxjs';
 import { Router, Event, NavigationStart } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'ssr-root',

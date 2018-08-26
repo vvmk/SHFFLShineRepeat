@@ -32,12 +32,12 @@ import { FourOhFourComponent } from './four-oh-four.component';
     FourOhFourComponent
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule,
     RoutineModule,
     UserModule,
     RunnerModule,

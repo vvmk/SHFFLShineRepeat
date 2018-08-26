@@ -1,5 +1,5 @@
 import {
-    throwError as observableThrowError, Observable, of, ReplaySubject 
+    throwError as observableThrowError, Observable, of, ReplaySubject
 } from 'rxjs';
 
 import { map, catchError, tap } from 'rxjs/operators';
@@ -15,14 +15,15 @@ import { AuthService } from './auth.service';
 @Injectable()
 export class RoutineService {
     routineLibrary: Routine[] = [];
+    userLibrary: Routine[] = [];
 
-    constructor(private http: HttpClient, 
+    constructor(private http: HttpClient,
         private es: EndpointService,
         private authService: AuthService,
         private userService: UserService) {}
 
     public getUserRoutines(): Observable<Routine[]> {
-        const userId = +localStorage.getItem('user_id')
+        const userId = +localStorage.getItem('user_id');
         const url = this.es.getLibraryURL(userId);
 
         return this.http.get<Routine[]>(url);
@@ -41,7 +42,7 @@ export class RoutineService {
     }
 
     public saveRoutine(routine: Routine): Observable<Routine> {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: headers };
 
         if (routine.routine_id === 0) {
@@ -53,7 +54,7 @@ export class RoutineService {
 
     // TODO: verify deletion somehow, right now there's no going back
     public deleteRoutine(routineId: number): Observable<Response> {
-        let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: headers };
 
         const url = this.es.getRoutineURL(routineId);
@@ -85,14 +86,14 @@ export class RoutineService {
         const url = this.es.userRoutineURL(userId);
 
         console.log(routine);
-        let newRoutine = {
+        const newRoutine = {
             title: routine.title,
             total_duration: routine.total_duration,
             character: routine.character,
             original_creator_id: routine.original_creator_id,
             creator_id: routine.creator_id,
             drills: routine.drills
-        }
+        };
 
         return this.http.post(url, newRoutine, options).pipe(
             catchError(this.handleError)
