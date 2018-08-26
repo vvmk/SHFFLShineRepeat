@@ -6,7 +6,7 @@ import { Routine } from '../../interfaces/routine';
 @Component({
   selector: 'ssr-edit-routine',
   templateUrl: './edit-routine.component.html',
-  styleUrls: ['./edit-routine.component.css']
+  styleUrls: ['./edit-routine.component.scss']
 })
 export class EditRoutineComponent implements OnInit {
   private routine: Routine;

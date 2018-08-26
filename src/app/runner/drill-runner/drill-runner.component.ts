@@ -6,7 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     templateUrl: './drill-runner.component.html',
-    styleUrls: ['./drill-runner.component.css']
+    styleUrls: ['./drill-runner.component.scss']
 })
 export class DrillRunnerComponent implements OnInit {
     title = 'SHFFL->Shine->Repeat';

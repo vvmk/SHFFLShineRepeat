@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'ssr-routine-list-item',
     templateUrl: './routine-list-item.component.html',
-    styleUrls: ['./routine-list-item.component.css']
+    styleUrls: ['./routine-list-item.component.scss']
 })
 export class RoutineListItemComponent implements OnInit {
     @Input() routine: Routine;

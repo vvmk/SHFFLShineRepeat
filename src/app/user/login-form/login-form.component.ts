@@ -8,7 +8,7 @@ import { EndpointService } from '../../services/endpoint.service';
 @Component({
   selector: 'ssr-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
+  styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
   loginForm;
@@ -22,8 +22,8 @@ export class LoginFormComponent implements OnInit {
   ) {
 
     this.loginForm = this.fb.group({
-      email: ['',Validators.required],
-      password: ['',Validators.required]
+      email: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -45,7 +45,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   forgot() {
-    const msg = "Sorry, this feature doesn't exist yet. You think features just grow on trees? Email me and I can reset it for you, or if you don't care, just create a new account. This is only a beta.";
+    const msg = 'Sorry, this feature doesn\'t exist yet. You think features just grow on trees? Email me and I can reset it for you, or if you don\'t care, just create a new account. This is only a beta.';
     if (confirm(msg)) {
       this.router.navigate(['/register']);
     }

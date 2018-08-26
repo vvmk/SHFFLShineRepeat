@@ -59,7 +59,7 @@ import { FourOhFourComponent } from './four-oh-four.component';
     UserService,
     AuthService,
     AuthGuardService,
-    { 
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
       multi: true

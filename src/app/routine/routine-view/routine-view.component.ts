@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
     selector: 'ssr-routine-view',
     templateUrl: './routine-view.component.html',
-    styleUrls: ['./routine-view.component.css']
+    styleUrls: ['./routine-view.component.scss']
 })
 export class RoutineViewComponent implements OnInit {
     pageTitle = '';
@@ -53,8 +53,8 @@ export class RoutineViewComponent implements OnInit {
             this.routineService.deleteRoutine(this.routine.routine_id)
             .subscribe(response => {
                 // TODO: navigate away and stuff
-                console.log("deleted: " + response);
-                console.log("TODO: redirect to library/somewhere idk yet");
+                console.log('deleted: ' + response);
+                console.log('TODO: redirect to library/somewhere idk yet');
             });
         }
     }

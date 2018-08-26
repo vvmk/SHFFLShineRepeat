@@ -4,7 +4,7 @@ import { RoutineService } from '../../services/routine.service';
 
 @Component({
   templateUrl: './creator-page.component.html',
-  styleUrls: ['./creator-page.component.css']
+  styleUrls: ['./creator-page.component.scss']
 })
 export class CreatorPageComponent implements OnInit {
   freshRoutine: Routine;

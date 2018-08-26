@@ -11,7 +11,7 @@ import { RoutineFormGuard } from '../../services/routine-guard.service';
 @Component({
     selector: 'ssr-creator-routine-form',
     templateUrl: './routine-form.component.html',
-    styleUrls: ['./routine-form.component.css']
+    styleUrls: ['./routine-form.component.scss']
 })
 export class RoutineFormComponent implements OnInit {
     @Input() routine: Routine;

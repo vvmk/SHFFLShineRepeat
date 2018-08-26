@@ -5,7 +5,7 @@ import { RosterService } from '../../services/roster.service';
 @Component({
     selector: 'ssr-library-header',
     templateUrl: './library-header.component.html',
-    styleUrls: ['./library-header.component.css']
+    styleUrls: ['./library-header.component.scss']
 })
 export class LibraryHeaderComponent implements OnInit {
     @Input() user: User;

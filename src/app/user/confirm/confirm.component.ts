@@ -5,7 +5,7 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'ssr-confirm',
   templateUrl: './confirm.component.html',
-  styleUrls: ['./confirm.component.css']
+  styleUrls: ['./confirm.component.scss']
 })
 export class ConfirmComponent implements OnInit {
   uid: number;

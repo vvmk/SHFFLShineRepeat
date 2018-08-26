@@ -9,7 +9,7 @@ import { Routine } from '../../interfaces/routine';
 
 @Component({
     templateUrl: './library-page.component.html',
-    styleUrls: ['./library-page.component.css']
+    styleUrls: ['./library-page.component.scss']
 })
 export class LibraryPageComponent implements OnInit {
     user: User = <User>{};

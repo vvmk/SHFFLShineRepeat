@@ -10,7 +10,7 @@ import { RosterService } from '../../services/roster.service';
 @Component({
     selector: 'ssr-register-form',
     templateUrl: 'register-form.component.html',
-    styleUrls: ['./register-form.component.css']
+    styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
     registerForm: FormGroup;
@@ -30,14 +30,14 @@ export class RegisterFormComponent implements OnInit {
 
         this.registerForm = this.formBuilder.group({
             email: ['', Validators.required],
-            password: ['', 
+            password: ['',
                 [
-                    Validators.required, 
+                    Validators.required,
                     Validators.minLength(6),
                     Validators.maxLength(20)
                 ]
             ],
-            tag: ['', 
+            tag: ['',
                 [
                     Validators.required,
                     Validators.maxLength(20)

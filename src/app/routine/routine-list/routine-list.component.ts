@@ -5,7 +5,7 @@ import { Routine } from '../../interfaces/routine';
 @Component({
     selector: 'ssr-routine-list',
     templateUrl: './routine-list.component.html',
-    styleUrls: ['./routine-list.component.css']
+    styleUrls: ['./routine-list.component.scss']
 })
 export class RoutineListComponent implements OnInit {
     @Input() routines: Routine[];
