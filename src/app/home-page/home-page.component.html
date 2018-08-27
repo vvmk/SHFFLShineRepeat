@@ -1,9 +1,18 @@
-<div class="home-container">
-    <div class="header">
-        <p class="about"><span class="page-title">Welcome to SSR, a medium for creating and sharing and running Super Smash Bros. Melee practice routines.</span><br /><br />
-        <strong>BE WARNED</strong> this is pre-alpha software under heavy
-        development. Expect bugs. <br /><br />(feel free to report them <a href="https://github.com/vvmk/SHFFLShineRepeat/issues">here</a>)
-        </p>
+<div class="w-100 h-100 bg-light home-container">
+    <div class="w-100 bg-secondary d-flex justify-content-center header-container">
+        <div class="p-5 header-intro d-flex flex-column align-items-center justify-content-around">
+            <h1 class="w-75 text-white text-center">No more excuses</h1>
+            <h3 class="w-75 text-white text-center">Welcome to SHFFLShineRepeat. This is filler text. Start an account to your right or
+                <a [routerLink]="['/login']">Sign in</a> if you've already got one.</h3>
+        </div>
+        <div class="bg-success px-5 py-3 d-flex flex-column justify-content-around header-signup">
+            <h3 class="text-center">Sign up</h3>
+            <input type="text">
+            <input type="text">
+            <input type="text">
+            <input type="text">
+            <button class="btn btn-info">Sign Up</button>
+        </div>
     </div>
     <div class="firstquote">
         <p class="quote">"Melee is hard"<br><span class="quoteauthor">-everyone</span></p>
