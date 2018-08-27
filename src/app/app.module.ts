@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { EndpointService } from './services/endpoint.service';
@@ -44,6 +45,7 @@ import { FourOhFourComponent } from './four-oh-four.component';
     CreatorModule,
     NgbModule,
     NgbDropdownModule,
+    FontAwesomeModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent },
       { path: '**', redirectTo: 'fourohfour', pathMatch: 'full' },
