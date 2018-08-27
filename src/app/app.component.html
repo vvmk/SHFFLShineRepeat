@@ -1,14 +1,13 @@
-<nav class="navbar fixed-top navbar-dark bg-dark text-light px-lg-5">
+<nav class="navbar fixed-top bg-dark text-light px-lg-5">
     <a class="navbar-brand" [routerLink]="['/']">
         <img src="../assets/images/nav_brand.svg" width="30" height="30" alt="" />
     </a>
-    <ul class="nav navbar-nav flex-row mr-auto">
-        <li class="nav-item px-3" *ngIf='!authService.isLoggedIn()'><a class="nav-link" [routerLink]="['/login']">Log in</a></li>
-        <li class="nav-item px-3" *ngIf='!authService.isLoggedIn()'><a class="nav-link" [routerLink]="['/register']">Sign Up</a></li>
-        <li ngbDropdown *ngIf='authService.isLoggedIn()' class="nav-item dropdown px-3">
+    <ul class="nav navbar-nav flex-row ml-auto">
+        <li class="nav-item px-3 py-0" *ngIf='!auth.isLoggedIn()'><a class="nav-link" [routerLink]="['/login']">Log in</a></li>
+        <li class="nav-item px-3 py-0" *ngIf='!auth.isLoggedIn()'><a class="nav-link" [routerLink]="['/register']">Sign Up</a></li>
+        <li ngbDropdown *ngIf='auth.isLoggedIn()' class="text-light nav-item dropdown px-3 py-0">
             <button ngbDropdownToggle class="dropdown-toggle text-info btn btn-link" id="dropdownMenuButton">
-                <!-- {{userService.currentUser.tag}} -->
-                user
+                <img [src]="avatarSource" class="border border-success rounded-circle user-icon"/>
             </button>
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <button class="dropdown-item" [routerLink]="['/library']">Library</button>
@@ -18,8 +17,7 @@
             </div>
         </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    </form>
 </nav>
-<router-outlet></router-outlet>
+<div class="p-0 h-100 w-100 bg-white content-container">
+    <router-outlet></router-outlet>
+</div>

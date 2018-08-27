@@ -13,10 +13,10 @@ import { Router, Event, NavigationStart } from '@angular/router';
 })
 export class AppComponent implements OnInit {
     title = 'SHFFL->Shine->Repeat';
-    loggedIn: boolean;
+    avatarSource = '../assets/images/avatar-Default.png';
 
     constructor(
-        private authService: AuthService,
+        private auth: AuthService,
         private userService: UserService,
         private router: Router,
     ) { }
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
     }
 
     logout(): void {
-        this.authService.logout();
+        this.auth.logout();
         this.router.navigate(['/login']);
     }
 
@@ -38,8 +38,11 @@ export class AppComponent implements OnInit {
 
     checkRouterEvent(routerEvent: Event): void {
         if (routerEvent instanceof NavigationStart) {
-            this.authService.verifyCurrentUser();
-            this.loggedIn = this.authService.isLoggedIn();
+            this.auth.verifyCurrentUser();
+
+            if (!this.userService.currentUser) {
+                this.userService.setUser();
+            }
         }
     }
 }
