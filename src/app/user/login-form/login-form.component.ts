@@ -12,6 +12,7 @@ import { EndpointService } from '../../services/endpoint.service';
 })
 export class LoginFormComponent implements OnInit {
   loginForm;
+  logoSrc = '';
 
   constructor(
     private fb: FormBuilder,

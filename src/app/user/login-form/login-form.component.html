@@ -1,36 +1,35 @@
-<span style="position: absolute;top:0px;left:5px;;font-size: .8rem;">*UI and UX are also under heavy development 🙈 </span>
-<div class="user_options-forms" id="user_options-forms">
-    <div class="user_forms-login">
-        <h2 class="forms_title">Login</h2>
-        <form [formGroup]="loginForm">
-            <fieldset class="forms_fieldset">
-                <div class="forms_field">
-                    <label>Email:</label>
-                    <input name="email"
-                           formControlName="email"
-                           class="forms_field-input"
-                           required
-                           autofocus
-                           />
-                </div>
-                <div class="forms_field">
-                    <label>Password:</label>
-                    <input name="password"
-                           formControlName="password"
-                           type="password"
-                           class="forms_field-input"
-                           required
-                           />
-                </div>
-            </fieldset>
-            <div class="forms_buttons">
-                <button class="forms_buttons-action"
-                        (click)="login()">Login</button>
+<div class="w-100 h-100 text-dark bg-light">
+    <div class="container d-flex justify-content-around align-items-center flex-column login-container">
+        <div class="login-logo">
+            <img class="text-success" [src]="logoSrc" />
+        </div>
+        <h3 class="text-center py-2">Sign in to SSR</h3>
+        <form class="border p-3 text-white shadow-lg bg-secondary my-1 rounded login-form"
+              [formGroup]="loginForm">
+            <div class="form-group">
+                <label for="loginEmail">Email address</label>
+                <input class="border form-control" 
+                       name="email"
+                       id="loginEmail"
+                       type="email"
+                       formControlName="email"
+                       required
+                       autofocus>
             </div>
-            <div class="login-register">
-                <button (click)='forgot()'>I forgot my password</button><br>
-                <a [routerLink]="['/register']">Sign Up</a>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input class="border form-control" 
+                       name="password"
+                       id="loginPassword" 
+                       type="password"
+                       formControlName="password"
+                       required>
             </div>
+            <button class="w-100 btn btn-lg btn-success" type="submit" (click)="login()">Submit</button>
+            <button class="btn btn-link" (click)='forgot()'><small>I forgot my password</small></button>
+            <div class="mt-4 w-100 border rounded-0"></div>
+            <a class="btn btn-link" [routerLink]="['/register']">Don't have an account yet?</a>
+
         </form>
     </div>
 </div>
