@@ -24,7 +24,7 @@
                     formControlName="password">
                 </div>
                 <label class="my-1 mr-2" for="mainSelect">Main</label>
-                <select class="custom-select my-1 mr-sm-2" id="mainSelect" placeholder="Who do you main?"
+                <select class="form-control custom-select my-1 mr-sm-2" id="mainSelect" placeholder="Who do you main?"
                     formControlName="main">
                     <option *ngFor="let character of roster" [value]="character">
                     {{character}}
