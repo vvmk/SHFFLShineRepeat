@@ -69,7 +69,6 @@ $blur-deviation: 8px;
 
 .twentyxx-container {
     @extend %section;
-    outline: 1px solid red;
 }
 
 .register-container {
@@ -129,4 +128,9 @@ $blur-deviation: 8px;
 
 .feature-icon {
     font-size: 35px;
+}
+
+.shoutout {
+    font-size: 1.3rem;
+    line-height: 3rem;
 }
