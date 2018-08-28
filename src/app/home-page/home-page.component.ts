@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faStopwatch, faEdit, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { RosterService } from '../services/roster.service';
 
 @Component({
   selector: 'ssr-home-page',
@@ -11,10 +12,14 @@ export class HomePageComponent implements OnInit {
   faStopwatch = faStopwatch;
   faEdit = faEdit;
   faSearch = faSearch;
+    roster: string[];
 
-  constructor() { }
+  constructor(
+    private rosterService: RosterService,
+  ) { }
 
   ngOnInit() {
+      this.roster = this.rosterService.getRoster();
   }
 
 }

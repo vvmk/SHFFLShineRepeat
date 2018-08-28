@@ -6,13 +6,29 @@
                 SHFFL-&gt;Shine-&gt;Repeat handles the minutia of time-keeping and drill-tracking so you can get better, faster.
             </h3><h3>Set up your profile to the right or <a [routerLink]="['/login']">Sign in</a> if you've already got one.</h3>
         </div>
-        <div class="bg-success shadow-lg p-3 d-flex flex-column justify-content-around header-signup">
-            <h3 class="text-center">I want to be better...</h3>
-            <input type="text">
-            <input type="text">
-            <input type="text">
-            <input type="text">
-            <button class="btn btn-large btn-info">Let me in</button>
+        <div class="bg-success shadow-lg p-3 pb-0 d-flex flex-column justify-content-around header-signup">
+            <form class="form-group">
+                <div class="form-group">
+                    <label for="headerTag">Username</label>
+                    <input type="email" class="form-control" id="headerTag" placeholder="What's your tag?">
+                </div>
+                <div class="form-group">
+                    <label for="headerEmail">Email</label>
+                    <input type="email" class="form-control" id="headerEmail" placeholder="you@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="headerPassword">Password</label>
+                    <input type="password" class="form-control" id="headerPassword" placeholder="Create a password">
+                </div>
+                <label class="my-1 mr-2" for="mainSelect">Main</label>
+                <select class="custom-select my-1 mr-sm-2" id="mainSelect">
+                    <option selected>Who do you main?</option>
+                    <option *ngFor="let character of roster" [value]="character">
+                    {{character}}
+                    </option>
+                </select>
+                <button class="btn btn-large btn-info w-100 mt-3" type="submit">Let me in</button>
+            </form>
         </div>
     </div>
     <div class="w-100 bg-white text-dark p-5 container justify-content-around quote-container">
@@ -71,7 +87,7 @@
                         <fa-icon class="feature-icon" [icon]="faEdit"></fa-icon>
                     </div>
                     <div class="card-body">
-                        <h5 class="text-center pb-2">Stay organised</h5>
+                        <h5 class="text-center pb-2">Stay organized</h5>
                         <p class="card-text">Compose new routines right in the browser so they're never more than a click away. Organise routines
                         by character, training partner, or stage. Edit them as you learn and perfect new things so you never stop 
                         growing as a player.</p>
