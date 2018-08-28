@@ -65,6 +65,10 @@ $blur-deviation: 8px;
 
 .features-container {
     @extend %section;
+}
+
+.twentyxx-container {
+    @extend %section;
     outline: 1px solid red;
 }
 
@@ -117,6 +121,10 @@ $blur-deviation: 8px;
 
 .register-container {
     @extend %section;
+}
+
+.feature {
+    height: 290px;
 }
 
 .feature-icon {
