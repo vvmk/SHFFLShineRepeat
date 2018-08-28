@@ -73,7 +73,6 @@ $blur-deviation: 8px;
 
 .register-container {
     @extend %section;
-    outline: 1px solid blue;
 }
 
 %quote {
@@ -133,4 +132,8 @@ $blur-deviation: 8px;
 .shoutout {
     font-size: 1.3rem;
     line-height: 3rem;
+}
+
+.register-button {
+    width: 200px;
 }
