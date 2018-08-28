@@ -1,13 +1,14 @@
 <div class='library-header-container'>
-    <img class="user-picture" src="{{avatar}}" alt="profile picture" />
-    <div class="user-title">
-        <span class="user-tag">{{user.tag}}</span>
+    <img class="w-100 h-100 border rounded user-picture" src="{{avatar}}" alt="profile picture" />
+    <div class="d-flex justify-content-between user-title">
+        <span class="text-center user-tag">{{user.tag}}</span>
         <img class="user-main-token"
-             alt="{{user.main}}"
              [src]="rosterService.getStockIconUrl(user.main)"/>
     </div>
-    <div class="user-bio">
-        {{user.bio}}
+    <div class="text-dark p-2 user-bio">
+        <!-- {{user.bio}} -->
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
     </div>
-    <button (click)="followEdit()" class="follow-edit" type="button">{{followOrEdit}}</button>
+    <button class="btn btn-info w-100 follow-edit"  (click)="followEdit()" type="button">{{followOrEdit}}</button>
+
 </div>

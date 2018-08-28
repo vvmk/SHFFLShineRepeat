@@ -1,4 +1,11 @@
-<div class="library-container">
-    <ssr-library-header [user]='user'></ssr-library-header>
-    <ssr-routine-list [routines]='routines'></ssr-routine-list>
+<div class="text-dark library-container">
+    <div class="container">
+        <ssr-library-header [user]='user'></ssr-library-header>
+        <ssr-routine-list [routines]='routines'></ssr-routine-list>
+        <div class="border border-gray rounded bg-warning " *ngIf="!routines">
+            <h3 class="text-center">You havn't added any routines yet</h3>
+            <p class="text-center"><a class="text-success" [routerLink]="['/creator']">Create one</a> 
+            now or find one using the search bar above.</p>
+        </div>
+    </div>
 </div>

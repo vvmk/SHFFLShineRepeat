@@ -9,36 +9,62 @@ exports.__esModule = true;
 var core_1 = require("@angular/core");
 var RosterService = /** @class */ (function () {
     function RosterService() {
+        this.stockIconBaseUrl = 'assets/images/stock-icons/stock_icon_';
+        this.listPortraitBaseUrl = 'assets/images/routine-list-avatars/list_avatar_';
+        this.cssPortraitBaseUrl = 'assets/images/css-portraits/css_portrait_';
+        this.stageBaseUrl = 'assets/images/stages/stage_';
         this.roster = [
             'Falco',
             'Fox',
             'Marth',
             'Captain Falcon',
             'Peach',
-            'Jigglypuff',
             'Sheik',
-            'Samus',
+            'Jigglypuff',
             'Ice Climbers',
+            'Pikachu',
+            'Samus',
             'Ganondorf',
-            'Ness',
-            'Yoshi',
-            'DK',
-            'Mario',
-            'Doctor Mario',
-            'Luigi',
-            'Bowser',
-            'Link',
-            'Young Link',
-            'Pichu',
-            'Zelda',
             'Mr. Game & Watch',
+            'Yoshi',
+            'Young Link',
+            'Mario',
+            'Luigi',
+            'Dr. Mario',
+            'Link',
+            'Bowser',
+            'Ness',
+            'DK',
+            'Zelda',
             'Kirby',
             'Mewtwo',
-            'Roy'
+            'Pichu',
+            'Roy',
+            'Any'
         ];
     }
     RosterService.prototype.getRoster = function () {
         return this.roster;
+    };
+    RosterService.prototype.getStockIconUrl = function (characterName) {
+        return this.stockIconBaseUrl +
+            this.normalizeName(characterName) + '.png';
+    };
+    RosterService.prototype.getListPortraitUrl = function (characterName) {
+        return this.listPortraitBaseUrl +
+            this.normalizeName(characterName) + '.png';
+    };
+    RosterService.prototype.getCssPortraitUrl = function (characterName) {
+        return this.cssPortraitBaseUrl +
+            this.normalizeName(characterName) + '.png';
+    };
+    RosterService.prototype.getStageUrl = function (stageName) {
+        return this.stageBaseUrl +
+            this.normalizeName(stageName) + '.png';
+    };
+    RosterService.prototype.normalizeName = function (name) {
+        if (name === void 0) { name = 'default'; }
+        return name.replace(/\W/g, "").toLowerCase();
     };
     RosterService = __decorate([
         core_1.Injectable({

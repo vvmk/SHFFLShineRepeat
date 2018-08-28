@@ -9,14 +9,30 @@ exports.__esModule = true;
 var core_1 = require("@angular/core");
 var operators_1 = require("rxjs/operators");
 var UserService = /** @class */ (function () {
-    function UserService(http, es, authService) {
+    function UserService(http, es, auth) {
         this.http = http;
         this.es = es;
-        this.authService = authService;
+        this.auth = auth;
     }
+    // returns user data for a supplied id or the current user if none
+    // is provided
     UserService.prototype.getUser = function (userId) {
-        if (userId === void 0) { userId = this.authService.currentUserId; }
+        if (userId === void 0) { userId = this.auth.currentUserId; }
         return this.http.get(this.es.userURL(userId)).pipe(operators_1.shareReplay());
+    };
+    UserService.prototype.saveUser = function (user) {
+        this.currentUser = user;
+        // PUT user
+    };
+    // get and cache the current user when logging in or returning
+    UserService.prototype.setUser = function () {
+        var _this = this;
+        this.getUser().pipe(operators_1.first()).subscribe(function (user) {
+            _this.currentUser = user;
+        });
+    };
+    UserService.prototype.clearUser = function () {
+        this.currentUser = null;
     };
     UserService.prototype.register = function (user) {
         var url = this.es.baseUrl + '/register';

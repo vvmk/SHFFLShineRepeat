@@ -14,13 +14,6 @@ var AuthService = /** @class */ (function () {
         this.http = http;
         this.es = es;
     }
-    Object.defineProperty(AuthService.prototype, "currentUserId", {
-        get: function () {
-            return this.currentUserId;
-        },
-        enumerable: true,
-        configurable: true
-    });
     AuthService.prototype.isLoggedIn = function () {
         return !!this.currentUserId;
     };
