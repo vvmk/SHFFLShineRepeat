@@ -34,8 +34,11 @@ export class UserService {
     setUser() {
         this.getUser().pipe(first()).subscribe(user => {
             this.currentUser = user;
-            console.log('found user: ', user);
         });
+    }
+
+    clearUser() {
+        this.currentUser = null;
     }
 
     register(user: NewUser) {

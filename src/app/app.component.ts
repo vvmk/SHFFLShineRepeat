@@ -29,6 +29,8 @@ export class AppComponent implements OnInit {
 
     logout(): void {
         this.auth.logout();
+        this.userService.clearUser();
+
         this.router.navigate(['/login']);
     }
 
@@ -40,7 +42,7 @@ export class AppComponent implements OnInit {
         if (routerEvent instanceof NavigationStart) {
             this.auth.verifyCurrentUser();
 
-            if (!this.userService.currentUser) {
+            if (this.auth.isLoggedIn() && !this.userService.currentUser) {
                 this.userService.setUser();
             }
         }
