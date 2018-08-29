@@ -7,6 +7,8 @@ import { UserService } from '../../services/user.service';
 import { RoutineService } from '../../services/routine.service';
 import { RosterService } from '../../services/roster.service';
 import { RoutineFormGuard } from '../../services/routine-guard.service';
+import { faMinusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'ssr-creator-routine-form',
@@ -20,6 +22,9 @@ export class RoutineFormComponent implements OnInit {
     routineForm: FormGroup;
     user: User;
     initialHeight = 600;
+
+    faMinusCircle = faMinusCircle;
+    faPlusCircle = faPlusCircle;
 
     get drills(): FormArray {
         return <FormArray>this.routineForm.get('drills');
@@ -71,8 +76,8 @@ export class RoutineFormComponent implements OnInit {
     addDrill(): void {
         this.drills.push(this.buildDrill());
         // get the drill container and add extra pixels for it
-        let e = document.getElementById('routine-form-container');
-        let newLength =  this.initialHeight + (this.drills.length * 142.4);
+        const e = document.getElementById('routine-form-container');
+        const newLength =  this.initialHeight + (this.drills.length * 142.4);
         console.log('new height: ' + newLength);
         e.style.height = newLength + 'px';
     }
@@ -99,12 +104,12 @@ export class RoutineFormComponent implements OnInit {
 
     save(): void {
         if (this.routineForm.dirty && this.routineForm.valid) {
-            
+
             // copy the new values over the routine object values
             let r = Object.assign({}, this.routine, this.routineForm.value);
             r = this.setRoutineTotalDuration(r);
 
-            console.log("saving object: ", r);
+            console.log('saving object: ', r);
 
             this.routineService.saveRoutine(r)
                 .subscribe(() => this.onSaveComplete());

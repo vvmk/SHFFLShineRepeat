@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { RoutineFormGuard } from '../services/routine-guard.service';
 import { RoutineResolverService } from '../services/routine-resolver.service';
 import { AuthGuardService } from '../services/auth-guard.service';
@@ -13,6 +15,7 @@ import { EditRoutineComponent } from './edit-routine/edit-routine.component';
 @NgModule({
     imports: [
         CommonModule,
+        FontAwesomeModule,
         ReactiveFormsModule,
         RouterModule.forChild([
             {
