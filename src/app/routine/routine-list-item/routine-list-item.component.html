@@ -1,20 +1,22 @@
-<div class="list-item-container">
-    <div class="list-item-meta">
-        <div class="list-item-title">{{routine.title}}</div>
-        <span class="list-item-stats">
-            <img class="small-icon" src="assets/images/clock.png" />
-            {{routine.total_duration}}
-        </span>
-        <span *ngIf="routine.popularity > 0" class="list-item-stats">
-            <img class="small-icon" src="assets/images/star.png" />
-            {{routine.popularity}}
-        </span>
+<div class="d-flex flex-row justify-content-end border rounded list-item-container">
+    <div class="ml-2 mr-auto list-item-meta">
+        <div class="list-item-title"><button class="w-100 btn btn-link title-button" (click)="viewRoutine()" type="button">{{routine.title}}</button></div>
+        <div class="ml-2 pb-1">
+            <span class="list-item-stats">
+                <img class="small-icon" src="assets/images/clock.png" />
+                {{routine.total_duration}}
+            </span>
+            <span *ngIf="routine.popularity > 0" class="list-item-stats">
+                <img class="small-icon" src="assets/images/star.png" />
+                {{routine.popularity}}
+            </span>
+        </div>
     </div>
-    <div class="list-item-buttons">
-        <button class="view-routine-button" (click)="viewRoutine()" type="button">
+    <div class="px-2 d-flex justify-content-around flex-column align-items-center">
+        <button class="mt-1 btn btn-sm btn-light border rounded" (click)="viewRoutine()" type="button">
             Details
         </button>
-        <button class="run-routine-button" (click)="runRoutine()" type="button">
+        <button class="mt-1 btn btn-sm btn-success border rounded" (click)="runRoutine()" type="button">
             Run
         </button>
     </div>

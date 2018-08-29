@@ -1,11 +1,16 @@
-<div class="text-dark library-container">
+<div class="pt-5 text-dark library-container">
     <div class="container">
-        <ssr-library-header [user]='user'></ssr-library-header>
-        <ssr-routine-list [routines]='routines'></ssr-routine-list>
-        <div class="border border-gray rounded bg-warning " *ngIf="!routines">
-            <h3 class="text-center">You havn't added any routines yet</h3>
-            <p class="text-center"><a class="text-success" [routerLink]="['/creator']">Create one</a> 
-            now or find one using the search bar above.</p>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <ssr-library-header [user]='user'></ssr-library-header>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9">
+                <ssr-routine-list [routines]='routines'></ssr-routine-list>
+                <div class="border border-gray rounded bg-warning " *ngIf="!routines">
+                    <h3 class="text-center">You havn't added any routines yet</h3>
+                    <p class="text-center"><a class="text-success" [routerLink]="['/creator']">Create one</a> 
+                    now or find one using the search bar above.</p>
+                </div>
+            </div>
         </div>
     </div>
-</div>
