@@ -75,11 +75,6 @@ export class RoutineFormComponent implements OnInit {
 
     addDrill(): void {
         this.drills.push(this.buildDrill());
-        // get the drill container and add extra pixels for it
-        const e = document.getElementById('routine-form-container');
-        const newLength =  this.initialHeight + (this.drills.length * 142.4);
-        console.log('new height: ' + newLength);
-        e.style.height = newLength + 'px';
     }
 
     buildDrill(title: string = null, duration: number = null): FormGroup {
@@ -99,7 +94,6 @@ export class RoutineFormComponent implements OnInit {
 
     removeDrill(id: number): void {
         this.drills.removeAt(id);
-        // remove pixels from it
     }
 
     save(): void {
@@ -109,8 +103,7 @@ export class RoutineFormComponent implements OnInit {
             let r = Object.assign({}, this.routine, this.routineForm.value);
             r = this.setRoutineTotalDuration(r);
 
-            console.log('saving object: ', r);
-
+            // console.log('saving object: ', r);
             this.routineService.saveRoutine(r)
                 .subscribe(() => this.onSaveComplete());
 
