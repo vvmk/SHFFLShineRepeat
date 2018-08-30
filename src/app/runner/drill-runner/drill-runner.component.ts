@@ -22,6 +22,10 @@ export class DrillRunnerComponent implements OnInit {
         this.drillIndex = 0;
     }
 
+    ngOnInit() {
+        this.route.data.subscribe(data => this.setProps(data));
+    }
+
     runDrills(index: number): void {
         if (index >= this.drills.length) {
             this.drillIndex = 0;
@@ -45,10 +49,6 @@ export class DrillRunnerComponent implements OnInit {
 
     displayTick(tick: number) {
         this.drillTick = tick;
-    }
-
-    ngOnInit() {
-        this.route.data.subscribe(data => this.setProps(data));
     }
 
     setProps(data): void {

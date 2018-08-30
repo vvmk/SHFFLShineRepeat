@@ -11,7 +11,7 @@ import { RoutineResolverService } from '../services/routine-resolver.service';
         CommonModule,
         NgbModule,
         RouterModule.forChild([
-            { 
+            {
                 path: 'runner/:id',
                 component: DrillRunnerComponent,
                 resolve: { routine: RoutineResolverService }
