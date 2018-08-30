@@ -10,10 +10,13 @@
                 <img [src]="avatarSource" class="border border-success rounded-circle user-icon"/>
             </button>
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <button class="dropdown-item" [routerLink]="['/library']">Library</button>
-                <button class="dropdown-item" [routerLink]="['/create']">Create</button>
+                <button class="dropdown-item" [routerLink]="['/library']">My Library</button>
+                <button class="dropdown-item" [routerLink]="['/create']">New Routine</button>
                 <div class="dropdown-divider"></div>
-                <button class="dropdown-item" (click)='logout()' [routerLink]="['/login']">Logout</button>
+                <button class="disabled dropdown-item">Help</button>
+                <button class="disabled dropdown-item">Settings</button>
+                <a class="dropdown-item" target="_blank" href="https://github.com/vvmk/SHFFLShineRepeat/issues">Report a bug</a>
+                <button class="dropdown-item" (click)='logout()' [routerLink]="['/login']">Sign out</button>
             </div>
         </li>
     </ul>

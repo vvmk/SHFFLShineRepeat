@@ -15,7 +15,9 @@ export class UserService {
         private http: HttpClient,
         private es: EndpointService,
         private auth: AuthService
-    ) { }
+    ) {
+        this.currentUser = <User>{};
+    }
 
     // returns user data for a supplied id or the current user if none
     // is provided
