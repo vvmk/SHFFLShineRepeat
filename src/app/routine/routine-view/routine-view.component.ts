@@ -5,6 +5,7 @@ import { RoutineService } from '../../services/routine.service';
 import { UserService } from '../../services/user.service';
 import { RosterService } from '../../services/roster.service';
 import { AuthService } from '../../services/auth.service';
+import { faStopwatch, faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'ssr-routine-view',
@@ -16,13 +17,16 @@ export class RoutineViewComponent implements OnInit {
     routine: Routine = <Routine>{};
     creatorTag: string;
 
+    faStopwatch = faStopwatch;
+    faStar = faStar;
+
     constructor(
         private routineService: RoutineService,
         private userService: UserService,
         private route: ActivatedRoute,
         private router: Router,
         private rosterService: RosterService,
-        private authService: AuthService
+        private auth: AuthService
     ) {}
 
     ngOnInit() {
@@ -34,7 +38,7 @@ export class RoutineViewComponent implements OnInit {
         this.pageTitle = this.routine.title;
 
         this.userService.getUser(this.routine.creator_id)
-            .subscribe(u => this.creatorTag = u.tag);
+        .subscribe(u => this.creatorTag = u.tag);
     }
 
     runRoutine(): void {
@@ -51,11 +55,11 @@ export class RoutineViewComponent implements OnInit {
         if (confirm(msg)) {
 
             this.routineService.deleteRoutine(this.routine.routine_id)
-            .subscribe(response => {
-                // TODO: navigate away and stuff
-                console.log('deleted: ' + response);
-                console.log('TODO: redirect to library/somewhere idk yet');
-            });
+                .subscribe(response => {
+                    // TODO: navigate away and stuff
+                    console.log('deleted: ' + response);
+                    console.log('TODO: redirect to library/somewhere idk yet');
+                });
         }
     }
 }
