@@ -1,73 +1,76 @@
-<div class="routine-view-container">
-    <div class="routine-view-side">
-        <div class="routine-meta">
-            <div class="routine-title">{{routine.title}}</div>
-            <span class="routine-stats">
-                <img class="small-icon" src="assets/images/clock.png" />
-                {{routine.total_duration}}
-            </span>
-            <span *ngIf="routine.popularity > 0" class="routine-stats">
-                <img class="small-icon" src="assets/images/star.png" />
-                {{routine.popularity}}
-            </span>
-            <div class="original-creator">
-                <span>Created By</span>
-                <a [routerLink]="['/user/', routine.originalCreatorId]">
-                    {{creatorTag}}
-                </a>
+<div class="pt-3 w-100 h-100 text-dark routine-view-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-2 routine-view-side">
+                <div class="routine-title">{{routine.title}}</div>
+                <span class="routine-stats">
+                    <img class="small-icon" src="assets/images/clock.png" />
+                    {{routine.total_duration}}
+                </span>
+                <span *ngIf="routine.popularity > 0" class="routine-stats">
+                    <img class="small-icon" src="assets/images/star.png" />
+                    {{routine.popularity}}
+                </span>
+                <div class="original-creator">
+                    <small>Created by</small>
+                    <a [routerLink]="['/user/', routine.originalCreatorId]">
+                        {{creatorTag}}
+                    </a>
+                </div>
+            </div>
+            <div class='routine-view-controls'>
+                <button (click)='console.log("fork not implemented")'
+                 *ngIf='routine.creatorId !== authService.currentUserId'>
+                    Copy to My Library
+                </button>
+                <button (click)='editRoutine()'
+                 *ngIf='routine.creatorId == authService.currentUserId'>
+                    Edit
+                </button>
+                <button 
+                 *ngIf='routine.creatorId == authService.currentUserId'
+                 color='danger' (click)='deleteRoutine()'>
+                    Delete
+                </button>
+            </div>
+            <div class="routine-view-drills">
+                <ul>
+                    <li class="drill-item" *ngFor='let drill of routine.drills'>
+                        <div class="drill-title">
+                            {{drill.drill_title}}
+                        </div>
+                        <span class="drill-duration">
+                            <img class="small-icon" src="assets/images/clock.png" />
+                            {{drill.duration}}
+                        </span>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class='routine-view-controls'>
-            <button (click)='console.log("fork not implemented")'
-                *ngIf='routine.creatorId !== authService.currentUserId'>
-                Copy to My Library
-            </button>
-            <button (click)='editRoutine()'
-                *ngIf='routine.creatorId == authService.currentUserId'>
-                Edit
-            </button>
-            <button 
-                *ngIf='routine.creatorId == authService.currentUserId'
-                color='danger' (click)='deleteRoutine()'>
-                Delete
-            </button>
+        <div class="col-10 routine-view-top">
+            <div class="routine-description">
+                This is a general purpose routine designed to be run at
+                least 3 times a week to keep my falco techskill from 
+                deteriorating between tournaments.
+            </div>
+            <img class="character-portrait"
+                 [src]="rosterService.getCssPortraitUrl(routine.character)" />
         </div>
-        <div class="routine-view-drills">
-            <ul>
-                <li class="drill-item" *ngFor='let drill of routine.drills'>
-                    <div class="drill-title">
-                        {{drill.drill_title}}
-                    </div>
-                    <span class="drill-duration">
-                        <img class="small-icon" src="assets/images/clock.png" />
-                        {{drill.duration}}
-                    </span>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div class="routine-view-top">
-        <div class="routine-description">
-            This is a general purpose routine designed to be run at
-            least 3 times a week to keep my falco techskill from 
-            deteriorating between tournaments.
-        </div>
-        <img class="character-portrait"
-             [src]="rosterService.getCssPortraitUrl(routine.character)"
-             alt="{{routine.character}}" />
-    </div>
-    <div class="routine-view-setup">
-        <div class="stage">
-            <span class="small-underline">Stage&nbsp;&nbsp;</span>
-            <img class="routine-setup-image"
-                 [src]="rosterService.getStageUrl('Yoshis Story')"
-                 alt="Yoshi's Story" />
-        </div>
-        <div class="training-dummy">
-            <span class="small-underline">CPU Character&nbsp;&nbsp;</span>
-            <img class="routine-setup-image"
-                 [src]="rosterService.getListPortraitUrl('Fox')"
-                 alt="Fox" />
+    </div><!-- end first row -->
+    <div class="row">
+        <div class="col-12 routine-view-setup">
+            <div class="stage">
+                <span class="small-underline">Stage&nbsp;&nbsp;</span>
+                <img class="routine-setup-image"
+                     [src]="rosterService.getStageUrl('Yoshis Story')"
+                     alt="Yoshi's Story" />
+            </div>
+            <div class="training-dummy">
+                <span class="small-underline">CPU Character&nbsp;&nbsp;</span>
+                <img class="routine-setup-image"
+                     [src]="rosterService.getListPortraitUrl('Fox')"
+                     alt="Fox" />
+            </div>
         </div>
     </div>
 </div>
