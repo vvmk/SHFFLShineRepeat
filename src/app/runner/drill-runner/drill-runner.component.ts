@@ -4,13 +4,13 @@ import { Routine } from '../../interfaces/routine';
 import { RoutineService } from '../../services/routine.service';
 import { RosterService } from '../../services/roster.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { faSun, faMoon, faPlay, faStopwatch } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon, faPlay, faStopwatch, faTimes, faStop, faPause, faForward, faBackward } from '@fortawesome/free-solid-svg-icons';
 import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
-    templateUrl: './drill-runner.component.html',
-    styleUrls: ['./drill-runner.component.scss'],
-    animations: [
+  templateUrl: './drill-runner.component.html',
+  styleUrls: ['./drill-runner.component.scss'],
+  animations: [
     trigger(
       'enterAnimation', [
         transition(':enter', [
@@ -26,64 +26,79 @@ import { trigger, style, animate, transition } from '@angular/animations';
   ]
 })
 export class DrillRunnerComponent implements OnInit {
-    title = 'SHFFL->Shine->Repeat';
-    routine: Routine;
-    drills: Drill[] = [];
-    drillIndex: number;
-    drillTitle: string;
-    drillTick: number;
+  title = 'SHFFL->Shine->Repeat';
+  routine: Routine;
+  drills: Drill[] = [];
+  drillIndex: number;
+  drillTitle: string;
+  drillTick: number;
 
-    running = false;
+  running = false;
 
-    colorTheme = 'light';
-    faSun = faSun;
-    faMoon = faMoon;
-    faPlay = faPlay;
-    faStopwatch = faStopwatch;
+  colorTheme = 'light';
+  faSun = faSun;
+  faMoon = faMoon;
+  faPlay = faPlay;
+  faStopwatch = faStopwatch;
+  faTimes = faTimes;
+  faPause = faPause;
+  faStop = faStop;
+  faForward = faForward;
+  faBackward = faBackward;
 
-    constructor(
-        private routineService: RoutineService,
-        private route: ActivatedRoute,
-        private rosterService: RosterService,
-        private router: Router
-    ) {
-        this.drillIndex = 0;
+  constructor(
+    private routineService: RoutineService,
+    private route: ActivatedRoute,
+    private rosterService: RosterService,
+    private router: Router
+  ) {
+    this.drillIndex = 0;
+  }
+
+  ngOnInit() {
+    this.route.data.subscribe(data => this.setProps(data));
+  }
+
+  runDrills(index: number): void {
+    if (index >= this.drills.length) {
+      this.drillIndex = 0;
+
+      this.running = false;
+      return;
     }
 
-    ngOnInit() {
-        this.route.data.subscribe(data => this.setProps(data));
+    const d = this.drills[index];
+    this.drillTitle = d.drill_title;
+    this.countdown(d.duration);
+  }
+
+  countdown(seconds: number) {
+    this.displayTick(seconds);
+    if (seconds > 0) {
+      setTimeout(() => this.countdown(seconds - 1), 1000);
+    } else {
+      this.drillIndex++;
+      setTimeout(() => this.runDrills(this.drillIndex), 1000);
     }
+  }
 
-    runDrills(index: number): void {
-        this.running = true;
-        if (index >= this.drills.length) {
-            this.drillIndex = 0;
+  displayTick(tick: number) {
+    this.drillTick = tick;
+  }
 
-            this.running = false;
-            return;
-        }
+  setProps(data): void {
+    this.routine = data['routine'];
+    this.drills = this.routine.drills;
+  }
 
-        const d = this.drills[index];
-        this.drillTitle = d.drill_title;
-        this.countdown(d.duration);
-    }
+  // TODO: DEMO ONLY, TIMER LOGIC IS GETTING A TOTAL REWRITE
+  openDrills() {
+    this.running = true;
+    this.runDrills(0);
+  }
 
-    countdown(seconds: number) {
-        this.displayTick(seconds);
-        if (seconds > 0) {
-            setTimeout(() => this.countdown(seconds - 1), 1000);
-        } else {
-            this.drillIndex++;
-            setTimeout(() => this.runDrills(this.drillIndex), 1000);
-        }
-    }
+  closeDrills() {
+    this.running = false;
+  }
 
-    displayTick(tick: number) {
-        this.drillTick = tick;
-    }
-
-    setProps(data): void {
-        this.routine = data['routine'];
-        this.drills = this.routine.drills;
-    }
 }

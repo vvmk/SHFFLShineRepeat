@@ -16,7 +16,7 @@
                 </h5>
             </div>
             <div class="col-xs-12 col-md-2 mt-2">
-                <button class="w-100 btn btn-success btn-lg" (click)='runDrills(0)'>
+                <button class="w-100 btn btn-success btn-lg" (click)='openDrills()'>
                     <fa-icon [icon]="faPlay"></fa-icon>
                 </button>
             </div>
@@ -24,6 +24,9 @@
     </div>
     <div class="h-100 w-100 bg-secondary container-fluid d-flex flex-column justify-content-start align-items-center runner-bottom"
          *ngIf="running" [@enterAnimation]>
+        <button class="close runner-close" type="button" (click)="closeDrills()">
+            <fa-icon class="text-light" [icon]="faTimes"></fa-icon>
+        </button>
         <span class="my-5 p-0 text-center drill-title">
             {{drillTitle}}
         </span>
