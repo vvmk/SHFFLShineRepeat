@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class EndpointService {
-    public baseUrl = 'http://localhost:8080';
+    public baseUrl = 'http://localhost:8001';
 
     constructor() { }
 

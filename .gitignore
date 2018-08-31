@@ -5,6 +5,7 @@
 *.error
 scratch.*
 *.sql
+scratch
 
 ### Angular ###
 ## Angular ##
