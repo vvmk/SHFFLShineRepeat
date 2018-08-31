@@ -2,7 +2,7 @@
     <div class="w-100 mb-5 bg-secondary d-flex justify-content-center header-container">
         <div class="container d-flex align-items-center">
             <div class="row">
-                <div class="offset-lg-1 col-lg-6 p-1 header-intro d-flex flex-column align-items-start justify-content-start">
+                <div class="col-sm-12 col-md-6 offset-lg-1 col-lg-6 p-2 header-intro d-flex flex-column align-items-start justify-content-start">
                     <h1 class="mb-3 text-white text-left">
                         No more johns...
                     </h1>
@@ -10,11 +10,14 @@
                         Your tech practice routine should be hard. Setting it up should be easy.
                         SHFFL-&gt;Shine-&gt;Repeat handles the minutia of time-keeping and drill-tracking so you can get better, faster.
                     </p>
-                    <h4>
+                    <h4 class="d-none d-md-block">
                         Set up a profile to the right or <a [routerLink]="['/login']">Sign in</a> if you've already got one.
                     </h4>
+                    <h4 class="d-md-none">
+                        <a [routerLink]="['/register']">Sign up</a> or <a [routerLink]="['/login']">log in</a>
+                    </h4>
                 </div>
-                <div class="offset-lg-1 col-lg-4 bg-success shadow-lg p-3 pb-0 d-flex flex-column justify-content-around header-signup">
+                <div class="col-md-6 offset-lg-1 col-lg-4 bg-success shadow-lg p-3 pb-0 d-none d-md-flex flex-column justify-content-around header-signup">
                     <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <label for="headerTag">Username</label>
