@@ -1,4 +1,15 @@
-<div>
+<div class="p-2 text-dark runner-container">
+    <div class="d-flex justify-content-end align-items-center runner-prefs">
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioTheme" [(ngModel)]="colorTheme">
+            <label ngbButtonLabel class="btn-light">
+                <input ngbButton type="radio" value="light"><fa-icon [icon]="faSun"></fa-icon>
+            </label>
+            <label ngbButtonLabel class="btn-light">
+                <input ngbButton type="radio" value="dark"><fa-icon [icon]="faMoon"></fa-icon>
+            </label>
+        </div>
+    </div>
+
     <div class="runner-top">
         <p class="routine-title">{{routine.title}}</p>
         <p class="routine-duration">Duration: {{routine.total_duration}}</p>

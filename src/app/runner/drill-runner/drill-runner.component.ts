@@ -3,6 +3,7 @@ import { Drill } from '../../interfaces/drill';
 import { Routine } from '../../interfaces/routine';
 import { RoutineService } from '../../services/routine.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     templateUrl: './drill-runner.component.html',
@@ -15,6 +16,10 @@ export class DrillRunnerComponent implements OnInit {
     drillIndex: number;
     drillTitle: string;
     drillTick: number;
+
+    colorTheme = 'light';
+    faSun = faSun;
+    faMoon = faMoon;
 
     constructor(private routineService: RoutineService,
         private route: ActivatedRoute,
