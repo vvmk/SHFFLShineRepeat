@@ -1,0 +1,56 @@
+version: "3.7"
+services:
+    db:
+        image: ssr-stack-db
+        build:
+            context: /Users/V/go/src/github.com/vvmk/shineserver/
+            dockerfile: db.dev.dockerfile
+        ports:
+            - "5432:5432"
+        env_file:
+            - ./scratch/db-vars.env
+        environment:
+            POSTGRES_PASSWORD: /run/secrets/ssr-pg-pw
+        secrets:
+            - ssr-jwt
+            - ssr-pg-pw
+        volumes:
+            - db-data:/var/lib/postgresql/data
+        networks:
+            - ssr-net
+        deploy:
+            placement:
+                constraints: [node.role == manager]
+
+    shineserver:
+        image: ssr-stack-shineserver
+        build:
+            context: /Users/V/go/src/github.com/vvmk/shineserver/docker
+            dockerfile: shineserver.dev.dockerfile
+        ports:
+            - "8001:8001"
+        networks:
+            - ssr-net
+        depends_on: 
+            - db
+        env_file:
+            - ./scratch/shineserver-vars.env
+        environment:
+            POSTGRES_PASSWORD: /run/secrets/ssr-pg-pw
+            SSRJWT: /run/secrets/ssr-jwt
+        secrets:
+            - ssr-jwt
+            - ssr-pg-pw
+
+secrets:
+    ssr-jwt:
+        file: ./scratch/jwt
+    ssr-pg-pw:
+        file: ./scratch/pg-pw
+
+networks:
+    ssr-net:
+        driver: overlay
+
+volumes:
+    db-data:
