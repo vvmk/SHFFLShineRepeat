@@ -38,13 +38,18 @@ $blur-deviation: 8px;
     filter: blur($blur-deviation);
 }
 
+.banner-text {
+    font-weight: 150;
+    font-size: 1.4rem;
+}
+
 .header-container {
     @include section;
 
-    padding-top: 5%;
-    padding-right: 10%;
-    padding-left: 10%;
-    padding-bottom: 5%;
+    // padding-top: 5%;
+    // padding-right: 10%;
+    // padding-left: 10%;
+    // padding-bottom: 5%;
 
     z-index: 0;
 }
@@ -54,8 +59,8 @@ $blur-deviation: 8px;
 }
 
 .header-signup {
-    margin-left: auto;
-    margin-right: 50px;
+    // margin-left: auto;
+    // margin-right: 50px;
 
     min-width: 300px;
     z-index: 1;

@@ -1,37 +1,47 @@
 <div class="w-100 h-100 bg-white home-container">
     <div class="w-100 mb-5 bg-secondary d-flex justify-content-center header-container">
-        <div class="p-5 header-intro d-flex flex-column align-items-center justify-content-around">
-            <h1 class="w-75 text-white text-center">No more johns...</h1>
-            <h4 class="w-75 text-white text-center">Your tech practice routine should be hard. Setting it up should be easy.
-                SHFFL-&gt;Shine-&gt;Repeat handles the minutia of time-keeping and drill-tracking so you can get better, faster.
-            </h4><h4>Set up a profile to the right or <a [routerLink]="['/login']">Sign in</a> if you've already got one.</h4>
-        </div>
-        <div class="bg-success shadow-lg p-3 pb-0 d-flex flex-column justify-content-around header-signup">
-            <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="headerTag">Username</label>
-                    <input type="text" class="form-control" id="headerTag" placeholder="What's your tag?"
-                    formControlName="tag">
+        <div class="container d-flex align-items-center">
+            <div class="row">
+                <div class="offset-lg-1 col-lg-6 p-1 header-intro d-flex flex-column align-items-start justify-content-start">
+                    <h1 class="mb-3 text-white text-left">
+                        No more johns...
+                    </h1>
+                    <p class="mb-3 text-white text-left banner-text">
+                        Your tech practice routine should be hard. Setting it up should be easy.
+                        SHFFL-&gt;Shine-&gt;Repeat handles the minutia of time-keeping and drill-tracking so you can get better, faster.
+                    </p>
+                    <h4>
+                        Set up a profile to the right or <a [routerLink]="['/login']">Sign in</a> if you've already got one.
+                    </h4>
                 </div>
-                <div class="form-group">
-                    <label for="headerEmail">Email</label>
-                    <input type="email" class="form-control" id="headerEmail" placeholder="you@example.com"
-                    formControlName="email">
+                <div class="offset-lg-1 col-lg-4 bg-success shadow-lg p-3 pb-0 d-flex flex-column justify-content-around header-signup">
+                    <form class="form-group" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="headerTag">Username</label>
+                            <input type="text" class="form-control" id="headerTag" placeholder="What's your tag?"
+                                                                                   formControlName="tag">
+                        </div>
+                        <div class="form-group">
+                            <label for="headerEmail">Email</label>
+                            <input type="email" class="form-control" id="headerEmail" placeholder="you@example.com"
+                                                                                      formControlName="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="headerPassword">Password</label>
+                            <input type="password" class="form-control" id="headerPassword" placeholder="Create a password"
+                                                                                            formControlName="password">
+                        </div>
+                        <label class="my-1 mr-2" for="mainSelect">Main</label>
+                        <select class="form-control custom-select my-1 mr-sm-2" id="mainSelect" placeholder="Who do you main?"
+                                                                                                formControlName="main">
+                            <option *ngFor="let character of roster" [value]="character">
+                            {{character}}
+                            </option>
+                        </select>
+                        <button class="btn btn-large btn-info w-100 mt-3" type="submit">Let me in</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="headerPassword">Password</label>
-                    <input type="password" class="form-control" id="headerPassword" placeholder="Create a password"
-                    formControlName="password">
-                </div>
-                <label class="my-1 mr-2" for="mainSelect">Main</label>
-                <select class="form-control custom-select my-1 mr-sm-2" id="mainSelect" placeholder="Who do you main?"
-                    formControlName="main">
-                    <option *ngFor="let character of roster" [value]="character">
-                    {{character}}
-                    </option>
-                </select>
-                <button class="btn btn-large btn-info w-100 mt-3" type="submit">Let me in</button>
-            </form>
+            </div>
         </div>
     </div>
     <div class="w-100 bg-white text-dark p-5 container justify-content-around quote-container">
