@@ -5,12 +5,7 @@ $blur-deviation: 8px;
     z-index: 3;
 }
 
-@mixin section {
-    height: $section-height;
-}
-
 %section {
-    // @include section;
     @include above-header;
 }
 
@@ -22,7 +17,6 @@ $blur-deviation: 8px;
     z-index: 0;
 
     display: block;
-    // background-image: url(../../assets/images/bf_banner.png);
     background-image: url(../../assets/images/banner.svg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -44,13 +38,7 @@ $blur-deviation: 8px;
 }
 
 .header-container {
-    @include section;
-
-    // padding-top: 5%;
-    // padding-right: 10%;
-    // padding-left: 10%;
-    // padding-bottom: 5%;
-
+    height: $section-height;
     z-index: 0;
 }
 
@@ -59,9 +47,6 @@ $blur-deviation: 8px;
 }
 
 .header-signup {
-    // margin-left: auto;
-    // margin-right: 50px;
-
     min-width: 300px;
     z-index: 1;
 }
@@ -112,6 +97,10 @@ $blur-deviation: 8px;
     @extend %about;
 }
 
+.register-container {
+    @extend %section;
+}
+
 .quote {
     position: relative;
     top: 35%;
@@ -122,10 +111,6 @@ $blur-deviation: 8px;
 
 .quoteauthor {
     font-size: 0.9rem;
-}
-
-.register-container {
-    @extend %section;
 }
 
 .feature {
