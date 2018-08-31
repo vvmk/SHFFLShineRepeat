@@ -2,12 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { Drill } from '../../interfaces/drill';
 import { Routine } from '../../interfaces/routine';
 import { RoutineService } from '../../services/routine.service';
+import { RosterService } from '../../services/roster.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faSun, faMoon, faPlay, faStopwatch } from '@fortawesome/free-solid-svg-icons';
+import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
     templateUrl: './drill-runner.component.html',
-    styleUrls: ['./drill-runner.component.scss']
+    styleUrls: ['./drill-runner.component.scss'],
+    animations: [
+    trigger(
+      'enterAnimation', [
+        transition(':enter', [
+          style({opacity: 0}),
+          animate('100ms', style({opacity: 1}))
+        ]),
+        transition(':leave', [
+          style({opacity: 1}),
+          animate('100ms', style({opacity: 0}))
+        ])
+      ]
+    )
+  ]
 })
 export class DrillRunnerComponent implements OnInit {
     title = 'SHFFL->Shine->Repeat';
@@ -17,13 +33,20 @@ export class DrillRunnerComponent implements OnInit {
     drillTitle: string;
     drillTick: number;
 
+    running = false;
+
     colorTheme = 'light';
     faSun = faSun;
     faMoon = faMoon;
+    faPlay = faPlay;
+    faStopwatch = faStopwatch;
 
-    constructor(private routineService: RoutineService,
+    constructor(
+        private routineService: RoutineService,
         private route: ActivatedRoute,
-        private router: Router) {
+        private rosterService: RosterService,
+        private router: Router
+    ) {
         this.drillIndex = 0;
     }
 
@@ -32,8 +55,11 @@ export class DrillRunnerComponent implements OnInit {
     }
 
     runDrills(index: number): void {
+        this.running = true;
         if (index >= this.drills.length) {
             this.drillIndex = 0;
+
+            this.running = false;
             return;
         }
 

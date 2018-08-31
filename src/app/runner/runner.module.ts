@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DrillRunnerComponent } from './drill-runner/drill-runner.component';
 import { RoutineResolverService } from '../services/routine-resolver.service';
@@ -11,6 +12,7 @@ import { RoutineResolverService } from '../services/routine-resolver.service';
 @NgModule({
     imports: [
         CommonModule,
+        BrowserAnimationsModule,
         FormsModule,
         NgbModule,
         FontAwesomeModule,

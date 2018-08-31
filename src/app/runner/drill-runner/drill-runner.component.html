@@ -1,22 +1,37 @@
-<div class="p-2 text-dark runner-container">
-    <div class="d-flex justify-content-end align-items-center runner-prefs">
-        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioTheme" [(ngModel)]="colorTheme">
-            <label ngbButtonLabel class="btn-light">
-                <input ngbButton type="radio" value="light"><fa-icon [icon]="faSun"></fa-icon>
-            </label>
-            <label ngbButtonLabel class="btn-light">
-                <input ngbButton type="radio" value="dark"><fa-icon [icon]="faMoon"></fa-icon>
-            </label>
+<div class="h-100 container-fluid p-2 pt-3 text-light bg-secondary runner-container">
+    <div class="p-1 d-flex flex-row justify-content-start runner-top"
+         *ngIf="!running" [@enterAnimation]>
+        <img class="h-100 border rounded character-portrait"
+             [src]="rosterService.getCssPortraitUrl(routine.character)"
+             />
+        <div class="px-2 drill-meta">
+            <h3 class="routine-title">
+                {{routine.title}}
+            </h3>
+            <h6 class="routine-duration">
+                <fa-icon [icon]="faStopwatch"></fa-icon>&nbsp;{{routine.total_duration}}
+            </h6>
         </div>
     </div>
-
-    <div class="runner-top">
-        <p class="routine-title">{{routine.title}}</p>
-        <p class="routine-duration">Duration: {{routine.total_duration}}</p>
-        <button color='primary' (click)='runDrills(0)'>Start</button>
-    </div>
+    <button class="btn btn-success btn-lg" (click)='runDrills(0)'>
+        <fa-icon [icon]="faPlay"></fa-icon>
+    </button>
     <div class="runner-timer">
-        <h1 class='drillTitle'>{{drillTitle}}</h1>
-        <h1 class='drillTick'>{{drillTick}}</h1>
+        <h1 class='drillTitle'>
+            {{drillTitle}}
+        </h1>
+        <h1 class='drillTick'>
+            {{drillTick}}
+        </h1>
     </div>
 </div>
+<!-- <div class="d-flex justify-content-end align-items-center runner-prefs"> -->
+<!--     <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioTheme" [(ngModel)]="colorTheme"> -->
+<!--         <label ngbButtonLabel class="btn-light"> -->
+<!--             <input ngbButton type="radio" value="light"><fa-icon [icon]="faSun"></fa-icon> -->
+<!--         </label> -->
+<!--         <label ngbButtonLabel class="btn-light"> -->
+<!--             <input ngbButton type="radio" value="dark"><fa-icon [icon]="faMoon"></fa-icon> -->
+<!--         </label> -->
+<!--     </div> -->
+<!-- </div> -->
