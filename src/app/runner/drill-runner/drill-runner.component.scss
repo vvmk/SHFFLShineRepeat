@@ -1,13 +1,15 @@
+$runner-offset: 60px;
+
 .runner-top {
     height: 100px;
 }
 
 .runner-bottom {
-    z-index: calc($zindex-fixed + 1);
+    z-index: 9999;
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
+    height: calc(100% + $runner-offset);
+    top: -$runner-offset;
+    left: 0px;
     width: 100%;
 }
 
