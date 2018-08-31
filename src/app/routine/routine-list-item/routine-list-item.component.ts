@@ -3,6 +3,7 @@ import { Routine } from '../../interfaces/routine';
 import { RoutineService } from '../../services/routine.service';
 import { RosterService } from '../../services/roster.service';
 import { Router } from '@angular/router';
+import { faClipboard, faBullhorn, faPlay, faStream } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'ssr-routine-list-item',
@@ -11,6 +12,11 @@ import { Router } from '@angular/router';
 })
 export class RoutineListItemComponent implements OnInit {
     @Input() routine: Routine;
+
+    faClipboard = faClipboard;
+    faBullhorn = faBullhorn;
+    faStream = faStream;
+    faPlay = faPlay;
 
     constructor(
         private routineService: RoutineService,

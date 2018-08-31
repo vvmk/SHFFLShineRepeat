@@ -28,15 +28,20 @@
                             {{creatorTag}}
                         </a>
                     </small>
-                    <button class="py-1 btn btn-small btn-info"
+                    <button class="py-1 btn btn-lg btn-light"
+                            [routerLink]="['/runner/', routine.routine_id]">
+                        <fa-icon class="text-success" [icon]="faPlay"></fa-icon>
+                    </button>
+                    <button class="py-1 btn btn-small btn-light"
                             (click)="console.log('fork not implemented')"
                             *ngIf="routine.creator_id !== auth.currentUserId">
-                        Fork
+                        Add to library
                     </button>
-                    <button class="py-1 btn btn-small btn-info"
+                    <button class="py-1 btn btn-lg btn-light"
                             (click)="editRoutine()"
                             *ngIf="routine.creator_id === auth.currentUserId">
-                        Edit
+                        <fa-icon [icon]="faEdit"></fa-icon>
+                        <!-- Edit -->
                     </button>
                 </div>
                 <div class="mt-2 d-flex align-items-center">

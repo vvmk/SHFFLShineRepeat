@@ -1,6 +1,10 @@
 <div class="d-flex flex-row justify-content-end border rounded list-item-container">
     <div class="ml-2 mr-auto list-item-meta">
-        <div class="list-item-title"><button class="w-100 btn btn-link title-button" (click)="viewRoutine()" type="button">{{routine.title}}</button></div>
+        <div class="list-item-title">
+            <button class="w-100 btn btn-link title-button" (click)="viewRoutine()" type="button">
+                {{routine.title}}
+            </button>
+        </div>
         <div class="ml-2 pb-1">
             <span class="list-item-stats">
                 <img class="small-icon" src="assets/images/clock.png" />
@@ -12,12 +16,12 @@
             </span>
         </div>
     </div>
-    <div class="px-2 d-flex justify-content-around flex-column align-items-center">
-        <button class="mt-1 btn btn-sm btn-light border rounded" (click)="viewRoutine()" type="button">
-            Details
+    <div class="px-2 d-flex justify-content-center flex-column align-items-center">
+        <button class="btn btn-lg p-0 px-1 btn-light" (click)="viewRoutine()" type="button">
+            <fa-icon [icon]="faStream"></fa-icon>
         </button>
-        <button class="mt-1 btn btn-sm btn-success border rounded" (click)="runRoutine()" type="button">
-            Run
+        <button class="btn btn-lg p-0 px-1 btn-light" (click)="runRoutine()" type="button">
+            <fa-icon class="text-success" [icon]="faPlay"></fa-icon>
         </button>
     </div>
     <img class="list-item-avatar" [src]='rosterService.getListPortraitUrl(routine.character)' />

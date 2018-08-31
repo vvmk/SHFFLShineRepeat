@@ -5,7 +5,7 @@ import { RoutineService } from '../../services/routine.service';
 import { UserService } from '../../services/user.service';
 import { RosterService } from '../../services/roster.service';
 import { AuthService } from '../../services/auth.service';
-import { faStopwatch, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faEdit } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'ssr-routine-view',
@@ -17,8 +17,8 @@ export class RoutineViewComponent implements OnInit {
     routine: Routine = <Routine>{};
     creatorTag: string;
 
-    faStopwatch = faStopwatch;
-    faStar = faStar;
+    faPlay = faPlay;
+    faEdit = faEdit;
 
     constructor(
         private routineService: RoutineService,
