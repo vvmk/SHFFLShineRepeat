@@ -1,12 +1,13 @@
-<nav class="navbar fixed-top bg-dark text-light px-lg-5">
+<nav class="navbar fixed-top bg-dark text-light">
+    <div class="w-100 container">
     <a class="navbar-brand" [routerLink]="['/']">
         <img src="../assets/images/logo/logo-white-spread.svg" width="30" height="30" alt="" />
     </a>
     <ul class="nav navbar-nav flex-row ml-auto">
         <li class="nav-item px-3 py-0" *ngIf='!auth.isLoggedIn()'><a class="nav-link" [routerLink]="['/login']">Log in</a></li>
         <li class="nav-item px-3 py-0" *ngIf='!auth.isLoggedIn()'><a class="nav-link" [routerLink]="['/register']">Sign Up</a></li>
-        <li ngbDropdown *ngIf='auth.isLoggedIn()' class="text-light nav-item dropdown px-3 py-0">
-            <button ngbDropdownToggle class="dropdown-toggle text-info btn btn-link" id="dropdownMenuButton">
+        <li ngbDropdown *ngIf='auth.isLoggedIn()' class="text-light nav-item dropdown pl-3 py-0">
+            <button ngbDropdownToggle class="pr-1 dropdown-toggle text-info btn btn-link" id="dropdownMenuButton">
                 <img [src]="avatarSource" class="border border-success rounded-circle user-icon"/>
             </button>
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -20,6 +21,7 @@
             </div>
         </li>
     </ul>
+    </div>
 </nav>
 <div class="p-0 h-100 w-100 bg-white content-container">
     <router-outlet></router-outlet>
