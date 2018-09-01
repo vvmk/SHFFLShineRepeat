@@ -10,11 +10,13 @@ import { RoutineViewGuard } from '../services/routine-guard.service';
 import { LibraryPageComponent } from './library-page/library-page.component';
 import { LibraryHeaderComponent } from './library-header/library-header.component';
 import { RoutineResolverService } from '../services/routine-resolver.service';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FontAwesomeModule,
+    PipesModule,
     RouterModule.forChild([
       {
         path: 'routine/:id',
@@ -32,10 +34,10 @@ import { RoutineResolverService } from '../services/routine-resolver.service';
     RoutineListComponent,
     RoutineListItemComponent,
     RoutineViewComponent,
-    LibraryHeaderComponent
+    LibraryHeaderComponent,
   ],
   providers: [
-    RoutineResolverService
+    RoutineResolverService,
   ]
 })
 export class RoutineModule { }

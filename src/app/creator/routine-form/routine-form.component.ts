@@ -82,12 +82,12 @@ export class RoutineFormComponent implements OnInit {
             drill_title: [title, [
                 Validators.required,
                 Validators.minLength(1),
-                Validators.maxLength(50)
+                Validators.maxLength(140)
             ]],
             duration: [duration, [
                 Validators.required,
                 Validators.min(1),
-                Validators.max(5940)
+                Validators.max(5999)
             ]]
         });
     }

@@ -23,6 +23,7 @@ import { UserModule } from './user/user.module';
 import { RunnerModule } from './runner/runner.module';
 import { DiscoverModule } from './discover/discover.module';
 import { CreatorModule } from './creator/creator.module';
+import { PipesModule } from './pipes/pipes.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FourOhFourComponent } from './four-oh-four.component';
 
@@ -30,7 +31,7 @@ import { FourOhFourComponent } from './four-oh-four.component';
   declarations: [
     AppComponent,
     HomePageComponent,
-    FourOhFourComponent
+    FourOhFourComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +47,7 @@ import { FourOhFourComponent } from './four-oh-four.component';
     NgbModule,
     NgbDropdownModule,
     FontAwesomeModule,
+    PipesModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent },
       { path: '**', redirectTo: 'fourohfour', pathMatch: 'full' },

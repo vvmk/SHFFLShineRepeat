@@ -47,7 +47,7 @@
                 <div class="mt-2 d-flex align-items-center">
                     <span class="mr-4">
                         <fa-icon [icon]="faStopwatch"></fa-icon>
-                        {{routine.total_duration}}
+                        {{routine.total_duration | time}}
                     </span>
                     <span class="mr-4" *ngIf="routine.popularity">
                         <fa-icon [icon]="faStar"></fa-icon>
@@ -70,7 +70,7 @@
                             </span>
                             <small class="mb-1 drill-duration">
                                 <fa-icon [icon]="faStopwatch"></fa-icon>
-                                {{drill.duration}}
+                                {{drill.duration | time}}
                             </small>
                         </li>
                     </ul>

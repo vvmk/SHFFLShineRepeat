@@ -8,7 +8,7 @@
         <div class="ml-2 pb-1">
             <span class="list-item-stats">
                 <img class="small-icon" src="assets/images/clock.png" />
-                {{routine.total_duration}}
+                {{routine.total_duration | time}}
             </span>
             <span *ngIf="routine.popularity > 0" class="list-item-stats">
                 <img class="small-icon" src="assets/images/star.png" />

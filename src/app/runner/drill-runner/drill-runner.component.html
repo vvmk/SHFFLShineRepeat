@@ -12,7 +12,7 @@
                     {{routine.title}}
                 </h3>
                 <h5 class="my-3 text-center routine-duration">
-                    <fa-icon [icon]="faStopwatch"></fa-icon>&nbsp;{{routine.total_duration}}
+                    <fa-icon [icon]="faStopwatch"></fa-icon>&nbsp;{{routine.total_duration | time}}
                 </h5>
             </div>
             <div class="col-xs-12 col-md-2 mt-2">
