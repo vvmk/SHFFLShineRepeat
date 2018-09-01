@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class EndpointService {
+    // TODO: move this to env
     public baseUrl = 'http://localhost:8001';
 
     constructor() { }
@@ -10,27 +11,29 @@ export class EndpointService {
     // (i.e.  baseURL/confirm)
     // are omitted from this service, just type 'em
 
-    public userURL(userId: number): string {
+    public userURL(userId: string): string {
         return `${ this.baseUrl }/users/${ userId }`;
     }
 
-    public getRoutineURL(routineId: number) {
+    public getRoutineURL(routineId: string) {
         return `${ this.baseUrl }/routines/${ routineId }`;
     }
 
-    public getLibraryURL(userId: number): string {
+    public getLibraryURL(userId: string): string {
         return `${ this.baseUrl }/users/${ userId }/library`;
     }
 
-    public userRoutineURL(userId: number, routineId: number = -1): string {
-        let r = '';
-        if (routineId > 0) {
-            r = `/${ routineId }`;
-        }
+    /*
+     * userRoutineURL returns the REST endpoint for the supplied routineId belonging
+     * to the user for the supplied user
+     * OR the routine creation endpoint of the user if no routineId is supplied.
+     */
+    public userRoutineURL(userId: string, routineId: string = ''): string {
+        const r = (routineId) ? '/' + routineId : '';
         return `${ this.baseUrl }/users/${ userId }/routines${ r }`;
     }
 
-    public forkRoutineURL(userId: number, routineId: number): string {
+    public forkRoutineURL(userId: number, routineId: string): string {
         return `${ this.baseUrl }/users/${ userId }/fork/${ routineId }`;
     }
 }

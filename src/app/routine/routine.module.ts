@@ -10,6 +10,7 @@ import { RoutineViewGuard } from '../services/routine-guard.service';
 import { LibraryPageComponent } from './library-page/library-page.component';
 import { LibraryHeaderComponent } from './library-header/library-header.component';
 import { RoutineResolverService } from '../services/routine-resolver.service';
+import { UserLibraryResolverService } from '../services/user-library-resolver.service';
 import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
@@ -25,7 +26,8 @@ import { PipesModule } from '../pipes/pipes.module';
       },
       {
         path: 'library',
-        component: LibraryPageComponent
+        component: LibraryPageComponent,
+        resolve: { library: UserLibraryResolverService }
       }
     ])
   ],

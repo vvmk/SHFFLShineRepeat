@@ -3,9 +3,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EndpointService } from './endpoint.service';
 import { AuthService } from './auth.service';
 import { User } from '../interfaces/user';
+import { Routine } from '../interfaces/routine';
+import { Profile } from '../interfaces/profile';
 import { NewUser } from '../interfaces/new-user';
 import { Observable, of } from 'rxjs';
-import { shareReplay, first } from 'rxjs/operators';
+import { shareReplay, first, map } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -19,12 +21,29 @@ export class UserService {
         this.currentUser = <User>{};
     }
 
-    // returns user data for a supplied id or the current user if none
-    // is provided
-    getUser(userId: number = this.auth.currentUserId): Observable<User> {
+    // TODO: default param provided for temporary backwards compatability
+    // during rafactoring only. It should be considered deprecated. Please
+    // explicitly provide a userId
+    getUser(userId: string = localStorage.getItem('user_id')): Observable<User> {
         return this.http.get<User>(this.es.userURL(userId)).pipe(
             shareReplay()
         );
+    }
+
+    /*
+     * getProfile returns the profile for the provided userId. The Profile object returned
+     * is a DAO containing only the data needed for viewing a user's library/profile page.
+     * TODO: optimization: add an endpoint, Go is better at this.
+     */
+    getProfile(userId: string) {
+        this.getUser(userId).subscribe(user => {
+            const url = this.es.getLibraryURL(userId);
+            return this.http.get(url).pipe(
+                map(r => {
+                    console.log('getProfile: ', routines);
+                })
+            });
+        });
     }
 
     saveUser(user: User) {

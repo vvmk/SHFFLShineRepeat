@@ -13,6 +13,7 @@ import { RoutineService } from './services/routine.service';
 import { RosterService } from './services/roster.service';
 import { RoutineViewGuard, RoutineFormGuard } from './services/routine-guard.service';
 import { RoutineResolverService } from './services/routine-resolver.service';
+import { UserLibraryResolverService } from './services/user-library-resolver.service';
 import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
@@ -60,6 +61,7 @@ import { FourOhFourComponent } from './four-oh-four.component';
     RoutineFormGuard,
     RoutineViewGuard,
     RoutineResolverService,
+    UserLibraryResolverService,
     RosterService,
     UserService,
     AuthService,
