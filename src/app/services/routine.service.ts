@@ -26,7 +26,9 @@ export class RoutineService {
         const userId = +localStorage.getItem('user_id');
         const url = this.es.getLibraryURL(userId);
 
-        return this.http.get<Routine[]>(url);
+        return this.http.get<Routine[]>(url).pipe(
+            catchError(this.handleError)
+        );
     }
 
     public getRoutineById(routineId: number): Observable<Routine> {
@@ -112,8 +114,8 @@ export class RoutineService {
         );
     }
 
-    // TODO: handleError
-    private handleError(error: Response): Observable<any> {
-        return of(null);
+    private handleError(err: Response): Observable<any> {
+        console.log('RoutineService: handleError: ', err);
+        return of(err);
     }
 }
