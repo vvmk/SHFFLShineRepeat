@@ -25,7 +25,7 @@ import { PipesModule } from '../pipes/pipes.module';
         resolve: { routine: RoutineResolverService }
       },
       {
-        path: 'library',
+        path: 'library/:id',
         component: LibraryPageComponent,
         resolve: { library: UserLibraryResolverService }
       }

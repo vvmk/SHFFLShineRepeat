@@ -7,6 +7,6 @@ export interface Profile {
         title: string;
         total_duration: number;
         popularity: number;
-        routineDescription?: string;
+        description?: string;
     }[];
 }

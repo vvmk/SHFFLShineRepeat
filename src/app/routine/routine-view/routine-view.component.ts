@@ -38,7 +38,7 @@ export class RoutineViewComponent implements OnInit {
         this.routine = data['routine'];
         this.pageTitle = this.routine.title;
 
-        this.userService.getUser(this.routine.creator_id)
+        this.userService.getUser('' + this.routine.creator_id)
         .subscribe(u => this.creatorTag = u.tag);
     }
 
@@ -55,7 +55,7 @@ export class RoutineViewComponent implements OnInit {
 
         if (confirm(msg)) {
 
-            this.routineService.deleteRoutine(this.routine.routine_id)
+            this.routineService.deleteRoutine('' + this.routine.routine_id)
                 .subscribe(response => {
                     // TODO: navigate away and stuff
                     console.log('deleted: ' + response);

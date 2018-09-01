@@ -11,4 +11,5 @@ export interface Routine {
     created: number;
     popularity: number;
     drills: Drill[];
+    description: string;
 }

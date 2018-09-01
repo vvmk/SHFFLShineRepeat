@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { RoutineListComponent } from '../routine-list/routine-list.component';
 import { LibraryHeaderComponent } from '../library-header/library-header.component';
 import { RoutineService } from '../../services/routine.service';
@@ -19,13 +20,17 @@ export class LibraryPageComponent implements OnInit {
     constructor(
         private routineService: RoutineService,
         private userService: UserService,
-        private authService: AuthService
+        private authService: AuthService,
+        private route: ActivatedRoute,
     ) { }
 
     ngOnInit() {
         this.userId = this.authService.currentUserId;
-        this.userService.getUser().subscribe(u => this.user = u);
-        this.routineService.getUserRoutines()
-            .subscribe(r => this.routines = r);
+        this.route.data.subscribe(data => {
+            console.log('profile data: ', data);
+        });
+        // this.userService.getUser().subscribe(u => this.user = u);
+        // this.routineService.getUserRoutines()
+        //     .subscribe(r => this.routines = r);
     }
 }

@@ -35,15 +35,8 @@ export class UserService {
      * is a DAO containing only the data needed for viewing a user's library/profile page.
      * TODO: optimization: add an endpoint, Go is better at this.
      */
-    getProfile(userId: string) {
-        this.getUser(userId).subscribe(user => {
-            const url = this.es.getLibraryURL(userId);
-            return this.http.get(url).pipe(
-                map(r => {
-                    console.log('getProfile: ', routines);
-                })
-            });
-        });
+    getProfile(userId: string): Observable<any> {
+        return this.http.get<Profile>(this.es.userURL(userId) + '/profile');
     }
 
     saveUser(user: User) {

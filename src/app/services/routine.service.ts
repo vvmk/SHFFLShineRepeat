@@ -72,6 +72,7 @@ export class RoutineService {
             drills: [],
             popularity: 0,
             created: 0,
+            description: '',
         };
     }
 
@@ -85,7 +86,8 @@ export class RoutineService {
             character: routine.character,
             original_creator_id: routine.original_creator_id,
             creator_id: routine.creator_id,
-            drills: routine.drills
+            drills: routine.drills,
+            description: '',
         };
 
         return this.http.post(url, newRoutine, options).pipe(
