@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EndpointService } from '../services/endpoint.service';
-import { Observable } from 'rxjs';
-import { tap, shareReplay } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { tap, shareReplay, catchError } from 'rxjs/operators';
 
 import { User } from '../interfaces/user';
 
@@ -30,7 +30,8 @@ export class AuthService {
 
     return this.http.post(url, {}, { headers: headers }).pipe(
       tap(res => this.setSession(res)),
-      shareReplay()
+      shareReplay(),
+      catchError(err => this.handleError(err)),
     );
   }
 
@@ -71,5 +72,10 @@ export class AuthService {
       tap(res => this.setSession(res)),
       shareReplay()
     );
+  }
+
+  handleError(err): Observable<any> {
+    console.log('login error: ', err);
+    return of(err);
   }
 }

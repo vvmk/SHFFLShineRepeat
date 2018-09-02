@@ -12,6 +12,7 @@
                        id="loginEmail"
                        type="email"
                        formControlName="email"
+                       (keydown)="keydown($event)"
                        required
                        autofocus>
             </div>
@@ -21,13 +22,14 @@
                        id="loginPassword" 
                        type="password"
                        formControlName="password"
+                       (keydown)="keydown($event)"
                        required>
             </div>
             <button class="w-100 btn btn-lg btn-success" type="submit" (click)="login()">Submit</button>
+            <div class="my-2 alert alert-danger" *ngIf="badLogin" [@loginState] role="alert">Incorrect email or password. Try again!</div>
             <button class="btn btn-link" (click)='forgot()'><small>I forgot my password</small></button>
             <div class="mt-4 w-100 border rounded-0"></div>
             <a class="btn btn-link" [routerLink]="['/register']">Don't have an account yet?</a>
-
         </form>
     </div>
 </div>
