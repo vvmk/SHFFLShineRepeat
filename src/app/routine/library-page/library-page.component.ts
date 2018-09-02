@@ -39,8 +39,6 @@ export class LibraryPageComponent implements OnInit {
             this.router.navigate(['/' + routeData['status']]);
         }
 
-        console.log('myId: ', this.auth.currentUserId);
-        console.log('libraryId: ', this.profile.user.user_id);
         this.showWelcome = this.shouldShowWelcome();
 
     }

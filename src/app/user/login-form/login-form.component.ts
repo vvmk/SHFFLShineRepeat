@@ -36,13 +36,11 @@ export class LoginFormComponent implements OnInit {
 
     if (val.email && val.password) {
       this.auth.login(val.email, val.password).subscribe(res => {
-        console.log('login: ', res);
 
-        // should send user back where they tried to go before
         if (this.auth.redirectUrl) {
           this.router.navigateByUrl(this.auth.redirectUrl);
         } else {
-          this.router.navigate(['/library']);
+          this.router.navigate(['/library/' + res['user']['user_id']]);
         }
       });
     }
