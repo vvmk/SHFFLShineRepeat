@@ -48,6 +48,11 @@ export class RoutineFormComponent implements OnInit {
                     Validators.maxLength(50)
                 ]
             ],
+            description: ['',
+                [
+                    Validators.maxLength(500)
+                ]
+            ],
             character: ['', Validators.required],
             drills: this.fb.array([ this.buildDrill() ])
         });
@@ -61,7 +66,8 @@ export class RoutineFormComponent implements OnInit {
 
             this.routineForm.patchValue({
                 title: this.routine.title,
-                character: this.routine.character
+                character: this.routine.character,
+                description: this.routine.description,
             });
 
             this.routine.drills.forEach(d => {
@@ -117,7 +123,6 @@ export class RoutineFormComponent implements OnInit {
     }
 
     private onSaveComplete(id?): void {
-        // this.routineForm.reset();
         if (id) {
             this.router.navigate(['/routine/' + id]);
         } else {
