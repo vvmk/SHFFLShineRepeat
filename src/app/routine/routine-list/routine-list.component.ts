@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RoutineService } from '../../services/routine.service';
-import { Routine } from '../../interfaces/routine';
 
 @Component({
     selector: 'ssr-routine-list',
@@ -8,12 +6,10 @@ import { Routine } from '../../interfaces/routine';
     styleUrls: ['./routine-list.component.scss']
 })
 export class RoutineListComponent implements OnInit {
-    @Input() routines: Routine[];
+    @Input() routineHeaders;
     errorMessage: string;
 
-    constructor(private routineService: RoutineService) {
-        //
-    }
+    constructor() {}
 
     ngOnInit() {
     }

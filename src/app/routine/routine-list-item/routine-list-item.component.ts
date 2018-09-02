@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Routine } from '../../interfaces/routine';
-import { RoutineService } from '../../services/routine.service';
 import { RosterService } from '../../services/roster.service';
 import { Router } from '@angular/router';
 import { faClipboard, faBullhorn, faPlay, faStream } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +9,7 @@ import { faClipboard, faBullhorn, faPlay, faStream } from '@fortawesome/free-sol
     styleUrls: ['./routine-list-item.component.scss']
 })
 export class RoutineListItemComponent implements OnInit {
-    @Input() routine: Routine;
+    @Input() routineHeader;
 
     faClipboard = faClipboard;
     faBullhorn = faBullhorn;
@@ -19,7 +17,6 @@ export class RoutineListItemComponent implements OnInit {
     faPlay = faPlay;
 
     constructor(
-        private routineService: RoutineService,
         private router: Router,
         private rosterService: RosterService
     ) {}
@@ -28,10 +25,10 @@ export class RoutineListItemComponent implements OnInit {
     }
 
     viewRoutine(): void {
-        this.router.navigate(['/routine', this.routine.routine_id]);
+        this.router.navigate(['/routine', this.routineHeader.routine_id]);
     }
 
     runRoutine(): void {
-        this.router.navigate(['/runner', this.routine.routine_id]);
+        this.router.navigate(['/runner', this.routineHeader.routine_id]);
     }
 }

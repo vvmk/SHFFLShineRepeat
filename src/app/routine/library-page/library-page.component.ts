@@ -7,15 +7,15 @@ import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../interfaces/user';
 import { Routine } from '../../interfaces/routine';
+import { Profile } from '../../interfaces/profile';
 
 @Component({
     templateUrl: './library-page.component.html',
     styleUrls: ['./library-page.component.scss']
 })
 export class LibraryPageComponent implements OnInit {
-    user: User = <User>{};
     userId: number;
-    routines: Routine[] = [];
+    profile: Profile;
 
     constructor(
         private routineService: RoutineService,
@@ -26,11 +26,6 @@ export class LibraryPageComponent implements OnInit {
 
     ngOnInit() {
         this.userId = this.authService.currentUserId;
-        this.route.data.subscribe(data => {
-            console.log('profile data: ', data);
-        });
-        // this.userService.getUser().subscribe(u => this.user = u);
-        // this.routineService.getUserRoutines()
-        //     .subscribe(r => this.routines = r);
+        this.profile = this.route.snapshot.data['profile'];
     }
 }

@@ -2,11 +2,12 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <ssr-library-header [user]='user'></ssr-library-header>
+                <ssr-library-header [user]='profile.user'></ssr-library-header>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9">
-                <ssr-routine-list [routines]='routines'></ssr-routine-list>
-                <div class="border border-gray rounded bg-warning " *ngIf="!routines">
+                <ssr-routine-list [routineHeaders]='profile.routine_headers'></ssr-routine-list>
+
+                <div class="border border-gray rounded bg-warning " *ngIf="!profile.routine_headers">
                     <h3 class="text-center">You havn't added any routines yet</h3>
                     <p class="text-center"><a class="text-success" [routerLink]="['/creator']">Create one</a> 
                     now or find one using the search bar above.</p>

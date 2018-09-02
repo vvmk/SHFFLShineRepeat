@@ -2,17 +2,17 @@
     <div class="ml-2 mr-auto list-item-meta">
         <div class="list-item-title">
             <button class="w-100 btn btn-link title-button" (click)="viewRoutine()" type="button">
-                {{routine.title}}
+                {{routineHeader.title}}
             </button>
         </div>
         <div class="ml-2 pb-1">
             <span class="list-item-stats">
                 <img class="small-icon" src="assets/images/clock.png" />
-                {{routine.total_duration | time}}
+                {{routineHeader.total_duration | time}}
             </span>
-            <span *ngIf="routine.popularity > 0" class="list-item-stats">
+            <span *ngIf="routineHeader.popularity > 0" class="list-item-stats">
                 <img class="small-icon" src="assets/images/star.png" />
-                {{routine.popularity}}
+                {{routineHeader.popularity}}
             </span>
         </div>
     </div>
@@ -24,5 +24,5 @@
             <fa-icon class="text-success" [icon]="faPlay"></fa-icon>
         </button>
     </div>
-    <img class="list-item-avatar" [src]='rosterService.getListPortraitUrl(routine.character)' />
+    <img class="list-item-avatar" [src]='rosterService.getListPortraitUrl(routineHeader.character)' />
 </div>
