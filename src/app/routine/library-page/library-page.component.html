@@ -7,7 +7,7 @@
             <div class="col-xs-12 col-sm-6 col-md-8 col-lg-9">
                 <ssr-routine-list [routineHeaders]='profile.routine_headers'></ssr-routine-list>
 
-                <div class="border border-gray rounded bg-warning " *ngIf="!profile.routine_headers">
+                <div class="border border-gray rounded bg-warning" *ngIf="showWelcome">
                     <h3 class="text-center">You havn't added any routines yet</h3>
                     <p class="text-center"><a class="text-success" [routerLink]="['/creator']">Create one</a> 
                     now or find one using the search bar above.</p>

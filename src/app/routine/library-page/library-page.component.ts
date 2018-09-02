@@ -17,16 +17,17 @@ export class LibraryPageComponent implements OnInit {
     userId: number;
     profile: Profile;
 
+    showWelcome = false;
+
     constructor(
         private routineService: RoutineService,
         private userService: UserService,
-        private authService: AuthService,
+        private auth: AuthService,
         private route: ActivatedRoute,
         private router: Router,
     ) { }
 
     ngOnInit() {
-        this.userId = this.authService.currentUserId;
         const routeData = this.route.snapshot.data['profile'];
 
         // ErrorObservables should be caught by the resolver and never reach this component
@@ -37,5 +38,15 @@ export class LibraryPageComponent implements OnInit {
         } else {
             this.router.navigate(['/' + routeData['status']]);
         }
+
+        console.log('myId: ', this.auth.currentUserId);
+        console.log('libraryId: ', this.profile.user.user_id);
+        this.showWelcome = this.shouldShowWelcome();
+
+    }
+
+    shouldShowWelcome(): boolean {
+        return (this.auth.currentUserId === this.profile.user.user_id &&
+            this.profile.routine_headers.length <= 0);
     }
 }
