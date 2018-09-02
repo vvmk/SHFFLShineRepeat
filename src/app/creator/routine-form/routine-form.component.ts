@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Routine } from '../../interfaces/routine';
-import { User } from '../../interfaces/user';
-import { UserService } from '../../services/user.service';
+import { NewRoutine } from '../../models/new-routine';
+import { AuthService } from '../../services/auth.service';
 import { RoutineService } from '../../services/routine.service';
 import { RosterService } from '../../services/roster.service';
 import { RoutineFormGuard } from '../../services/routine-guard.service';
@@ -16,12 +16,11 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
     styleUrls: ['./routine-form.component.scss']
 })
 export class RoutineFormComponent implements OnInit {
-    @Input() routine: Routine;
+    @Input() routine: Routine | NewRoutine;
     @Input() title: string;
+
     roster: string[];
     routineForm: FormGroup;
-    user: User;
-    initialHeight = 600;
 
     faMinusCircle = faMinusCircle;
     faPlusCircle = faPlusCircle;
@@ -31,8 +30,8 @@ export class RoutineFormComponent implements OnInit {
     }
 
     constructor(
-        private userService: UserService,
         private routineService: RoutineService,
+        private auth: AuthService,
         private rosterService: RosterService,
         private guard: RoutineFormGuard,
         private fb: FormBuilder,
@@ -40,8 +39,6 @@ export class RoutineFormComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        this.userService.getUser().subscribe(u => this.user = u);
-
         this.roster = this.rosterService.getRoster();
         this.routineForm = this.fb.group({
             title: ['',
@@ -55,8 +52,8 @@ export class RoutineFormComponent implements OnInit {
             drills: this.fb.array([ this.buildDrill() ])
         });
 
-        // update the form data for editing routines
-        if (this.routine.routine_id > 0) {
+        // update the form data if editing a routine
+        if (!(this.routine instanceof NewRoutine)) {
             if (this.routineForm) {
                 this.routineForm.reset();
                 this.routineForm.setControl('drills', this.fb.array([]));
@@ -99,13 +96,12 @@ export class RoutineFormComponent implements OnInit {
     save(): void {
         if (this.routineForm.dirty && this.routineForm.valid) {
 
-            // copy the new values over the routine object values
             let r = Object.assign({}, this.routine, this.routineForm.value);
             r = this.setRoutineTotalDuration(r);
 
-            // console.log('saving object: ', r);
-            this.routineService.saveRoutine(r)
-                .subscribe(() => this.onSaveComplete());
+            this.routineService.saveRoutine(r).subscribe(routine => {
+                this.onSaveComplete(routine.routine_id);
+            });
 
         } else if (!this.routineForm.dirty) {
             this.onSaveComplete();
@@ -120,8 +116,12 @@ export class RoutineFormComponent implements OnInit {
         return r;
     }
 
-    private onSaveComplete(): void {
-        this.routineForm.reset();
-        this.router.navigate(['/library']);
+    private onSaveComplete(id?): void {
+        // this.routineForm.reset();
+        if (id) {
+            this.router.navigate(['/routine/' + id]);
+        } else {
+            this.router.navigate(['/library/' +  this.auth.currentUserId]);
+        }
     }
 }

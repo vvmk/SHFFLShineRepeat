@@ -22,7 +22,7 @@ export class RoutineService {
     // Default param is to temporarily maintain backwards compatability
     // while refactoring. Old way is deprecated, please explicitly provide
     // a userId.
-    public getUserRoutines(userId: string = localStorage.getItem('user_id')): Observable<Routine[] > {
+    public getUserRoutines(userId: string = localStorage.getItem('user_id')): Observable<Routine[]> {
         const url = this.es.getLibraryURL(userId);
 
         return this.http.get<Routine[]>(url).pipe(
@@ -30,26 +30,28 @@ export class RoutineService {
         );
     }
 
-    public getRoutineById(routineId: string): Observable <Routine> {
+    public getRoutineById(routineId: string): Observable<Routine> {
         const url = this.es.getRoutineURL(routineId);
         return this.http.get<Routine>(url).pipe(
             catchError(this.handleError)
         );
     }
 
-    public saveRoutine(routine: Routine): Observable <Routine> {
+    public saveRoutine(routine: Routine): Observable<Routine> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: headers };
 
-        if (routine.routine_id === 0) {
-            return this.createRoutine(routine, options);
+        if (routine.routine_id) {
+            console.log('updating routine: ', routine.routine_id);
+            return this.updateRoutine(routine, options);
         }
 
-        return this.updateRoutine(routine, options);
+        return this.createRoutine(routine, options);
+
     }
 
     // TODO: verify deletion somehow, right now there's no going back
-    public deleteRoutine(routineId: string): Observable <Response> {
+    public deleteRoutine(routineId: string): Observable<Response> {
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         const options = { headers: headers };
 
@@ -61,46 +63,20 @@ export class RoutineService {
         return id < this.routineLibrary.length;
     }
 
-    public initializeRoutine(): Routine {
-        return {
-            routine_id: -1,
-            title: '',
-            total_duration: 0,
-            character: '',
-            original_creator_id: -1,
-            creator_id: -1,
-            drills: [],
-            popularity: 0,
-            created: 0,
-            description: '',
-        };
-    }
-
-    private createRoutine(routine: Routine, options: any): Observable <Routine> {
-        // TODO: temporary backwards compatability hack while refactoring
+    private createRoutine(routine: Routine, options: any): Observable<Routine> {
         const url = this.es.userRoutineURL('' + routine.creator_id);
 
-        const newRoutine = {
-            title: routine.title,
-            total_duration: routine.total_duration,
-            character: routine.character,
-            original_creator_id: routine.original_creator_id,
-            creator_id: routine.creator_id,
-            drills: routine.drills,
-            description: '',
-        };
-
-        return this.http.post(url, newRoutine, options).pipe(
-            catchError(this.handleError)
+        return this.http.post(url, routine, options).pipe(
+            catchError(err => this.handleError(err))
         );
     }
 
     // TODO: this is broken somewhere and is high on my short list.
-    private updateRoutine(routine: Routine, options: any): Observable <Routine> {
+    private updateRoutine(routine: Routine, options: any): Observable<Routine> {
         // TODO: temporary backwards compatability hack while refactoring
         const url = this.es.userRoutineURL('' + routine.creator_id, '' + routine.routine_id);
 
-        console.log(routine);
+        console.log('updateRoutine: ', routine);
 
         return this.http.put(url, routine, options).pipe(
             map(() => routine),
