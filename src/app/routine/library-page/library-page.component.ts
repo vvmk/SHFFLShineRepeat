@@ -28,11 +28,14 @@ export class LibraryPageComponent implements OnInit {
     ngOnInit() {
         this.userId = this.authService.currentUserId;
         const routeData = this.route.snapshot.data['profile'];
+
+        // ErrorObservables should be caught by the resolver and never reach this component
+        // this conditional is left as a precaution in case there is no data but the data
+        // is malformed in some way
         if (routeData.user && routeData.routine_headers) {
             this.profile = routeData;
         } else {
             this.router.navigate(['/' + routeData['status']]);
-            // TODO: This is where I'd put a log...IF I HAD ONE!
         }
     }
 }

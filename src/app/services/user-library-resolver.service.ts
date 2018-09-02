@@ -20,7 +20,10 @@ export class UserLibraryResolverService implements Resolve<Profile | any> {
     const id = route.params['id'];
 
     return this.userService.getProfile(id).pipe(
-      catchError(err => of(err))
+      catchError(err => {
+        this.router.navigate(['/' + err['status']]);
+        return of(err);
+      })
     );
   }
 }
