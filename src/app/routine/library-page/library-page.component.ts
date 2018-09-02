@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RoutineListComponent } from '../routine-list/routine-list.component';
 import { LibraryHeaderComponent } from '../library-header/library-header.component';
 import { RoutineService } from '../../services/routine.service';
@@ -22,10 +22,17 @@ export class LibraryPageComponent implements OnInit {
         private userService: UserService,
         private authService: AuthService,
         private route: ActivatedRoute,
+        private router: Router,
     ) { }
 
     ngOnInit() {
         this.userId = this.authService.currentUserId;
-        this.profile = this.route.snapshot.data['profile'];
+        const routeData = this.route.snapshot.data['profile'];
+        if (routeData.user && routeData.routine_headers) {
+            this.profile = routeData;
+        } else {
+            this.router.navigate(['/' + routeData['status']]);
+            // TODO: This is where I'd put a log...IF I HAD ONE!
+        }
     }
 }

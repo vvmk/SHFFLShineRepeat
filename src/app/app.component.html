@@ -11,7 +11,7 @@
                 <img [src]="avatarSource" class="border border-success rounded-circle user-icon"/>
             </button>
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <button class="dropdown-item" [routerLink]="['/library']">My Library</button>
+                <button class="dropdown-item" [routerLink]="['/library/' + auth.currentUserId]">My Library</button>
                 <button class="dropdown-item" [routerLink]="['/create']">New Routine</button>
                 <div class="dropdown-divider"></div>
                 <button class="disabled dropdown-item">Help</button>
