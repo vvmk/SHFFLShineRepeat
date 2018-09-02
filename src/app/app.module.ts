@@ -53,9 +53,9 @@ import { FiveHundredComponent } from './errors/five-hundred.component';
     PipesModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent },
-      { path: '**', redirectTo: '404', pathMatch: 'full' },
       { path: '404', component: FourOhFourComponent },
       { path: '500', component: FiveHundredComponent },
+      { path: '**', redirectTo: '404', pathMatch: 'full' },
     ], { enableTracing: false})
   ],
   providers: [
