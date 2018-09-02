@@ -26,13 +26,15 @@ import { DiscoverModule } from './discover/discover.module';
 import { CreatorModule } from './creator/creator.module';
 import { PipesModule } from './pipes/pipes.module';
 import { HomePageComponent } from './home-page/home-page.component';
-import { FourOhFourComponent } from './four-oh-four.component';
+import { FourOhFourComponent } from './errors/four-oh-four.component';
+import { FiveHundredComponent } from './errors/five-hundred.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     FourOhFourComponent,
+    FiveHundredComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,8 +53,9 @@ import { FourOhFourComponent } from './four-oh-four.component';
     PipesModule,
     RouterModule.forRoot([
       { path: '', component: HomePageComponent },
-      { path: '**', redirectTo: 'fourohfour', pathMatch: 'full' },
-      { path: 'fourohfour', component: FourOhFourComponent }
+      { path: '**', redirectTo: '404', pathMatch: 'full' },
+      { path: '404', component: FourOhFourComponent },
+      { path: '500', component: FiveHundredComponent },
     ], { enableTracing: false})
   ],
   providers: [
