@@ -75,7 +75,6 @@ export class AuthService {
   }
 
   handleError(err): Observable<any> {
-    console.log('login error: ', err);
     return of(err);
   }
 }
