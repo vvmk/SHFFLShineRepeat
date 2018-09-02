@@ -17,6 +17,7 @@ export class RegisterFormComponent implements OnInit {
     loading = false;
     submitted = false;
     roster: string[];
+    characterChosen = false;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -52,8 +53,8 @@ export class RegisterFormComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
+        this.characterChosen = !!this.registerForm.value.main;
 
-        // stop here if form is invalid
         if (this.registerForm.invalid) {
             return;
         }
