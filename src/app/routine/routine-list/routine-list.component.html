@@ -1,7 +1,7 @@
 <div class="list-container">
-    <ul class="pl-0 routine-list" *ngIf="routineHeaders">
-        <ssr-routine-list-item 
-            *ngFor='let r of routineHeaders' [routineHeader]='r'>
-        </ssr-routine-list-item>
-    </ul>
+    <div class="pl-0 routine-list" *ngIf="routineHeaders">
+        <div class="mb-2" *ngFor='let r of routineHeaders'>
+            <ssr-routine-list-item [routineHeader]='r'></ssr-routine-list-item>
+        </div>
+    </div>
 </div>
