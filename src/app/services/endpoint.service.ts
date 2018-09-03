@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class EndpointService {
-    // TODO: move this to env
-    public baseUrl = 'http://localhost:8001';
+    public baseUrl = environment.API_URL;
 
-    constructor() { }
+    constructor() {}
 
     // NOTE: URLs consisting of the base url plus one word
     // (i.e.  baseURL/confirm)
