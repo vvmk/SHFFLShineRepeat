@@ -33,6 +33,14 @@
             <span class="mt-5 p-0 text-center drill-tick">
                 {{drillTick}}
             </span>
+            <div class="mb-2 mt-auto running-controls">
+                <button class="btn btn-link btn-lg pause-button" (click)="pauseDrills()" *ngIf="!paused">
+                    <fa-icon class="text-dark" [icon]="faPause"></fa-icon>
+                </button>
+                <button class="btn btn-link btn-lg resume-button" (click)="resumeDrills()" *ngIf="paused">
+                    <fa-icon class="text-dark" [icon]="faPlay"></fa-icon>
+                </button>
+            </div>
         </div>
     </div>
 </div>

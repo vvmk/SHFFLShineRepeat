@@ -33,6 +33,8 @@ export class DrillRunnerComponent implements OnInit {
   private drillTick: number;
 
   running = false;
+  paused = false;
+
   breakTime = 5;
   oneSecond = 1100;
 
@@ -129,6 +131,20 @@ export class DrillRunnerComponent implements OnInit {
       this.drillIndex++;
       this.clock = setTimeout(() => this.runDrills(this.drillIndex), this.oneSecond);
     }
+  }
+
+  pauseDrills() {
+    this.paused = true;
+    clearTimeout(this.clock);
+
+    console.log('pause');
+  }
+
+  resumeDrills() {
+    this.paused = false;
+    this.countdown(this.drillTick + 3);
+
+    console.log('resume');
   }
 
   setProps(data): void {
