@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { EndpointService } from './services/endpoint.service';
 import { RoutineService } from './services/routine.service';
 import { RosterService } from './services/roster.service';
+import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
 import { RoutineViewGuard, RoutineFormGuard } from './services/routine-guard.service';
 import { RoutineResolverService } from './services/routine-resolver.service';
 import { UserLibraryResolverService } from './services/user-library-resolver.service';
-import { UserService } from './services/user.service';
 import { AuthGuardService } from './services/auth-guard.service';
-import { AuthService } from './services/auth.service';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { CacheInterceptor } from './core/cache.interceptor';
+import { HttpCacheService } from './core/http-cache.service';
 
 import { RoutineModule } from './routine/routine.module';
 import { UserModule } from './user/user.module';
@@ -68,12 +70,10 @@ import { FiveHundredComponent } from './errors/five-hundred.component';
     RosterService,
     UserService,
     AuthService,
+    HttpCacheService,
     AuthGuardService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptorService,
-      multi: true
-    }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: CacheInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
