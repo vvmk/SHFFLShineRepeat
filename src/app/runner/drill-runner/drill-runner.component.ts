@@ -35,6 +35,14 @@ export class DrillRunnerComponent implements OnInit {
   running = false;
 
   private clock;
+  private visualCues = {
+    'visual-background': true,
+    'w-100': true,
+    'text-dark': true,
+    'bg-info': true,
+    'bg-warning': false,
+    'bg-danger': false,
+  };
 
   colorTheme = 'light';
   faSun = faSun;
@@ -74,7 +82,7 @@ export class DrillRunnerComponent implements OnInit {
   }
 
   countdown(seconds: number) {
-    this.displayTick(seconds);
+    this.updateDisplay(seconds);
     if (seconds > 0) {
       this.clock = setTimeout(() => this.countdown(seconds - 1), 1000);
     } else {
@@ -83,8 +91,28 @@ export class DrillRunnerComponent implements OnInit {
     }
   }
 
-  displayTick(tick: number) {
+  updateDisplay(tick: number) {
     this.drillTick = tick;
+    this.updateVisualCue(tick);
+  }
+
+  updateVisualCue(tick: number) {
+    if (tick > 10) {
+      this.visualCues['bg-info'] = true;
+
+      this.visualCues['bg-danger'] = false;
+      this.visualCues['bg-warning'] = false;
+    } else if (tick > 3) {
+      this.visualCues['bg-warning'] = true;
+
+      this.visualCues['bg-danger'] = false;
+      this.visualCues['bg-info'] = false;
+    } else {
+      this.visualCues['bg-danger'] = true;
+
+      this.visualCues['bg-warning'] = false;
+      this.visualCues['bg-info'] = false;
+    }
   }
 
   setProps(data): void {

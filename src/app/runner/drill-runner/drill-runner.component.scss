@@ -28,3 +28,12 @@ $runner-offset: 60px;
     right: 15px;
     top: 15px;
 }
+
+.visual-background {
+    z-index: 9999;
+    position: absolute;
+    top: -$runner-offset;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+}
