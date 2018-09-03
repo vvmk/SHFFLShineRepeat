@@ -21,7 +21,7 @@ export class UserLibraryResolverService implements Resolve<Profile | any> {
 
     return this.userService.getProfile(id).pipe(
       catchError(err => {
-        this.router.navigate(['/' + err['status']]);
+        this.router.navigateByUrl('/' + err['status'], { skipLocationChange: true });
         return of(err);
       })
     );

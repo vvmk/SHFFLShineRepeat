@@ -34,12 +34,10 @@ export class UserService {
     /*
      * getProfile returns the profile for the provided userId. The Profile object returned
      * is a DAO containing only the data needed for viewing a user's library/profile page.
-     * TODO: optimization: add an endpoint, Go is better at this.
+     * WARNING: the routines returned in this object do not include drills.
      */
     getProfile(userId: string): Observable<any> {
-        return this.http.get<Profile>(this.es.userURL(userId) + '/profile').pipe(
-            catchError(err => this.handleError(err))
-        );
+        return this.http.get<Profile>(this.es.userURL(userId) + '/profile');
     }
 
     saveUser(user: User): Observable<any> {
