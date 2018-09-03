@@ -9,7 +9,7 @@ RUN npm install
 
 COPY ./ /app/
 
-RUN npm build --prod
+RUN npm run-script build --prod
 
 # Stage 1, based on Nginx:alpine, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.15.3-alpine
