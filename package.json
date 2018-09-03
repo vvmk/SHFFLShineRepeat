@@ -8,7 +8,8 @@
     "build": "ng build --prod",
     "test": "ng test --source-map=false",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "docker": "docker build -t ssr:0.1.0 -f web.prod.dockerfile ."
   },
   "private": true,
   "dependencies": {

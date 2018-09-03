@@ -1,10 +1,7 @@
 version: "3.7"
 services:
     db:
-        image: ssr-stack-db
-        build:
-            context: /Users/V/go/src/github.com/vvmk/shineserver/
-            dockerfile: db.dev.dockerfile
+        image: vvmk/ssr-db
         ports:
             - "5432:5432"
         env_file:
@@ -18,10 +15,7 @@ services:
                 constraints: [node.role == manager]
 
     shineserver:
-        image: ssr-stack-shineserver
-        build:
-            context: /Users/V/go/src/github.com/vvmk/shineserver/
-            dockerfile: shineserver.dev.dockerfile
+        image: vvmk/ssr-shineserver
         ports:
             - "8001:8001"
         networks:
@@ -32,10 +26,7 @@ services:
             - ./scratch/shineserver-vars.env
 
     web:
-        image: ssr:0.1.0
-        build:
-            context: .
-            dockerfile: web.prod.dockerfile
+        image: vvmk/ssr
         ports:
             - "80:80"
         networks:
