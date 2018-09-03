@@ -26,14 +26,15 @@ import { trigger, style, animate, transition } from '@angular/animations';
   ]
 })
 export class DrillRunnerComponent implements OnInit {
-  title = 'SHFFL->Shine->Repeat';
-  routine: Routine;
-  drills: Drill[] = [];
-  drillIndex: number;
-  drillTitle: string;
-  drillTick: number;
+  private routine: Routine;
+  private drills: Drill[] = [];
+  private drillIndex: number;
+  private drillTitle: string;
+  private drillTick: number;
 
   running = false;
+
+  private clock;
 
   colorTheme = 'light';
   faSun = faSun;
@@ -75,10 +76,10 @@ export class DrillRunnerComponent implements OnInit {
   countdown(seconds: number) {
     this.displayTick(seconds);
     if (seconds > 0) {
-      setTimeout(() => this.countdown(seconds - 1), 1000);
+      this.clock = setTimeout(() => this.countdown(seconds - 1), 1000);
     } else {
       this.drillIndex++;
-      setTimeout(() => this.runDrills(this.drillIndex), 1000);
+      this.clock = setTimeout(() => this.runDrills(this.drillIndex), 1000);
     }
   }
 
@@ -91,7 +92,6 @@ export class DrillRunnerComponent implements OnInit {
     this.drills = this.routine.drills;
   }
 
-  // TODO: DEMO ONLY, TIMER LOGIC IS GETTING A TOTAL REWRITE
   openDrills() {
     this.running = true;
     this.runDrills(0);
@@ -99,6 +99,6 @@ export class DrillRunnerComponent implements OnInit {
 
   closeDrills() {
     this.running = false;
+    clearTimeout(this.clock);
   }
-
 }
