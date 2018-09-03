@@ -25,7 +25,7 @@
     <div [ngClass]="visualCues" *ngIf="running" [@enterAnimation]>
         <div class="h-100 w-100 container-fluid d-flex flex-column justify-content-start align-items-center runner-bottom">
             <button class="close runner-close" type="button" (click)="closeDrills()">
-                <fa-icon class="text-light" [icon]="faTimes"></fa-icon>
+                <fa-icon class="text-dark" [icon]="faTimes"></fa-icon>
             </button>
             <span class="my-5 pt-5 text-center drill-title">
                 {{drillTitle}}

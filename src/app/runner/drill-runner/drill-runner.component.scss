@@ -5,7 +5,7 @@ $runner-offset: 60px;
 }
 
 .runner-bottom {
-    z-index: 9999;
+    z-index: 9998;
     position: absolute;
     height: calc(100% + $runner-offset);
     top: -$runner-offset;
@@ -24,13 +24,14 @@ $runner-offset: 60px;
 }
 
 .runner-close {
+    z-index: 9999;
     position: absolute;
     right: 15px;
-    top: 15px;
+    top: 75px;
 }
 
 .visual-background {
-    z-index: 9999;
+    z-index: 9998;
     position: absolute;
     top: -$runner-offset;
     left: 0px;
