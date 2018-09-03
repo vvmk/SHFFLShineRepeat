@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RosterService } from '../../services/roster.service';
 import { Router } from '@angular/router';
-import { faClipboard, faBullhorn, faPlay, faStream } from '@fortawesome/free-solid-svg-icons';
+import { faClipboard, faBullhorn, faPlay, faStream, faStopwatch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'ssr-routine-list-item',
@@ -15,6 +15,7 @@ export class RoutineListItemComponent implements OnInit {
     faBullhorn = faBullhorn;
     faStream = faStream;
     faPlay = faPlay;
+    faStopwatch = faStopwatch;
 
     constructor(
         private router: Router,

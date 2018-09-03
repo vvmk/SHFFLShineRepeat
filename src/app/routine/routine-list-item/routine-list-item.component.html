@@ -7,7 +7,7 @@
         </div>
         <div class="ml-2 pb-1">
             <span class="list-item-stats">
-                <img class="small-icon" src="assets/images/clock.png" />
+                <small><fa-icon [icon]="faStopwatch"></fa-icon></small>
                 {{routineHeader.total_duration | time}}
             </span>
             <span *ngIf="routineHeader.popularity > 0" class="list-item-stats">
