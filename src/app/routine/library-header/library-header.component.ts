@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../interfaces/user';
 import { RosterService } from '../../services/roster.service';
 import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
     selector: 'ssr-library-header',
@@ -20,6 +21,7 @@ export class LibraryHeaderComponent implements OnInit {
     constructor(
         private rosterService: RosterService,
         private userService: UserService,
+        private auth: AuthService,
     ) {
         this.bioBuffer = '';
     }

@@ -5,15 +5,17 @@
         <img class="user-main-token"
              [src]="rosterService.getStockIconUrl(user.main)"/>
     </div>
-    <div *ngIf="!editing">
-        <div *ngIf="!editing" class="text-dark p-2 user-bio">
-            {{user.bio}}
+    <div *ngIf="user.user_id === auth.currentUserId">
+        <div *ngIf="!editing">
+            <div *ngIf="!editing" class="text-dark p-2 user-bio">
+                {{user.bio}}
+            </div>
+            <button class="btn btn-info w-100 edit"  (click)="editBio()" type="button">{{followOrEdit}}</button>
         </div>
-        <button class="btn btn-info w-100 follow-edit"  (click)="editBio()" type="button">{{followOrEdit}}</button>
-    </div>
-    <div class="w-100" *ngIf="editing">
-        <textarea class="w-100 h-100 mb-1" rows="4" [(ngModel)]="bioBuffer" *ngIf="editing"></textarea>
-        <button class="btn btn-success btn-sm" (click)="editSave()">Save</button>
-        <button class="btn btn-light btn-sm" (click)="editCancel()">Cancel</button>
+        <div class="w-100" *ngIf="editing">
+            <textarea class="w-100 h-100 mb-1" rows="4" [(ngModel)]="bioBuffer" *ngIf="editing"></textarea>
+            <button class="btn btn-success btn-sm" (click)="editSave()">Save</button>
+            <button class="btn btn-light btn-sm" (click)="editCancel()">Cancel</button>
+        </div>
     </div>
 </div>
