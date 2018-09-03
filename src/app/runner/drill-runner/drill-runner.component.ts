@@ -33,7 +33,8 @@ export class DrillRunnerComponent implements OnInit {
   private drillTick: number;
 
   running = false;
-  breakTime = 3; // default 3 second break
+  breakTime = 5;
+  oneSecond = 1100;
 
   private clock;
   private visualCues = {
@@ -85,9 +86,9 @@ export class DrillRunnerComponent implements OnInit {
   countdown(seconds: number) {
     this.updateDisplay(seconds);
     if (seconds > 0) {
-      this.clock = setTimeout(() => this.countdown(seconds - 1), 1000);
+      this.clock = setTimeout(() => this.countdown(seconds - 1), this.oneSecond);
     } else {
-      this.clock = setTimeout(() => this.runBreak(), 1000);
+      this.clock = setTimeout(() => this.runBreak(), this.oneSecond);
     }
   }
 
@@ -119,14 +120,14 @@ export class DrillRunnerComponent implements OnInit {
   // to check if a break or a drill is running. I need to rewrite countdown
   // so It can stand by itself to avoid either of these bad solutions.
   runBreak(seconds: number = this.breakTime) {
-    this.drillTitle = 'Next:' +  this.drills[this.drillIndex].drill_title;
+    this.drillTitle = 'Next: ' +  this.drills[this.drillIndex].drill_title;
 
     this.updateDisplay(seconds);
     if (seconds > 0) {
-      this.clock = setTimeout(() => this.runBreak(seconds - 1), 1000);
+      this.clock = setTimeout(() => this.runBreak(seconds - 1), this.oneSecond);
     } else {
       this.drillIndex++;
-      this.clock = setTimeout(() => this.runDrills(this.drillIndex), 1000);
+      this.clock = setTimeout(() => this.runDrills(this.drillIndex), this.oneSecond);
     }
   }
 
@@ -137,7 +138,7 @@ export class DrillRunnerComponent implements OnInit {
 
   openDrills() {
     this.running = true;
-    this.runDrills(0);
+    this.runBreak();
   }
 
   closeDrills() {
