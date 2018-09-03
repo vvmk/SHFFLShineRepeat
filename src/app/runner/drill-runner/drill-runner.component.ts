@@ -37,6 +37,7 @@ export class DrillRunnerComponent implements OnInit {
 
   breakTime = 5;
   oneSecond = 1100;
+  needsCountIn = true;
 
   private clock;
   private visualCues = {
@@ -128,7 +129,12 @@ export class DrillRunnerComponent implements OnInit {
     if (seconds > 0) {
       this.clock = setTimeout(() => this.runBreak(seconds - 1), this.oneSecond);
     } else {
-      this.drillIndex++;
+      if (this.needsCountIn) {
+        this.needsCountIn = false;
+      } else {
+        this.drillIndex++;
+      }
+
       this.clock = setTimeout(() => this.runDrills(this.drillIndex), this.oneSecond);
     }
   }
@@ -154,6 +160,9 @@ export class DrillRunnerComponent implements OnInit {
 
   openDrills() {
     this.running = true;
+    this.needsCountIn = true;
+
+    // start with a 'break' as a count-in
     this.runBreak();
   }
 
