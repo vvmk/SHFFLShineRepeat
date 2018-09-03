@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { RoutineListComponent } from './routine-list/routine-list.component';
@@ -16,6 +17,7 @@ import { PipesModule } from '../pipes/pipes.module';
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     FontAwesomeModule,
     PipesModule,
     RouterModule.forChild([

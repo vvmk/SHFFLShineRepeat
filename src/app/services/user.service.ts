@@ -7,7 +7,7 @@ import { Routine } from '../interfaces/routine';
 import { Profile } from '../interfaces/profile';
 import { NewUser } from '../interfaces/new-user';
 import { Observable, of } from 'rxjs';
-import { shareReplay, first, map } from 'rxjs/operators';
+import { shareReplay, first, map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -26,7 +26,8 @@ export class UserService {
     // explicitly provide a userId
     getUser(userId: string = localStorage.getItem('user_id')): Observable<User> {
         return this.http.get<User>(this.es.userURL(userId)).pipe(
-            shareReplay()
+            shareReplay(),
+            catchError(err => this.handleError(err))
         );
     }
 
@@ -36,12 +37,17 @@ export class UserService {
      * TODO: optimization: add an endpoint, Go is better at this.
      */
     getProfile(userId: string): Observable<any> {
-        return this.http.get<Profile>(this.es.userURL(userId) + '/profile');
+        return this.http.get<Profile>(this.es.userURL(userId) + '/profile').pipe(
+            catchError(err => this.handleError(err))
+        );
     }
 
-    saveUser(user: User) {
+    saveUser(user: User): Observable<any> {
         this.currentUser = user;
-        // PUT user
+
+        return this.http.put<User>(this.es.userURL('' + user.user_id), user).pipe(
+            catchError(err => this.handleError(err))
+        );
     }
 
     // get and cache the current user when logging in or returning
@@ -57,6 +63,13 @@ export class UserService {
 
     register(user: NewUser) {
         const url = this.es.baseUrl + '/register';
-        return this.http.post(url, user);
+        return this.http.post(url, user).pipe(
+            catchError(err => this.handleError(err))
+        );
+    }
+
+    handleError(error: any): Observable<any> {
+        console.log('Error: UserService: ', error);
+        return of(error);
     }
 }
