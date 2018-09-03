@@ -5,7 +5,7 @@ services:
         ports:
             - "5432:5432"
         env_file:
-            - ./scratch/db-vars.env
+            - ./db-vars.env
         volumes:
             - db-data:/var/lib/postgresql/data
         networks:
@@ -23,7 +23,7 @@ services:
         depends_on: 
             - db
         env_file:
-            - ./scratch/shineserver-vars.env
+            - ./shineserver-vars.env
 
     web:
         image: vvmk/ssr
