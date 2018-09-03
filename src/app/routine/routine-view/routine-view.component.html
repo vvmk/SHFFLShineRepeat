@@ -4,18 +4,18 @@
             <div class="col-xs-12 col-sm-3 col-lg-2 routine-character">
                 <div class="d-flex flex-column justify-content-between w-100 mb-3 routine-images">
                     <img class="w-100 border rounded character-portrait"
-                         [src]="rosterService.getCssPortraitUrl(routine.character)"
+                         [src]="cssPortraitUrl"
                          />
                     <div class="mt-3 w-100 stage">
                         <small class="w-100 text-center">Stage</small>
                         <img class="w-100 routine-setup-image"
-                             [src]="rosterService.getStageUrl('Yoshis Story')"
+                             [src]="stageUrl"
                              alt="Yoshi's Story" />
                     </div>
                     <div class="mt-3 w-100 training-dummy">
                         <small class="w-100 text-center">CPU Character</small>
                         <img class="w-100 routine-setup-image"
-                             [src]="rosterService.getListPortraitUrl('Fox')"
+                             [src]="listPortraitUrl"
                              alt="Fox" />
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                 <div class="d-flex flex-row justify-content-between align-items-end routine-top">
                     <h4 class="m-0 pb-0">{{routine.title}}</h4>
                     <small class="pl-2 mr-auto">by
-                        <a [routerLink]="['/user/', routine.originalCreatorId]">
+                        <a [routerLink]="['/user/', routine.original_creator_id]">
                             {{creatorTag}}
                         </a>
                     </small>

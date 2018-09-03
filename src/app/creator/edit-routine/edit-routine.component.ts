@@ -9,7 +9,7 @@ import { Routine } from '../../interfaces/routine';
   styleUrls: ['./edit-routine.component.scss']
 })
 export class EditRoutineComponent implements OnInit {
-  private routine: Routine;
+  routine: Routine;
 
   constructor(
     private routineService: RoutineService,

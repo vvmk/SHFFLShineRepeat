@@ -13,7 +13,8 @@ export class LibraryHeaderComponent implements OnInit {
     @Input() user: User;
     followOrEdit = 'Edit';
     avatar = 'assets/images/avatar-Default.png';
-    mainTokenUrl: string;
+    stockIconUrl: string;
+
 
     editing = false;
     bioBuffer: string;
@@ -21,12 +22,13 @@ export class LibraryHeaderComponent implements OnInit {
     constructor(
         private rosterService: RosterService,
         private userService: UserService,
-        private auth: AuthService,
+        public auth: AuthService,
     ) {
         this.bioBuffer = '';
     }
 
     ngOnInit() {
+        this.stockIconUrl = this.rosterService.getStockIconUrl(this.user.main);
     }
 
     editBio() {

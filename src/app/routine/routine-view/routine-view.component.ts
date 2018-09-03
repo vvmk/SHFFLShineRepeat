@@ -21,17 +21,25 @@ export class RoutineViewComponent implements OnInit {
     faEdit = faEdit;
     faStopwatch = faStopwatch;
 
+    cssPortraitUrl: string;
+    listPortraitUrl: string;
+    stageUrl: string;
+
     constructor(
         private routineService: RoutineService,
         private userService: UserService,
         private route: ActivatedRoute,
         private router: Router,
         private rosterService: RosterService,
-        private auth: AuthService
+        public auth: AuthService
     ) {}
 
     ngOnInit() {
         this.route.data.subscribe(data => this.setProps(data));
+
+        this.cssPortraitUrl = this.rosterService.getCssPortraitUrl(this.routine.character);
+        this.listPortraitUrl = this.rosterService.getListPortraitUrl('Fox');
+        this.stageUrl = this.rosterService.getStageUrl('Yoshis Story');
     }
 
     setProps(data): void {

@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     avatarSource = '../assets/images/avatar-Default.png';
 
     constructor(
-        private auth: AuthService,
+        public auth: AuthService,
         private userService: UserService,
         private router: Router,
     ) { }

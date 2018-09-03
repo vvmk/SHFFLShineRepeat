@@ -3,7 +3,7 @@
     <div class="d-flex justify-content-between user-title">
         <span class="text-center user-tag">{{user.tag}}</span>
         <img class="user-main-token"
-             [src]="rosterService.getStockIconUrl(user.main)"/>
+             [src]="stockIconUrl"/>
     </div>
     <div *ngIf="user.user_id === auth.currentUserId">
         <div *ngIf="!editing">

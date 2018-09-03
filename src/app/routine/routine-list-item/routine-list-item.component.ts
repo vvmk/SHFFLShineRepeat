@@ -17,12 +17,15 @@ export class RoutineListItemComponent implements OnInit {
     faPlay = faPlay;
     faStopwatch = faStopwatch;
 
+    characterPortraitUrl: string;
+
     constructor(
         private router: Router,
         private rosterService: RosterService
     ) {}
 
     ngOnInit() {
+        this.characterPortraitUrl = this.rosterService.getListPortraitUrl(this.routineHeader.character);
     }
 
     viewRoutine(): void {
