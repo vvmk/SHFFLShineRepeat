@@ -29,7 +29,6 @@ export class LibraryPageComponent implements OnInit {
 
     ngOnInit() {
         const routeData = this.route.data.subscribe(data => {
-            console.log('library-page routeData: ', data);
             this.profile = data['profile'];
         });
 

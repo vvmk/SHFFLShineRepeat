@@ -42,7 +42,6 @@ export class RoutineService {
         const options = { headers: headers };
 
         if (routine.routine_id) {
-            console.log('updating routine: ', routine.routine_id);
             return this.updateRoutine(routine, options);
         }
 
@@ -71,12 +70,8 @@ export class RoutineService {
         );
     }
 
-    // TODO: this is broken somewhere and is high on my short list.
     private updateRoutine(routine: Routine, options: any): Observable<Routine> {
-        // TODO: temporary backwards compatability hack while refactoring
         const url = this.es.userRoutineURL('' + routine.creator_id, '' + routine.routine_id);
-
-        console.log('updateRoutine: ', routine);
 
         return this.http.put(url, routine, options).pipe(
             map(() => routine),

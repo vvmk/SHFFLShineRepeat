@@ -67,7 +67,7 @@ export class UserService {
     }
 
     handleError(error: any): Observable<any> {
-        console.log('Error: UserService: ', error);
+        // console.log('Error: UserService: ', error);
         return of(error);
     }
 }
