@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- node
+  - node
 env:
   - SERVER_IP_ADDRESS=54.165.59.95
 
@@ -11,4 +11,5 @@ before_install:
 - chmod 600 ./deploy_key
 - echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 - ssh-add ./deploy_key
-- ssh -i ./deploy_key ubuntu@54.165.59.95 pwd
+# test ssh connection for: https://github.com/dwyl/learn-travis/issues/42
+- ssh -i ./deploy_key ubuntu@ec2-54-165-59-95.compute-1.amazonaws.com pwd
