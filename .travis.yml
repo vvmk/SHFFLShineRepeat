@@ -1,24 +1,9 @@
-sudo: required
-dist: trusty
 language: node_js
 node_js:
 - node
 env:
-  matrix:
   - SERVER_IP_ADDRESS=54.165.59.95
-  - secure: SEfv+ceXXiAq4JS3gOIaP2zd4gpz3fPFs5/ZcooHtxiB7gDruD5xrM8BJs/ppB5VmVLp0sKnXNb9wET0PecZ/f7I74M8XFuOI7sKpScWw4huwi8M7iSEJhRi0y7IE2PCQhyH3DJRgXp6iQhVDeoDZvgeYK+Ur5/3HI0RwUpQbhofDyyEoXUyv9z9wf1XoZmQWI0L2OPedc7ZOdWMRGyrAMQKQt8jtIW8JOFL3ONo5C+idHZfqsQmhGry56/DZBz7haWyntQKTvpCkgC/0vgelGo9zRh3EphxtAO6/Hp5MD+9A0TQUgElwbpDdAoZ9Rn96ajxyfkdj+Hn4YmqdoKeGpZbHaUUI92TjbEYaMFK6ziZj85m8zuu3wIAuJMOje9qlH2RG2D0VGnEdc0hQgTnfC6WMpeSHzyCUsrQv5MBbjiNffc8Kb6oOvDbaiKzsVrdXcBNLnAnIL0RGL/VTiohWhT3dspATCRGDDbiJ8TjyJ2ag7vuOdLxEo7uF25zlZo6TqPH4PVNK5huZh0qxJGmJ6Y/ovvFAMckq+f3pFiJro5cTnl4KG/FeApDL/cNOHUbcKNYN2SGbt9v54GksCM0v8+jY14uAKYg1UnlL3YTb/MBhyVzmpq2ckMH4E5SwcwU+cL2HmWVNefG85mqn0/Gahi3DRWgwvx5SGQWVPKMo+o=
-  - secure: C2kaEkIewwdO41FaeU5Ttu2TChv5f1d9mPx17Mw07irc3R45NjbVY3qA0JBh8+iUZfrbrbEWKUgdN3iDPghA2tdsuBciA0BJspV/v0WK9Mxi/tfOv0InDKW+nc5qQYWGuzH1NyZspZ2IRemtQKdTBwtyRzlQAW0Ts33Au3BXSkT6rPSIWOT6EkImQxLseSS5EZbJlVMVkxP7q/kGDQH3kshUW9Fa3WSV2dLmIx0sYOIwczPjXqhzLUqV3cXdUdMqm4X+1cIKsCE9E+22sh6ZzxpfpcgBhBmTMUJ7dSu2vefdWmJXlL2+YmoNJVuQ2gZcHCxaRwrlzDpZsDlIUVSql6hNYt9ixb366ZrAqf+XbRL4KiHT1OmH0Z6bBXTBOIFFUmtI5Qi5nm/VfFmcDnjwIubtyCSlTRT+L8Pgye1V7gqkwXzC3qc2Th/E61I6VSgUCbLE38bi3QUQ85/zZzt0t8GPw8tHndy5RWSUl/RM6Sdlgh6Eyneh0fJcOD6cOFx0A8B++rdov++lY8GlTqHD1jkA7yqfkD93fPjMOw813lkazV3LZL7AKBWIsaaO1NXrqpl86Fj8chnoBj1ee1W7Lsia4HGyjcKAZXW5pgtYn8c3GE4u1c50OxDETdpdXSo/bKIlEiJqbtISRKARXW3FPBj8sTw4y3jzR16WKQJSEiw=
-services:
-- docker
-before_script:
-- npm install
-script:
-- npm run lint
-after_success:
-- if [ "$TRAVIS_BRANCH" == "master" ]; then npm run build; docker build -t vvmk/ssr
-  -f ./web.prod.dockerfile .; docker tag vvmk/ssr vvmk/ssr:$(git rev-parse --short
-  HEAD); docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; docker push vvmk/ssr;
-  fi
+
 before_install:
 - openssl aes-256-cbc -K $encrypted_4b5070507e6b_key -iv $encrypted_4b5070507e6b_iv
   -in deploy_key.enc -out ./deploy_key -d
