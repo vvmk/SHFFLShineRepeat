@@ -2,23 +2,18 @@ sudo: required
 dist: trusty
 language: node_js
 node_js:
-    - "node"
-
+- node
 services:
-    - docker
-
+- docker
 before_script:
-    - npm install
-
+- npm install
 script:
-    - npm run lint
-
+- npm run lint
 after_success:
-    - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      npm run build;
-      docker build -t vvmk/ssr -f ./web.prod.dockerfile .;
-      docker tag vvmk/ssr vvmk/ssr:$(git rev-parse --short HEAD);
-      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-      docker push vvmk/ssr;
-      fi
-
+- if [ "$TRAVIS_BRANCH" == "master" ]; then npm run build; docker build -t vvmk/ssr
+  -f ./web.prod.dockerfile .; docker tag vvmk/ssr vvmk/ssr:$(git rev-parse --short
+  HEAD); docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; docker push vvmk/ssr;
+  fi
+before_install:
+- openssl aes-256-cbc -K $encrypted_4b5070507e6b_key -iv $encrypted_4b5070507e6b_iv
+  -in deploy_key.enc -out ./deploy_key -d
