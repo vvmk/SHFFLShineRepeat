@@ -17,3 +17,9 @@ after_success:
 before_install:
 - openssl aes-256-cbc -K $encrypted_4b5070507e6b_key -iv $encrypted_4b5070507e6b_iv
   -in deploy_key.enc -out ./deploy_key -d
+- ssh-add ./deploy_key
+- eval "$(ssh-agent -s)"
+- chmod 600 ./deploy_key
+- echo -e "Host $SERVER_IP_ADDRESS\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+- ssh-add ./deploy_key
+- ssh -i ./deploy_key ubuntu@ec2-54-165-59-95.compute-1.amazonaws.com pwd
