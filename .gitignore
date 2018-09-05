@@ -1,11 +1,9 @@
-
-# Created by https://www.gitignore.io/api/Vim,node,macos,angular,sublimetext,typings
-
 # vvmk
 *.error
 scratch.*
 *.sql
 scratch
+deploy_key
 
 ### Angular ###
 ## Angular ##
