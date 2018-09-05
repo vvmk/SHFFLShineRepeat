@@ -5,6 +5,7 @@ env:
   - SERVER_IP_ADDRESS=54.165.59.95
 
 before_install:
+- echo "key.. $encrypted_4b5070507e6b_key"
 - openssl aes-256-cbc -K $encrypted_4b5070507e6b_key -iv $encrypted_4b5070507e6b_iv
   -in deploy_key.enc -out ./deploy_key -d
 - eval "$(ssh-agent -s)"
